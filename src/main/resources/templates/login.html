@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <h1 class="    border-bottom mb-5">Login</h1>
+    <div class="d-flex justify-content-center">
+
+        <div class="row g-3 align-items-center">
+
+            <form
+                    th:action="@{/users/login}"
+                    th:method="POST"
+            >
+                <div>
+                    <!--                    <h5 th:if="${isNotFound}" class="badge-danger">Incorrect username or password!</h5>-->
+                    <div class="col-auto">
+                        <label for="inputUsername" class="col-form-label ">Username</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text"
+                               name="username"
+                               th:value="${username}"
+                               required minlength="4" maxlength="20"
+                               id="inputUsername"
+                               class="form-control"
+                               aria-describedby="usernameHelpInline">
+                    </div>
+                </div>
+                <div>
+                    <div class="col-auto">
+                        <label for="inputPassword" class="col-form-label ">Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="password"
+                               name="password"
+                               required minlength="4" maxlength="20"
+                               id="inputPassword" class="form-control"
+                               aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+                <p>
+
+                </p>
+                <p th:if="${bad_credentials}" class="alert-danger">
+                    <!--                        class="invalid-feedback"-->
+                    <span class="bg-danger">Username or password is not correct!</span>
+                </p>
+                <div class="d-flex justify-content-center mt-2">
+                    <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</main>
+<footer th:replace="fragments/commons::footer">
+</footer>
+</body>
+</html>

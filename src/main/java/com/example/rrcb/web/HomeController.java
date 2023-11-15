@@ -12,14 +12,13 @@ public class HomeController {
     public HomeController(PictureService pictureService) {
         this.pictureService = pictureService;
     }
-
+*/
     @GetMapping("/")
     public String index(Model model){
-
-        model.addAttribute("pictures", pictureService.findAllUrlS());
+        //model.addAttribute("pictures", pictureService.findAllUrlS());
         return "index";
     }
-*/
+
 
 
 

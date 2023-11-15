@@ -13,15 +13,15 @@ html {
     color: var(--dark);
 }
 
-body {
-    background-image: url("/images/site-bgr.jpg");
-    backdrop-filter: blur(4px);
-    padding: 10px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 30px 50px;
-    line-height: 1.4;
-}
+/*body {*/
+/*    background-image: url("/images/site-bgr.jpg");*/
+/*    backdrop-filter: blur(4px);*/
+/*    padding: 10px;*/
+/*    background-repeat: no-repeat;*/
+/*    background-attachment: fixed;*/
+/*    margin: 30px 50px;*/
+/*    line-height: 1.4;*/
+/*}*/
 
 .btn {
     background: var(--dark);
@@ -52,6 +52,7 @@ img {
 }
 
 /* Navigation */
+
 .main-nav ul {
     display: grid;
     grid-gap: 20px;
@@ -117,15 +118,14 @@ img {
     display: grid;
     grid-gap: 20px;
     grid-template-areas:
-    'showcase showcase top-box-a'
-    'showcase showcase top-box-b';
+    'showcase showcase showcase showcase';
 }
 
 /* Showcase */
 .showcase {
     grid-area: showcase;
     min-height: 400px;
-    background: url('/images/amazing-routes.jpg');
+    background-image: url("../images/backgroundCar.jpg");
     background-size: cover;
     background-position: center;
     padding: 3rem;

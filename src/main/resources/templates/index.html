@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header th:replace="fragments/commons::navigation">
+    </header>
+
+    <!-- Top Container -->
+    <section class="top-container">
+        <div class="showcase">
+            <h1>Find amazing retro cars</h1>
+            <p>Sick of staying at home, sick of limitations? Be free! Find a route and enjoy nature!</p>
+            <a href="/routes/all" class="btn">To cars</a>
+        </div>
+    </section>
+
+    <!-- Boxes Section -->
+    <section class="boxes">
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/pedestrian.png" height="150px" alt="">
+                <h3>Pedestrian</h3>
+                <p>Is this your Leg day?</p>
+            </div>
+        </a>
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/bicycle.png" height="150px" alt="">
+                <h3>Bicycle</h3>
+                <p>When you want to be one with nature!</p>
+            </div>
+        </a>
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/motorcycle.png" height="150px" alt="">
+                <h3>Motorcycle</h3>
+                <p>When you want the wind to blow on your face!</p>
+            </div>
+        </a>
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/car.png" height="150px" alt="">
+                <h3>Car</h3>
+                <p>Going on a trip with friends?</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- Info Section -->
+    <section class="road">
+        <img src="/images/most-commented.jpg" alt="">
+        <div>
+            <h2>The most commented route</h2>
+            <p>Read more about the most commented route and do not miss the
+                chance to visit it and give your opinion to help other users.</p>
+            <a href="/" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="gallery">
+        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">
+    </section>
+
+</div>
+<!-- Wrapper Ends -->'
+
+<footer th:replace="fragments/commons::footer">
+</footer>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 package com.example.rrcb.configuration;
 
 
+import com.example.rrcb.repository.UserRepository;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,12 +23,12 @@ public class ApplicationSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
-                                //.requestMatchers("/favicon.ico", "/resources/**", "/error").permitAll()//test
+                                .requestMatchers("/favicon.ico", "/resources/**", "/error").permitAll()//test
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                //.requestMatchers("/").permitAll()
-                                //.requestMatchers("/about").permitAll()
-                                //.requestMatchers("/users/login", "/users/register", "/users/login-error").permitAll() //.anonymous()
-                                //.requestMatchers("/users/profile").authenticated()
+                                .requestMatchers("/").permitAll()
+                                .requestMatchers("/about").permitAll()
+                                .requestMatchers("/users/login", "/users/register", "/users/login-error").permitAll() //.anonymous()
+                                .requestMatchers("/users/profile").authenticated()
                                 .anyRequest().authenticated()
 
 
@@ -36,7 +37,7 @@ public class ApplicationSecurityConfiguration {
                         .passwordParameter("password")
                         .defaultSuccessUrl("/")
                         .failureForwardUrl("/users/login-error")
-                        //.failureForwardUrl("/users/login?error=true").permitAll()
+//                        .failureForwardUrl("/users/login?error=true").permitAll()
                 )
                 .logout(logout -> {
                     logout
@@ -52,12 +53,12 @@ public class ApplicationSecurityConfiguration {
         return httpSecurity.build();
 
     }
-/*
-    @Bean
-    public UserDetailsService userDetailsService(UserRepository userRepository){
-        return new PathfinderUserDetailsService(userRepository);
-    }
-*/
+
+//    @Bean
+//    public UserDetailsService userDetailsService(UserRepository userRepository){
+//        return new PathfinderUserDetailsService(userRepository);
+//    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
