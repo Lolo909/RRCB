@@ -3,19 +3,19 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/commons::head">
+<head th:replace="~{fragments/commons::head}">
 </head>
 <body>
 <div class="wrapper">
     <!-- Navigation -->
-    <header th:replace="fragments/commons::navigation">
+    <header th:replace="~{fragments/commons::navigation}">
     </header>
 
     <!-- Top Container -->
     <section class="top-container">
         <div class="showcase">
             <h1>Find amazing retro cars</h1>
-            <p>Sick of staying at home, sick of limitations? Be free! Find a route and enjoy nature!</p>
+            <p>Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
             <a href="/routes/all" class="btn">To cars</a>
         </div>
     </section>
@@ -24,30 +24,30 @@
     <section class="boxes">
         <a href="/" class="main-btn" >
             <div class="box">
-                <img src="/images/pedestrian.png" height="150px" alt="">
-                <h3>Pedestrian</h3>
-                <p>Is this your Leg day?</p>
+                <img src="/images/Vintage.png" height="150px" width="100%" alt="">
+<!--                <h3>Pedestrian</h3>-->
+                <p>Manufactured between 1919 and 1930</p>
             </div>
         </a>
         <a href="/" class="main-btn" >
             <div class="box">
-                <img src="/images/bicycle.png" height="150px" alt="">
-                <h3>Bicycle</h3>
-                <p>When you want to be one with nature!</p>
+                <img src="/images/AntiqueImage.png" height="150px" width="100%" alt="" >
+<!--                <h3>Bicycle</h3>-->
+                <p>Manufactured 1975 or earlier (>45 years old)</p>
             </div>
         </a>
+<!--        <a href="/" class="main-btn" >-->
+<!--            <div class="box">-->
+<!--                <img src="/images/motorcycle.png" height="150px" alt="">-->
+<!--                <h3>Motorcycle</h3>-->
+<!--                <p>When you want the wind to blow on your face!</p>-->
+<!--            </div>-->
+<!--        </a>-->
         <a href="/" class="main-btn" >
             <div class="box">
-                <img src="/images/motorcycle.png" height="150px" alt="">
-                <h3>Motorcycle</h3>
-                <p>When you want the wind to blow on your face!</p>
-            </div>
-        </a>
-        <a href="/" class="main-btn" >
-            <div class="box">
-                <img src="/images/car.png" height="150px" alt="">
-                <h3>Car</h3>
-                <p>Going on a trip with friends?</p>
+                <img src="/images/ClassicImage.png" height="150px" width="100%" alt="">
+<!--                <h3>Car</h3>-->
+                <p>Manufactured 2000 or earlier (>20 years old)</p>
             </div>
         </a>
     </section>
@@ -71,8 +71,9 @@
 </div>
 <!-- Wrapper Ends -->'
 
-<footer th:replace="fragments/commons::footer">
+<footer th:replace="~{fragments/commons::footer}">
 </footer>
 </body>
+<script></script>
 
 </html>
