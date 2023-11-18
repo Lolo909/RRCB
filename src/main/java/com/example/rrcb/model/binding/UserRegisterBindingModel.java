@@ -17,9 +17,6 @@ public class UserRegisterBindingModel {
     @Email
     private String email;
 
-    @Min(10)
-    private Integer age;
-    @Size(min = 3, max = 20, message = "Password length must be between 3 and 20 characters!")
     private String password;
 
     @Size(min = 3, max = 20, message = "Password length must be between 3 and 20 characters!")
@@ -56,14 +53,6 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public UserRegisterBindingModel setAge(Integer age) {
-        this.age = age;
-        return this;
-    }
 
     public String getPassword() {
         return password;

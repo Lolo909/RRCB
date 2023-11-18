@@ -5,19 +5,20 @@
 <head th:replace="fragments/commons::head"></head>
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
-    <h1 class="    border-bottom mb-5">Login</h1>
+    <h1 class="div-login-register-text">Login</h1>
     <div class="d-flex justify-content-center">
 
         <div class="row g-3 align-items-center">
 
             <form
                     th:action="@{/users/login}"
-                    th:method="POST"
-            >
+                    th:method="POST">
+                <header th:replace="~{fragments/commons::navigation}">
+                </header>
                 <div>
                     <!--                    <h5 th:if="${isNotFound}" class="badge-danger">Incorrect username or password!</h5>-->
                     <div class="col-auto">
-                        <label for="inputUsername" class="col-form-label ">Username</label>
+                        <label for="inputUsername" class="col-form-label div-login-register-text">Username</label>
                     </div>
                     <div class="col-auto">
                         <input type="text"
@@ -25,19 +26,21 @@
                                th:value="${username}"
                                required minlength="4" maxlength="20"
                                id="inputUsername"
+                               placeholder="Ex: Pesho25"
                                class="form-control"
                                aria-describedby="usernameHelpInline">
                     </div>
                 </div>
                 <div>
                     <div class="col-auto">
-                        <label for="inputPassword" class="col-form-label ">Password</label>
+                        <label for="inputPassword" class="col-form-label div-login-register-text">Password</label>
                     </div>
                     <div class="col-auto">
                         <input type="password"
                                name="password"
                                required minlength="4" maxlength="20"
                                id="inputPassword" class="form-control"
+                               placeholder="Enter password"
                                aria-describedby="passwordHelpInline">
                     </div>
                 </div>
@@ -56,7 +59,7 @@
 
     </div>
 </main>
-<footer th:replace="fragments/commons::footer">
+<footer th:replace="fragments/commons::footer" class="div-login-footer">
 </footer>
 </body>
 </html>

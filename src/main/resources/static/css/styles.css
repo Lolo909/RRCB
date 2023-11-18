@@ -25,21 +25,28 @@ html {
 /*}*/
 
 .btn {
-    background: var(--dark);
-    color: var(--light);
+    background: #0C5679;
+    color: white;
     padding: 0.6rem 1.3rem;
     text-decoration: none;
-    border: 0;
+    border: 1px solid #0C5679;
 }
+
+.btn:hover{
+    color: white;
+    background: #F28A0F;
+    border: 1px solid #0C5679
+}
+
 
 .main-btn {
     text-decoration: none;
-    color: #0b2e13;
+    color: #0C5679;
 }
 
 .main-btn:hover {
+    background: #F28A0F;
     text-decoration: none;
-
 }
 
 
@@ -186,6 +193,11 @@ img {
     text-align: center;
     padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
+}
+
+.box:hover{
+    transition : background 0.5s ease-in-out;
+    background: rgba(253, 183, 97, 0.6);
 }
 
 
@@ -401,3 +413,10 @@ body {
     height: 40px;
     background-color: #0833e3
 }
+/*
+    CSS for login-register
+ */
+.div-login-register-text{
+    color: #0C5679;
+}
+

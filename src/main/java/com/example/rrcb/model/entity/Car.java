@@ -19,14 +19,14 @@ public class Car extends BaseEntity{
     @Column(nullable = false)
     private String brand;
 
-    @Column()
-    private Instant created;
+    @Column(nullable = false)
+    private Integer created;
 
     @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
     private Set<Image> images;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Category> categories;
+    @ManyToOne
+    private Category category;
 
     public Car() {
     }
@@ -58,11 +58,11 @@ public class Car extends BaseEntity{
         return this;
     }
 
-    public Instant getCreated() {
+    public Integer getCreated() {
         return created;
     }
 
-    public Car setCreated(Instant created) {
+    public Car setCreated(Integer created) {
         this.created = created;
         return this;
     }
@@ -76,12 +76,12 @@ public class Car extends BaseEntity{
         return this;
     }
 
-    public Set<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public Car setCategories(Set<Category> categories) {
-        this.categories = categories;
+    public Car setCategory(Category category) {
+        this.category = category;
         return this;
     }
 }
