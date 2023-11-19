@@ -1,21 +1,28 @@
 package com.example.rrcb.web;
 
+import com.example.rrcb.service.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-/*
-    private final PictureService pictureService;
+    private final CarService carService;
 
-    public HomeController(PictureService pictureService) {
-        this.pictureService = pictureService;
+    public HomeController(CarService carService) {
+        this.carService = carService;
     }
-*/
+
+    /*
+        private final PictureService pictureService;
+
+        public HomeController(PictureService pictureService) {
+            this.pictureService = pictureService;
+        }
+    */
     @GetMapping("/")
     public String index(Model model){
-        //model.addAttribute("pictures", pictureService.findAllUrlS());
+        model.addAttribute("pictures", carService.findAllUrlS());
         return "index";
     }
 

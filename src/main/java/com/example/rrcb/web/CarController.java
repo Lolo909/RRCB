@@ -1,6 +1,7 @@
 package com.example.rrcb.web;
 
 import com.example.rrcb.model.binding.CarAddBindingModel;
+import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 import com.example.rrcb.model.service.CarServiceModel;
 import com.example.rrcb.service.CarService;
 import jakarta.validation.Valid;
@@ -25,7 +26,7 @@ public class CarController {
         this.modelMapper = modelMapper;
     }
 
-/*
+
     @GetMapping("/all")
     public String allCars(Model model){
 
@@ -33,7 +34,29 @@ public class CarController {
         model.addAttribute("cars", carService.findAllCarsView());
         return "allCars";
     }
-    */
+
+    @GetMapping("/vintage")
+    public String allVintageCars(Model model){
+
+        model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.VINTAGE));
+        return "allVintageCars";
+    }
+
+    @GetMapping("/antique")
+    public String allAntiqueCars(Model model){
+
+        model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.ANTIQUE));
+        return "allAntiqueCars";
+    }
+
+    @GetMapping("/classic")
+    public String allClassicCars(Model model){
+
+        model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.CLASSIC));
+        return "allClassicCars";
+    }
+
+
 
 /*
     @GetMapping("/details/{id}")

@@ -14,9 +14,9 @@ public class CarViewModel {
 
     private String brand;
 
-    private Instant created;
+    private Integer created;
 
-    private Set<Image> images;
+    private String imageUrl;
 
     public CarViewModel() {
     }
@@ -57,21 +57,21 @@ public class CarViewModel {
         return this;
     }
 
-    public Instant getCreated() {
+    public Integer getCreated() {
         return created;
     }
 
-    public CarViewModel setCreated(Instant created) {
+    public CarViewModel setCreated(Integer created) {
         this.created = created;
         return this;
     }
 
-    public Set<Image> getImages() {
-        return images;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public CarViewModel setImages(Set<Image> images) {
-        this.images = images;
+    public CarViewModel setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 }

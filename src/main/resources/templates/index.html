@@ -5,6 +5,8 @@
 
 <head th:replace="~{fragments/commons::head}">
 </head>
+<script>
+</script>
 <body>
 <div class="wrapper">
     <!-- Navigation -->
@@ -16,20 +18,20 @@
         <div class="showcase">
             <h1>Find amazing retro cars</h1>
             <p>Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
-            <a href="/routes/allCars" class="btn">To cars</a>
+            <a href="/cars/all" class="btn">To cars</a>
         </div>
     </section>
 
     <!-- Boxes Section -->
     <section class="boxes">
-        <a href="/" class="main-btn" >
+        <a href="/cars/vintage" class="main-btn" >
             <div class="box">
                 <img src="/images/Vintage.png" height="150px" width="100%" alt="">
 <!--                <h3>Pedestrian</h3>-->
                 <p>Manufactured between 1919 and 1930</p>
             </div>
         </a>
-        <a href="/" class="main-btn" >
+        <a href="/cars/antique" class="main-btn" >
             <div class="box">
                 <img src="/images/AntiqueImage.png" height="150px" width="100%" alt="" >
 <!--                <h3>Bicycle</h3>-->
@@ -43,7 +45,7 @@
 <!--                <p>When you want the wind to blow on your face!</p>-->
 <!--            </div>-->
 <!--        </a>-->
-        <a href="/" class="main-btn" >
+        <a href="/cars/classic" class="main-btn" >
             <div class="box">
                 <img src="/images/ClassicImage.png" height="150px" width="100%" alt="">
 <!--                <h3>Car</h3>-->
@@ -59,14 +61,20 @@
             <h2>The most commented route</h2>
             <p>Read more about the most commented route and do not miss the
                 chance to visit it and give your opinion to help other users.</p>
-            <a href="/" class="btn">Learn More</a>
+            <a href="/cars/all" class="btn">Learn More</a>
         </div>
     </section>
 
     <!-- Portfolio -->
-    <section class="gallery">
-        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">
-    </section>
+<!--    <section class="gallery">-->
+<!--        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">-->
+<!--    </section>-->
+
+<!--    <section class="gallery carousel">-->
+<!--        <button class="prev">Prev</button>-->
+<!--        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">-->
+<!--        <button class="next">Next</button>-->
+<!--    </section>-->
 
 </div>
 <!-- Wrapper Ends -->'

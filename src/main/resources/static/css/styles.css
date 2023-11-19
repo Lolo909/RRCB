@@ -216,6 +216,17 @@ img {
     grid-row: auto;
 }
 
+.road div{
+    text-align: center;
+}
+
+.road section{
+    text-align: center;
+}
+
+.toptext{
+
+}
 
 /* Portfolio */
 .gallery {

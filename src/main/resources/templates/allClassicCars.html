@@ -14,6 +14,7 @@
         <div class="showcase">
             <h1>Find amazing retro cars</h1>
             <p>Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
+
         </div>
     </section>
     <section class="road">
@@ -22,9 +23,9 @@
 <!--            TODO make searchbar here-->
             <a href="/cars/vintage" class="btn">Vintage</a>
             <a href="/cars/antique" class="btn">Antique</a>
-            <a href="/cars/classic" class="btn">Classic</a>
+            <a href="/cars/all" class="btn">All cars</a>
         </div>
-        <img src="/images/AllCarsImage.png" height="150px" width="100%" alt="">
+        <img src="/images/ClassicImage.png" height="150px" width="100%" alt="">
     </section>
 
     <section th:each="c : ${cars}" th:object="${c}" class="road">
