@@ -13,6 +13,9 @@ public class Car extends BaseEntity{
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
     @Column(nullable = false)
     private String model;
 
@@ -37,6 +40,15 @@ public class Car extends BaseEntity{
 
     public Car setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Car setDescription(String description) {
+        this.description = description;
         return this;
     }
 

@@ -37,14 +37,20 @@ VALUES ('3', 'Manufactured 2000 or earlier (>20 years old).', 'CLASSIC');
 
 
 -- cars
-INSERT INTO cars(brand, created, model, name, category_id)
-VALUES('Ford', 1919 , 'Model T', 'The black Knight', 1);
+INSERT INTO cars(brand, created, model, name, description, category_id)
+VALUES('Ford', 1919 , 'Model T', 'The black Knight', 'The Ford Model T, colloquially called the Tin Lizzie,is a car manufactured by Ford Motor Company from 1908 to 1927. By 1972. It is the most widely produced automotive modelin the world with 15 million units. Henry Ford created the first operating line for the installation of cars in 1913.The construction of the car is simplified and adapted to the maximum for installation of the line. This simplification,such as a thermosyphon system for cooling without a water pump, lubrication of the engine nodes by splashing and others,does not make the car more unreliable, but are considered progressive changes. As a result, it achieves an eight-fold increasein installation performance (from 12.5 hours to 1 hour and 33 minutes). Interestingly, the narrow place in the production was the painting.The only paint that could dry out fast enough was Japan Black ("Japanese black"), which is why Ford stopped producing carsof other colors until 1926. And this is the reason for Henry Ford''s illustrious phrase "Each color as long as it is black."In order to achieve the required performance in installation,it is especially important to achieve high quality detail and complete interchangeability.Spare parts for this car are sold in the hardware stores.
 
-INSERT INTO cars(brand, created, model, name, category_id)
-VALUES('Dodge', 1968 , 'Charger RT', 'Green anaconda', 2);
+When the Model T appeared in 1908-1910, the majority of cars for private use in the United States cost $1,100 to $1,700.The starting price of the Model T is $825 – 850. The price of the car is constantly reduced and reaches $350. In 1914.One Ford assembly line worker can only buy one Ford Model T car with four monthly salaries. This makes the car truly “people”.', 1);
 
-INSERT INTO cars(brand, created, model, name, category_id)
-VALUES('Buick', 1987 , 'Grand National', 'Blacklongy', 3);
+INSERT INTO cars(brand, created, model, name, description,category_id)
+VALUES('Dodge', 1968 , 'Charger RT', 'Green anaconda','The Dodge Charger is a model of automobile marketed by Dodge in various forms over seven generations since 1966.
+
+The first Charger was a show car in 1964. A 1965 Charger II concept car resembled the 1966 production version.
+
+The Charger has been built on three different platforms in various sizes. In the United States,the Charger nameplate has been used on intermediate sized pony cars, muscle cars, and personal luxury coupes, as well as on subcompact hatchbacks;and the current Charger is a full-size four-door sedan. ', 2);
+
+INSERT INTO cars(brand, created, model, name, description, category_id)
+VALUES('Buick', 1987 , 'Grand National', 'Blacklongy','The Buick Regal Grand National was one of the hottest performance cars of the dark days of the 1980s, and its performance is still very respectable even by today''s standards. The 1986-87 intercooled models have always received most of the attention, but what many don''t realize is that the Grand National package actually dates back to 1982 (in the Regal line). Another fact is that everything the Grand National had except the Darth Vader black paint was also on the T-Type (with the exception of the 87 Buick GNX), so if you wanted the performance of the Grand National but didn''t want it in black and/or preferred a much more subdued look, the T-Type was the way to go. ', 3);
 
 
 -- images
