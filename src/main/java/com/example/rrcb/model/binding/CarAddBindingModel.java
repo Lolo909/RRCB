@@ -1,17 +1,11 @@
 package com.example.rrcb.model.binding;
 
-import com.example.rrcb.model.entity.Category;
-import com.example.rrcb.model.entity.Image;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.time.Instant;
 import java.util.Set;
 
 public class CarAddBindingModel {
@@ -43,9 +37,19 @@ public class CarAddBindingModel {
     @Size(min = 3)
     private String brand;
 
-    private Set<Image> images;
+    @Size(min = 10)
+    private String description;
 
-    private Set<CategoryNameEnum> categories;
+    @NotNull
+    private String imageUrl;
+
+    @Min(1900)
+    private Integer created;
+
+    //private Set<Image> images;
+
+//    @NotNull
+//    private CategoryNameEnum category;
 
     public CarAddBindingModel() {
     }
@@ -77,21 +81,31 @@ public class CarAddBindingModel {
         return this;
     }
 
-    public Set<Image> getImages() {
-        return images;
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public CarAddBindingModel setImages(Set<Image> images) {
-        this.images = images;
+    public CarAddBindingModel setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 
-    public Set<CategoryNameEnum> getCategories() {
-        return categories;
+    public Integer getCreated() {
+        return created;
     }
 
-    public CarAddBindingModel setCategories(Set<CategoryNameEnum> categories) {
-        this.categories = categories;
+    public CarAddBindingModel setCreated(Integer created) {
+        this.created = created;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public CarAddBindingModel setDescription(String description) {
+        this.description = description;
         return this;
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
@@ -33,6 +34,15 @@ public class CarController {
         //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("cars", carService.findAllCarsView());
         return "allCars";
+    }
+
+    //allCarsAdmin
+    @GetMapping("/allCarsAdmin")
+    public String allCarsAdmin(Model model){
+
+        //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
+        model.addAttribute("cars", carService.findAllCarsView());
+        return "allCarsAdmin";
     }
 
     @GetMapping("/vintage")
@@ -79,14 +89,13 @@ public class CarController {
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("routeAddBindingModel", carAddBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.routeAddBindingModel", bindingResult);
-
             return "redirect:add";
         }
 
         CarServiceModel carServiceModel = modelMapper.map(carAddBindingModel, CarServiceModel.class);
         //carServiceModel.setGpxCoordinates(new String(routeAddBindingModel.getGpxCoordinates().getBytes()));
 
-        //TODO oprui do krai dobavqneto na kolata
+        //TODO oprui dokrai dobavqneto na kolata
         carService.addNewCar(carServiceModel);
 
         return "redirect:all";
@@ -96,4 +105,11 @@ public class CarController {
     public CarAddBindingModel carAddBindingModel(){
         return new CarAddBindingModel();
     }
+
+    @GetMapping("/remove/{id}")
+    public String remove(@PathVariable Long id){
+        carService.remove(id);
+        return"redirect:/cars/allCarsAdmin";
+    }
+
 }

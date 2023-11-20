@@ -56,7 +56,7 @@ public class CarServiceImpl implements CarService {
 //            if (car.getPictures().isEmpty()){
 //                carViewModel.setPictureUrl("/images/pic4.jpg");
 //            }else{
-                carViewModel.setImageUrl((car.getImages().stream().findFirst().get().getUrl()));
+                //carViewModel.setImageUrl((car.getImages().stream().findFirst().get().getUrl()));
 //            }
             return carViewModel;
         }).collect(Collectors.toList());
@@ -69,7 +69,7 @@ public class CarServiceImpl implements CarService {
 //            if (car.getPictures().isEmpty()){
 //                carViewModel.setPictureUrl("/images/pic4.jpg");
 //            }else{
-            carViewModel.setImageUrl((car.getImages().stream().findFirst().get().getUrl()));
+            //carViewModel.setImageUrl((car.getImages().stream().findFirst().get().getUrl()));
 //            }
             return carViewModel;
         }).collect(Collectors.toList());
@@ -79,8 +79,13 @@ public class CarServiceImpl implements CarService {
     public List<String> findAllUrlS() {
         return carRepository.findAll().stream().map(car -> {
             CarViewModel carViewModel = modelMapper.map(car, CarViewModel.class);
-            carViewModel.setImageUrl((car.getImages().stream().findFirst().get().getUrl()));
+            //carViewModel.setImageUrl((car.getImages().stream().findFirst().get().getUrl()));
             return carViewModel.getImageUrl();
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public void remove(Long id) {
+        carRepository.deleteById(id);
     }
 }

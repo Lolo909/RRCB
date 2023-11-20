@@ -25,8 +25,11 @@ public class Car extends BaseEntity{
     @Column(nullable = false)
     private Integer created;
 
-    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
-    private Set<Image> images;
+//    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+//    private Set<Image> images;
+
+    @Column(nullable = false)
+    private String imageUrl;
 
     @ManyToOne
     private Category category;
@@ -79,15 +82,6 @@ public class Car extends BaseEntity{
         return this;
     }
 
-    public Set<Image> getImages() {
-        return images;
-    }
-
-    public Car setImages(Set<Image> images) {
-        this.images = images;
-        return this;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -96,4 +90,15 @@ public class Car extends BaseEntity{
         this.category = category;
         return this;
     }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public Car setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
+
 }

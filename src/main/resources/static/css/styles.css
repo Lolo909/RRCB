@@ -59,6 +59,11 @@ img {
     grid-gap: 20px;
 }
 
+.wrapperAdmin{
+    display: grid;
+    grid-gap: 20px;
+}
+
 /* Navigation */
 
 .main-nav ul {

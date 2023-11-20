@@ -2,13 +2,6 @@ package com.example.rrcb.model.service;
 
 
 import com.example.rrcb.model.entity.Category;
-import com.example.rrcb.model.entity.Image;
-import com.example.rrcb.model.entity.User;
-import com.example.rrcb.model.entity.enums.CategoryNameEnum;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 
 import java.time.Instant;
 import java.util.Set;
@@ -25,7 +18,7 @@ public class CarServiceModel {
 
     private Instant created;
 
-    private Set<Image> images;
+    private String imageUrl;
 
     private Set<Category> categories;
 
@@ -78,12 +71,12 @@ public class CarServiceModel {
         return this;
     }
 
-    public Set<Image> getImages() {
-        return images;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public CarServiceModel setImages(Set<Image> images) {
-        this.images = images;
+    public CarServiceModel setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 

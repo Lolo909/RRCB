@@ -15,4 +15,6 @@ public interface CarService {
     List<CarViewModel> findAllCarsViewByCategory(CategoryNameEnum categoryNameEnum);
 
     List<String> findAllUrlS();
+
+    void remove(Long id);
 }

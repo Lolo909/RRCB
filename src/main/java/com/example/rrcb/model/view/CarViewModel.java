@@ -1,14 +1,11 @@
 package com.example.rrcb.model.view;
 
-import com.example.rrcb.model.entity.Image;
-
-import java.time.Instant;
-import java.util.Set;
-
 public class CarViewModel {
     private Long id;
 
     private String name;
+
+    private String description;
 
     private String model;
 
@@ -36,6 +33,15 @@ public class CarViewModel {
 
     public CarViewModel setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public CarViewModel setDescription(String description) {
+        this.description = description;
         return this;
     }
 
