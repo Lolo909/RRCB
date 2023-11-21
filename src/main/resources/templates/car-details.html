@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header th:replace="fragments/commons::navigation">
+    </header>
+
+    <div class="details-car" style="background: var(--primary); box-shadow: var(--shadow);" th:object="${car}">
+        <div class="center">
+            <span class="bg-secondary p-1 px-4 rounded text-white"  th:text="*{category}">Pro</span>
+            <img th:src="*{imageUrl}" alt="Title image">
+
+        </div>
+        <div style="">
+            <h1 th:text="*{name}">Name of the car</h1>
+            <h3 th:text="|*{brand} *{model}|">Brand and Model</h3>
+            <h3 th:text="*{created}">Year created</h3>
+            <h4 th:text="*{description}">Description car</h4>
+
+        </div>
+        <a th:href="@{/cars/all}" class="btn">GO BACK</a>
+        <a th:href="@{/cars/edit/{id} (id = *{id})}" class="btn">RENT</a>
+
+    </div>
+
+
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer th:replace="fragments/commons::footer">
+</footer>
+</html>

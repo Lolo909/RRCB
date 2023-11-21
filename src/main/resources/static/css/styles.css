@@ -230,6 +230,28 @@ img {
     text-align: center;
 }
 
+/*road spicific*/
+.road-spic {
+    color: #0C5679;
+    max-height: 500px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background: var(--primary);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    grid-row: auto;
+}
+
+.road-spic div{
+    text-align: center;
+}
+
+.road-spic section{
+    text-align: center;
+}
 
 /* Portfolio */
 .gallery {
@@ -280,7 +302,23 @@ footer {
     border-bottom-left-radius: 5rem;
     border-top-right-radius: 5rem;
 }
+/*Details cars*/
+/*-------------*/
+.details-car{
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    background: var(--primary); box-shadow: var(--shadow);
+    color: #0C5679;
+    padding: 5rem;
+    border-radius: 5rem;
+}
 
+.details-car div {
+    text-align: justify;
+    text-align-last: center;
+}
+/*-------------*/
 .details-main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

@@ -12,15 +12,17 @@ public class CarServiceModel {
 
     private String name;
 
+    private String description;
+
     private String model;
 
     private String brand;
 
-    private Instant created;
+    private Integer created;
 
     private String imageUrl;
 
-    private Set<Category> categories;
+    private Category category;
 
     public CarServiceModel() {
     }
@@ -62,11 +64,11 @@ public class CarServiceModel {
         return this;
     }
 
-    public Instant getCreated() {
+    public Integer getCreated() {
         return created;
     }
 
-    public CarServiceModel setCreated(Instant created) {
+    public CarServiceModel setCreated(Integer created) {
         this.created = created;
         return this;
     }
@@ -80,12 +82,21 @@ public class CarServiceModel {
         return this;
     }
 
-    public Set<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public CarServiceModel setCategories(Set<Category> categories) {
-        this.categories = categories;
+    public CarServiceModel setCategory(Category category) {
+        this.category = category;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public CarServiceModel setDescription(String description) {
+        this.description = description;
         return this;
     }
 }

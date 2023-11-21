@@ -17,10 +17,10 @@
             <p th:text="*{brand}">Brand car</p>
             <p th:text="*{model}">Model car</p>
             <p th:text="*{created}">Year of the car</p>
-            <p style="text-align: justify" th:text="*{description}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae alias reiciendis deleniti possimus nemo
+            <p style="text-align: justify;text-align-last: center;" th:text="*{description}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae alias reiciendis deleniti possimus nemo
                 non repellendus?
                 Quae atque vero modi quidem! Autem cupiditate fugit doloribus ad amet, asperiores provident commodi.</p>
-            <a th:href="@{/cars/details/{id} (id = *{id})}" class="btn">Edit</a>
+            <a th:href="@{/cars/edit/{id} (id = *{id})}" class="btn">Edit</a>
             <a th:href="@{/cars/remove/{id} (id = *{id})}" class="btn">Remove</a>
         </div>
     </section>

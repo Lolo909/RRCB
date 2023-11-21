@@ -22,7 +22,7 @@ public class HomeController {
     */
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("pictures", carService.findAllUrlS());
+        model.addAttribute("newestCarImage", carService.findNewestCarImageUrl());
         return "index";
     }
 

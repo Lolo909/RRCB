@@ -4,13 +4,13 @@ import com.example.rrcb.model.binding.CarAddBindingModel;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 import com.example.rrcb.model.service.CarServiceModel;
 import com.example.rrcb.service.CarService;
+import com.example.rrcb.service.CategoryService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
@@ -20,16 +20,18 @@ import java.io.IOException;
 public class CarController {
 
     private final CarService carService;
+    private final CategoryService categoryService;
     private final ModelMapper modelMapper;
 
-    public CarController(CarService carService, ModelMapper modelMapper) {
+    public CarController(CarService carService, CategoryService categoryService, ModelMapper modelMapper) {
         this.carService = carService;
+        this.categoryService = categoryService;
         this.modelMapper = modelMapper;
     }
 
 
     @GetMapping("/all")
-    public String allCars(Model model){
+    public String allCars(Model model) {
 
         //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("cars", carService.findAllCarsView());
@@ -38,7 +40,7 @@ public class CarController {
 
     //allCarsAdmin
     @GetMapping("/allCarsAdmin")
-    public String allCarsAdmin(Model model){
+    public String allCarsAdmin(Model model) {
 
         //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("cars", carService.findAllCarsView());
@@ -46,21 +48,21 @@ public class CarController {
     }
 
     @GetMapping("/vintage")
-    public String allVintageCars(Model model){
+    public String allVintageCars(Model model) {
 
         model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.VINTAGE));
         return "allVintageCars";
     }
 
     @GetMapping("/antique")
-    public String allAntiqueCars(Model model){
+    public String allAntiqueCars(Model model) {
 
         model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.ANTIQUE));
         return "allAntiqueCars";
     }
 
     @GetMapping("/classic")
-    public String allClassicCars(Model model){
+    public String allClassicCars(Model model) {
 
         model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.CLASSIC));
         return "allClassicCars";
@@ -78,7 +80,7 @@ public class CarController {
 */
 
     @GetMapping("/add")
-    public String add(){
+    public String add() {
         return "add-car";
     }
 
@@ -86,13 +88,21 @@ public class CarController {
     public String addConfirm(@Valid CarAddBindingModel carAddBindingModel, BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) throws IOException {
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("routeAddBindingModel", carAddBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.routeAddBindingModel", bindingResult);
             return "redirect:add";
         }
 
         CarServiceModel carServiceModel = modelMapper.map(carAddBindingModel, CarServiceModel.class);
+        Integer year = carServiceModel.getCreated();
+        if (year >= 1919 && year <= 1930) {
+            carServiceModel.setCategory(categoryService.findCategoryByName(CategoryNameEnum.VINTAGE));
+        } else if (year <= 1975) {
+            carServiceModel.setCategory(categoryService.findCategoryByName(CategoryNameEnum.ANTIQUE));
+        } else {
+            carServiceModel.setCategory(categoryService.findCategoryByName(CategoryNameEnum.CLASSIC));
+        }
         //carServiceModel.setGpxCoordinates(new String(routeAddBindingModel.getGpxCoordinates().getBytes()));
 
         //TODO oprui dokrai dobavqneto na kolata
@@ -102,14 +112,21 @@ public class CarController {
     }
 
     @ModelAttribute
-    public CarAddBindingModel carAddBindingModel(){
+    public CarAddBindingModel carAddBindingModel() {
         return new CarAddBindingModel();
     }
 
     @GetMapping("/remove/{id}")
-    public String remove(@PathVariable Long id){
+    public String remove(@PathVariable Long id) {
         carService.remove(id);
-        return"redirect:/cars/allCarsAdmin";
+        return "redirect:/cars/allCarsAdmin";
+    }
+
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable Long id, Model model){
+
+        model.addAttribute("car", carService.findCarById(id));
+        return "car-details";
     }
 
 }
