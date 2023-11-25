@@ -43,7 +43,7 @@
                 </li>
                 <li>
                     <!--                <a th:href="@{/users/profile/{id}(id=*{id})}">Profile</a>-->
-                    <a href="/">Profile</a>
+                    <a th:href="@{/users/profile}">Profile</a>
                     <!--                sec:authentication="name"-->
                 </li>
             </th:block>
@@ -55,7 +55,7 @@
                     <a href="/cars/allCarsAdmin">All cars</a>
                 </li>
                 <li>
-                    <a href="/">All users</a>
+                    <a href="/users/all">All users</a>
                 </li>
             </th:block>
             <th:block sec:authorize="isAuthenticated()">

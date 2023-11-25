@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+<body>
+<!--<div class="wrapper">-->
+<!-- Navigation -->
+<header th:replace="fragments/commons::navigation">
+</header>
+
+<!-- Top Container -->
+<div class="row justify-content-center" style="width: 100%">
+    <form id="add-route-form" class="w-50 rounded text-white mt-5" style="background: #3F8A8C; border: solid #0B0835"
+          th:method="PATCH"
+          th:object="${carForRent}"
+          th:action="@{/cars/rent/{id}(id=${carForRent.id})}"
+          enctype="multipart/form-data">
+
+        <h3 class="pl-2" style="text-align: center">Choose which days would you like to rent the car</h3>
+
+        <div>
+            <div class="form-group p-3">
+                <label class="p-2" for="days">Days:</label>
+                <input  th:field="*{allOrderDays}"
+                        th:each="d : *{allAvailableDays}"
+                       th:text="${d}" th:value="${d}" class="m-3" type="checkbox" name="days" id="days">
+<!--                       value="1" text="Category"> TODO:allAvailableDays INTO days.neshtosi-->
+                <br>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-primary btn-block w-50" type="submit">RENT</button>
+        </div>
+    </form>
+</div>
+</body>
+<footer th:replace="fragments/commons::footer">
+</footer>
+</html>

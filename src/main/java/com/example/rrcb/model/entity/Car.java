@@ -4,6 +4,7 @@ package com.example.rrcb.model.entity;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,7 +35,24 @@ public class Car extends BaseEntity{
     @ManyToOne
     private Category category;
 
+    @Column
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Integer> allAvailableDays;
+
+    @Column
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Integer> allOrderDays;
+
     public Car() {
+    }
+
+    public List<Integer> getAllOrderDays() {
+        return allOrderDays;
+    }
+
+    public Car setAllOrderDays(List<Integer> allOrderDays) {
+        this.allOrderDays = allOrderDays;
+        return this;
     }
 
     public String getName() {
@@ -100,5 +118,12 @@ public class Car extends BaseEntity{
         return this;
     }
 
+    public List<Integer> getAllAvailableDays() {
+        return allAvailableDays;
+    }
 
+    public Car setAllAvailableDays(List<Integer> allAvailableDays) {
+        this.allAvailableDays = allAvailableDays;
+        return this;
+    }
 }

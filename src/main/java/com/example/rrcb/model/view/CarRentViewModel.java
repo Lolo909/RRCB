@@ -1,9 +1,11 @@
 package com.example.rrcb.model.view;
 
-import com.example.rrcb.model.entity.Category;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 
-public class CarDetailsViewModel {
+import java.util.List;
+
+public class CarRentViewModel {
+
     private Long id;
 
     private String name;
@@ -20,26 +22,37 @@ public class CarDetailsViewModel {
 
     private CategoryNameEnum category;
 
+    private List<Integer> allAvailableDays;
 
+    private List<Integer> allOrderDays;
 
-    public CarDetailsViewModel() {
+    public CarRentViewModel() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public CarDetailsViewModel setId(Long id) {
+    public CarRentViewModel setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public CategoryNameEnum getCategory() {
-        return category;
+    public List<Integer> getAllOrderDays() {
+        return allOrderDays;
     }
 
-    public CarDetailsViewModel setCategory(CategoryNameEnum category) {
-        this.category = category;
+    public CarRentViewModel setAllOrderDays(List<Integer> allOrderDays) {
+        this.allOrderDays = allOrderDays;
+        return this;
+    }
+
+    public List<Integer> getAllAvailableDays() {
+        return allAvailableDays;
+    }
+
+    public CarRentViewModel setAllAvailableDays(List<Integer> allAvailableDays) {
+        this.allAvailableDays = allAvailableDays;
         return this;
     }
 
@@ -47,7 +60,7 @@ public class CarDetailsViewModel {
         return name;
     }
 
-    public CarDetailsViewModel setName(String name) {
+    public CarRentViewModel setName(String name) {
         this.name = name;
         return this;
     }
@@ -56,7 +69,7 @@ public class CarDetailsViewModel {
         return description;
     }
 
-    public CarDetailsViewModel setDescription(String description) {
+    public CarRentViewModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -65,7 +78,7 @@ public class CarDetailsViewModel {
         return model;
     }
 
-    public CarDetailsViewModel setModel(String model) {
+    public CarRentViewModel setModel(String model) {
         this.model = model;
         return this;
     }
@@ -74,7 +87,7 @@ public class CarDetailsViewModel {
         return brand;
     }
 
-    public CarDetailsViewModel setBrand(String brand) {
+    public CarRentViewModel setBrand(String brand) {
         this.brand = brand;
         return this;
     }
@@ -83,7 +96,7 @@ public class CarDetailsViewModel {
         return created;
     }
 
-    public CarDetailsViewModel setCreated(Integer created) {
+    public CarRentViewModel setCreated(Integer created) {
         this.created = created;
         return this;
     }
@@ -92,8 +105,17 @@ public class CarDetailsViewModel {
         return imageUrl;
     }
 
-    public CarDetailsViewModel setImageUrl(String imageUrl) {
+    public CarRentViewModel setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public CategoryNameEnum getCategory() {
+        return category;
+    }
+
+    public CarRentViewModel setCategory(CategoryNameEnum category) {
+        this.category = category;
         return this;
     }
 }

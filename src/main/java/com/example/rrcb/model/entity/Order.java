@@ -5,16 +5,26 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
 public class Order extends BaseEntity{
 
-    @Column(nullable = false)
-    private LocalDateTime startDate;
+//    @Column(nullable = false)
+//    private LocalDateTime startDate;
+//
+//    @Column(nullable = false)
+//    private LocalDateTime endDate;
+    @Column
+    private LocalDateTime dateTime;
 
-    @Column(nullable = false)
-    private LocalDateTime endDate;
+    @Column
+    private BigDecimal price;
+
+    @Column
+    @ElementCollection
+    private List<Integer> allOrderedDays;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -30,6 +40,15 @@ public class Order extends BaseEntity{
     */
 
     public Order() {
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public Order setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+        return this;
     }
 
     public User getUser() {
@@ -50,21 +69,21 @@ public class Order extends BaseEntity{
         return this;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public Order setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    public Order setPrice(BigDecimal price) {
+        this.price = price;
         return this;
     }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
+    public List<Integer> getAllOrderedDays() {
+        return allOrderedDays;
     }
 
-    public Order setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
+    public Order setAllOrderedDays(List<Integer> allOrderedDays) {
+        this.allOrderedDays = allOrderedDays;
         return this;
     }
 }
