@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header th:replace="fragments/commons::navigation">
+    </header>
+
+    <div class="info" style="background-color: #0C5679">
+        <div></div>
+        <div style="text-align: justify;text-align-last: left">
+            <h4 style="text-align-last: center">Rents info</h4>
+            Have you decided to rent a car but wonder what the conditions are? Each car is unique in itself, but they are all valued the same: the number of days at the price (100 BGN).
+            <br></br>
+            The price may seem high but it is fair for these jewels from the past. What are you waiting for? Look at them:
+            <a th:href="@{/cars/all}" class="btn"> Learn more</a>
+            <br>
+            <a th:href="@{/}" class="btn" style="margin: auto"> 🠈 GO BACK</a>
+        </div>
+
+        <div></div>
+    </div>
+
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer th:replace="fragments/commons::footer">
+</footer>
+</html>

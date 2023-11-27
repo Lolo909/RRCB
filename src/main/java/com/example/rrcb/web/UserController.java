@@ -1,8 +1,7 @@
 package com.example.rrcb.web;
 
-import com.example.rrcb.model.binding.CarEditBindingModel;
 import com.example.rrcb.model.binding.UserProfileEditBindingModel;
-import com.example.rrcb.model.entity.enums.CategoryNameEnum;
+import com.example.rrcb.service.OrderService;
 import com.example.rrcb.service.UserService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -23,10 +22,12 @@ import java.security.Principal;
 public class UserController {
 
     private final UserService userService;
+    private final OrderService orderService;
     private final ModelMapper modelMapper;
 
-    public UserController(UserService userService, ModelMapper modelMapper) {
+    public UserController(UserService userService, OrderService orderService, ModelMapper modelMapper) {
         this.userService = userService;
+        this.orderService = orderService;
         this.modelMapper = modelMapper;
     }
 
@@ -37,6 +38,14 @@ public class UserController {
         //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("users", userService.findAllUsersView());
         return "allUsersAdmin";
+    }
+
+    @GetMapping("/rents")
+    public String rents(Model model, Principal principal) {
+
+        //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
+        model.addAttribute("rents", orderService.findAllRentsOfTheUserByName(principal.getName()));
+        return "rents";
     }
 
     @GetMapping("/remove/{id}")

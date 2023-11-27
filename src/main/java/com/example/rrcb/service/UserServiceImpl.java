@@ -5,6 +5,7 @@ import com.example.rrcb.model.entity.Role;
 import com.example.rrcb.model.entity.User;
 import com.example.rrcb.model.entity.enums.RoleNameEnum;
 import com.example.rrcb.model.service.UserServiceModel;
+import com.example.rrcb.model.view.OrderViewModel;
 import com.example.rrcb.model.view.UserViewModel;
 import com.example.rrcb.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -149,6 +150,8 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findUserByName(String name) {
         return userRepository.findByUsername(name);
     }
+
+
 
 
 }

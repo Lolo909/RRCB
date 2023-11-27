@@ -39,7 +39,10 @@
             </th:block>
             <th:block sec:authorize="isAuthenticated() && !hasRole('ADMIN')">
                 <li>
-                    <a href="/cars/rent">Rent a car</a>
+                    <a href="/users/orders/all">My rents</a>
+                </li>
+                <li>
+                    <a href="/rentsInfo">Rents info</a>
                 </li>
                 <li>
                     <!--                <a th:href="@{/users/profile/{id}(id=*{id})}">Profile</a>-->

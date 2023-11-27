@@ -31,4 +31,9 @@ public class HomeController {
     public String about(){
         return "about";
     }
+
+    @GetMapping("/rentsInfo")
+    public String rentInfo(){
+        return "rentsInfo";
+    }
 }
