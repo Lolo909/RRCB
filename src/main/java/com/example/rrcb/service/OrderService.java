@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface OrderService {
     List<OrderViewModel> findAllRentsOfTheUserByName(String name);
+
+    List<OrderViewModel> findAllRents();
 }

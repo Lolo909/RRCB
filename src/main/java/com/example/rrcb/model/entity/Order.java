@@ -23,14 +23,14 @@ public class Order extends BaseEntity{
     private BigDecimal price;
 
     @Column
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Integer> allOrderedDays;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "car_id")
     private Car car;
 

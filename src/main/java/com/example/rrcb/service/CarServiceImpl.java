@@ -237,6 +237,7 @@ public class CarServiceImpl implements CarService {
         order.setUser(user);
         order.setCar(carRepository.findById(id).orElse(null));
         order.setDateTime(LocalDateTime.now());
+        order.setAllOrderedDays(orderAddBindingModel.getAllOrderDays());
 
         BigDecimal price = BigDecimal.valueOf(orderAddBindingModel.getAllOrderDays().size() * priceMultiplayer);
         order.setPrice(price);

@@ -126,6 +126,8 @@ public class CarController {
         return new CarAddBindingModel();
     }
 
+
+
     @GetMapping("/remove/{id}")
     public String remove(@PathVariable Long id) {
         carService.remove(id);

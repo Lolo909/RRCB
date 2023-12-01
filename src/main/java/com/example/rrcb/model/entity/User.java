@@ -25,10 +25,21 @@ public class User extends BaseEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Order> orders;
+
 
     public User() {
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public User setOrders(List<Order> orders) {
+        this.orders = orders;
+        return this;
+    }
 
     public String getUsername() {
         return username;

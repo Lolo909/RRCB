@@ -15,7 +15,7 @@ public class OrderViewModel {
 
     private Long id;
 
-    private LocalDateTime dateTime;
+    private String dateTime;
 
     private BigDecimal price;
 
@@ -37,11 +37,11 @@ public class OrderViewModel {
         return this;
     }
 
-    public LocalDateTime getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public OrderViewModel setDateTime(LocalDateTime dateTime) {
+    public OrderViewModel setDateTime(String dateTime) {
         this.dateTime = dateTime;
         return this;
     }

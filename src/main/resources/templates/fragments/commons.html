@@ -39,7 +39,7 @@
             </th:block>
             <th:block sec:authorize="isAuthenticated() && !hasRole('ADMIN')">
                 <li>
-                    <a href="/users/orders/all">My rents</a>
+                    <a href="/users/rents">My rents</a>
                 </li>
                 <li>
                     <a href="/rentsInfo">Rents info</a>
@@ -59,6 +59,9 @@
                 </li>
                 <li>
                     <a href="/users/all">All users</a>
+                </li>
+                <li>
+                    <a href="/users/allRents">All rents</a>
                 </li>
             </th:block>
             <th:block sec:authorize="isAuthenticated()">

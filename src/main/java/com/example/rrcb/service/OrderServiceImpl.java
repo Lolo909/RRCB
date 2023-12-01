@@ -1,16 +1,16 @@
 package com.example.rrcb.service;
 
+import com.example.rrcb.model.entity.Order;
 import com.example.rrcb.model.view.OrderViewModel;
-import com.example.rrcb.model.view.UserViewModel;
 import com.example.rrcb.repository.OrderRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static com.example.rrcb.model.entity.enums.RoleNameEnum.ADMIN;
-import static com.example.rrcb.model.entity.enums.RoleNameEnum.USER;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -26,9 +26,23 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderViewModel> findAllRentsOfTheUserByName(String name) {
+//        List<Order> test = orderRepository.customQuery("user");
+//        List<Order> test2 = orderRepository.findAllByUser_Username(name);
+        //List<Order> test = orderRepository.findByUser_Username(name);
         return orderRepository.findAllByUser_Username(name).stream().map(order -> {
             OrderViewModel orderViewModel = modelMapper.map(order, OrderViewModel.class);
+            DateTimeFormatter pattern = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
+            orderViewModel.setDateTime(order.getDateTime().format(pattern));
+            return orderViewModel;
+        }).collect(Collectors.toList());
+    }
 
+    @Override
+    public List<OrderViewModel> findAllRents() {
+        return orderRepository.findAll().stream().map(order -> {
+            OrderViewModel orderViewModel = modelMapper.map(order, OrderViewModel.class);
+            DateTimeFormatter pattern = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
+            orderViewModel.setDateTime(order.getDateTime().format(pattern));
             return orderViewModel;
         }).collect(Collectors.toList());
     }

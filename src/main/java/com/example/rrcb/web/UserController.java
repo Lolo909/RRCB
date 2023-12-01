@@ -47,6 +47,13 @@ public class UserController {
         model.addAttribute("rents", orderService.findAllRentsOfTheUserByName(principal.getName()));
         return "rents";
     }
+    @GetMapping("/allRents")
+    public String allRents(Model model) {
+
+        //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
+        model.addAttribute("allRents", orderService.findAllRents());
+        return "allRentsAdmin";
+    }
 
     @GetMapping("/remove/{id}")
     public String remove(@PathVariable Long id) {
