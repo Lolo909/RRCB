@@ -8,4 +8,6 @@ public interface OrderService {
     List<OrderViewModel> findAllRentsOfTheUserByName(String name);
 
     List<OrderViewModel> findAllRents();
+
+    void ClearUp();
 }

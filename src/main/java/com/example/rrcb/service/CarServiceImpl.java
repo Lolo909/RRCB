@@ -14,6 +14,7 @@ import com.example.rrcb.repository.CarRepository;
 import com.example.rrcb.repository.OrderRepository;
 import com.example.rrcb.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -80,11 +81,23 @@ public class CarServiceImpl implements CarService {
         routeRepository.save(route);*/
     }
 
-    public static int getNumberOfDaysInMonth(int year,int month)
+    @Override
+    public int getNumberOfDaysInMonth(int year,int month)
     {
         YearMonth yearMonthObject = YearMonth.of(year, month);
         int daysInMonth = yearMonthObject.lengthOfMonth();
         return daysInMonth;
+    }
+
+    @Override
+    public boolean isThereNOTDataAboutAllAvailableDaysInDataBase() {
+
+        List<Boolean> listForCheck= carRepository.findAll().stream().map(car -> {
+            return car.getAllAvailableDays().isEmpty();
+
+        }).collect(Collectors.toList());
+
+        return listForCheck.contains(true);
     }
 
     @Override
@@ -129,6 +142,7 @@ public class CarServiceImpl implements CarService {
         carRepository.deleteById(id);
     }
 
+    //@CachePut("newest car image")
     @Override
     public String findNewestCarImageUrl() {
 
@@ -289,6 +303,30 @@ public class CarServiceImpl implements CarService {
         }
 
         return listWithAllAvailableDays;
+    }
+
+    @Override
+    public void updateOfCarsAllAvailableDays() {
+        List<Integer> allAvailableDays = new ArrayList<>();
+
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        int numberOfDaysInMonth = getNumberOfDaysInMonth(year, month);
+        for (int i = 1; i <= numberOfDaysInMonth; i++) {
+            allAvailableDays.add(i);
+        }
+
+        //Empty list for resetting of the allOrderDays
+        List<Integer> allOrderDays = new ArrayList<>();
+
+        List<Car> result = carRepository.findAll().stream().map(car ->{
+            Car carForUpdate = car;
+            carForUpdate.setAllAvailableDays(allAvailableDays);
+            carForUpdate.setAllOrderDays(allOrderDays);
+            carRepository.saveAndFlush(carForUpdate);
+            return car;
+        }).collect(Collectors.toList());
+
     }
 
 

@@ -37,4 +37,10 @@ public interface CarService {
     void rent(Long id, OrderAddBindingModel orderAddBindingModel, Principal principal);
 
     List<Integer> getAllAvailableDaysMethod(List<Integer> allAvailableDays, List<Integer> allOrderedDays);
+
+    void updateOfCarsAllAvailableDays();
+
+    int getNumberOfDaysInMonth(int year,int month);
+
+    boolean isThereNOTDataAboutAllAvailableDaysInDataBase();
 }

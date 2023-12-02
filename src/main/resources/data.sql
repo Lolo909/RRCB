@@ -52,6 +52,20 @@ The Charger has been built on three different platforms in various sizes. In the
 INSERT INTO cars(brand, created, model, name, image_url,description, category_id)
 VALUES('Buick', 1987 , 'Grand National', 'Blacklongy','https://cdn.pixabay.com/photo/2014/11/08/07/56/ford-mustang-521841_960_720.jpg','The Buick Regal Grand National was one of the hottest performance cars of the dark days of the 1980s, and its performance is still very respectable even by today''s standards. The 1986-87 intercooled models have always received most of the attention, but what many don''t realize is that the Grand National package actually dates back to 1982 (in the Regal line). Another fact is that everything the Grand National had except the Darth Vader black paint was also on the T-Type (with the exception of the 87 Buick GNX), so if you wanted the performance of the Grand National but didn''t want it in black and/or preferred a much more subdued look, the T-Type was the way to go. ', 3);
 
+-- all available days of cars
+-- for month with 31 days
+INSERT INTO car_all_available_days(car_id, all_available_days)
+VALUES (1, 1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13),(1,14),
+       (1,15),(1,16),(1,17),(1,18),(1,19),(1,20),(1,21),(1,22),(1,23),(1,24),(1,25),(1,26),(1,27),(1,28),(1,29),(1,30),(1,31);
+
+INSERT INTO car_all_available_days(car_id, all_available_days)
+VALUES (2, 1),(2,2),(2,3),(2,4),(2,5),(2,6),(2,7),(2,8),(2,9),(2,10),(2,11),(2,12),(2,13),(2,14),
+       (2,15),(2,16),(2,17),(2,18),(2,19),(2,20),(2,21),(2,22),(2,23),(2,24),(2,25),(2,26),(2,27),(2,28),(2,29),(2,30),(2,31);
+
+INSERT INTO car_all_available_days(car_id, all_available_days)
+VALUES (3, 1),(3,2),(3,3),(3,4),(3,5),(3,6),(3,7),(3,8),(3,9),(3,10),(3,11),(3,12),(3,13),(3,14),
+       (3,15),(3,16),(3,17),(3,18),(3,19),(3,20),(3,21),(3,22),(3,23),(3,24),(3,25),(3,26),(3,27),(3,28),(3,29),(3,30),(3,31);
+
 
 # -- images
 # INSERT INTO images(title, url, car_id)

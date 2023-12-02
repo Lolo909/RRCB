@@ -46,4 +46,9 @@ public class OrderServiceImpl implements OrderService {
             return orderViewModel;
         }).collect(Collectors.toList());
     }
+
+    @Override
+    public void ClearUp() {
+        orderRepository.deleteAll();
+    }
 }

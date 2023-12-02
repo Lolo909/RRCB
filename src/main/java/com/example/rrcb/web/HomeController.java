@@ -13,16 +13,10 @@ public class HomeController {
         this.carService = carService;
     }
 
-    /*
-        private final PictureService pictureService;
-
-        public HomeController(PictureService pictureService) {
-            this.pictureService = pictureService;
-        }
-    */
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("newestCarImage", carService.findNewestCarImageUrl());
+
         return "index";
     }
 
@@ -36,4 +30,6 @@ public class HomeController {
     public String rentInfo(){
         return "rentsInfo";
     }
+
+
 }
