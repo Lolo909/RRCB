@@ -22,7 +22,8 @@ public class User extends BaseEntity {
     private String email;
 
     @Column//(name = "roles") //fetch = FetchType.EAGER)
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH})//fetch = FetchType.EAGER
+    @ManyToMany(fetch = FetchType.EAGER)
+            //, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH})//fetch = FetchType.EAGER
     private List<Role> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)

@@ -15,6 +15,8 @@ import com.example.rrcb.repository.OrderRepository;
 import com.example.rrcb.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CachePut;
+
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +41,7 @@ public class CarServiceImpl implements CarService {
 
     private final static double priceMultiplayer = 100.00;
 
-    public CarServiceImpl(CarRepository carRepository, OrderRepository orderRepository, ModelMapper modelMapper, UserService userService, CategoryService categoryService) {
+    public CarServiceImpl(CarRepository carRepository,OrderRepository orderRepository, ModelMapper modelMapper, UserService userService, CategoryService categoryService) {
         this.carRepository = carRepository;
         this.orderRepository = orderRepository;
         this.modelMapper = modelMapper;
@@ -84,6 +86,7 @@ public class CarServiceImpl implements CarService {
 
         return listForCheck.contains(true);
     }
+
 
     @Override
     public List<CarDetailsViewModel> findAllCarsView() {

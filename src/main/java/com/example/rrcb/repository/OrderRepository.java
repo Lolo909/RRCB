@@ -18,4 +18,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> customQuery(@Param("name") String name);
 
     List<Order> findAllByUser_Username(String username);
+
+    void deleteAllByUserId(Long id);
+
+    List<Order> findAllByUserId(Long id);
+
 }

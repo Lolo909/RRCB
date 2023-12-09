@@ -5,15 +5,14 @@ import com.example.rrcb.model.entity.Role;
 import com.example.rrcb.model.entity.User;
 import com.example.rrcb.model.entity.enums.RoleNameEnum;
 import com.example.rrcb.model.service.UserServiceModel;
-import com.example.rrcb.model.view.OrderViewModel;
 import com.example.rrcb.model.view.UserViewModel;
 import com.example.rrcb.repository.UserRepository;
 import com.example.rrcb.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,12 +26,15 @@ import static com.example.rrcb.model.entity.enums.RoleNameEnum.USER;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final OrderService orderService;
+//    private final CarService carService;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
     private final UserRoleServiceImpl userRoleServiceImpl;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleServiceImpl userRoleServiceImpl) {
+    public UserServiceImpl(UserRepository userRepository, OrderService orderService, ModelMapper modelMapper, PasswordEncoder passwordEncoder, UserRoleServiceImpl userRoleServiceImpl) {
         this.userRepository = userRepository;
+        this.orderService = orderService;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.userRoleServiceImpl = userRoleServiceImpl;
@@ -90,8 +92,12 @@ public class UserServiceImpl implements UserService {
         }).collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public void remove(Long id) {
+        //carService.restoreCarAvailableDaysByUserId(id);
+        orderService.restoreCarAvailableDaysByUserId(id);
+        orderService.clearAllOrdersFromUserByUserId(id);
         userRepository.deleteById(id);
     }
 

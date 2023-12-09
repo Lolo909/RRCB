@@ -53,6 +53,8 @@ public class UserControllerTestIT {
         testAdmin = createTestAdmin();
         testUser.setRoles(List.of(userRole, adminRole));
 
+        userRoleRepository.save(adminRole);
+        userRoleRepository.save(userRole);
         userRepository.save(testUser);
         userRepository.save(testAdmin);
 
@@ -62,7 +64,6 @@ public class UserControllerTestIT {
     void tearDown() {
         userRepository.deleteAll();
         userRoleRepository.deleteAll();
-
     }
 
     @Test

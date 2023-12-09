@@ -43,4 +43,6 @@ public interface CarService {
     int getNumberOfDaysInMonth(int year,int month);
 
     boolean isThereNOTDataAboutAllAvailableDaysInDataBase();
+
+    //void restoreCarAvailableDaysByUserId(Long id);
 }

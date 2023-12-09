@@ -10,4 +10,8 @@ public interface OrderService {
     List<OrderViewModel> findAllRents();
 
     void ClearUp();
+
+    void clearAllOrdersFromUserByUserId(Long id);
+
+    void restoreCarAvailableDaysByUserId(Long id);
 }

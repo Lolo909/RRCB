@@ -115,7 +115,7 @@ public class CarController {
 
 
 
-    @DeleteMapping("/remove/{id}")
+    @GetMapping("/remove/{id}")
     public String remove(@PathVariable Long id) {
         carService.remove(id);
         return "redirect:/cars/allCarsAdmin";

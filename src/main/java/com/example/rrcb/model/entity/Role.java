@@ -2,10 +2,10 @@ package com.example.rrcb.model.entity;
 
 
 import com.example.rrcb.model.entity.enums.RoleNameEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "roles")
@@ -13,6 +13,9 @@ public class Role extends BaseEntity{
 
     @Enumerated(EnumType.STRING)
     private RoleNameEnum name;
+
+//    @ManyToMany(fetch = FetchType.EAGER)//fetch = FetchType.EAGER
+//    private List<User> users = new ArrayList<>();
 
     public Role() {
     }
@@ -29,4 +32,6 @@ public class Role extends BaseEntity{
         this.name = name;
         return this;
     }
+
+
 }

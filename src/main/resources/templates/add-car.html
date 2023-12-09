@@ -29,6 +29,7 @@
                        required minlength="3" maxlength="20"
                        type="text"
                        id="inputName"
+                       placeholder="Enter name"
                        class="form-control"
                        aria-describedby="inputNameError">
                 <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
@@ -47,6 +48,7 @@
                        required minlength="3" maxlength="20"
                        type="text"
                        id="inputBrand"
+                       placeholder="Enter brand"
                        class="form-control"
                        aria-describedby="inputNameError">
                 <small th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"
@@ -65,6 +67,7 @@
                        required minlength="3" maxlength="20"
                        type="text"
                        id="inputModel"
+                       placeholder="Enter model"
                        class="form-control"
                        aria-describedby="inputNameError">
                 <small th:if="${#fields.hasErrors('model')}" th:errors="*{model}"
@@ -81,6 +84,7 @@
                               th:errorclass="'is-invalid bg-danger'"
                               required minlength="10"
                               id="inputDescription"
+                              placeholder="Enter description"
                               class="form-control"
                               aria-describedby="inputDescriptionError"></textarea>
                 <small id="inputDescriptionError"
@@ -96,6 +100,7 @@
                 <input th:field="*{created}" required
                        type="number"
                        id="inputAge"
+                       placeholder="Enter year"
                        class="form-control"
                        min="1900" max="2000"
                        step="1"

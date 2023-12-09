@@ -125,6 +125,9 @@ public class CarControllerTestIT {
         testAdmin = createTestAdmin();
         testUser.setRoles(List.of(userRole, adminRole));
 
+
+        userRoleRepository.save(userRole);
+        userRoleRepository.save(adminRole);
         userRepository.save(testUser);
         userRepository.save(testAdmin);
     }
@@ -229,7 +232,7 @@ public class CarControllerTestIT {
     void testRemoveCarPageShowsUp() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                        .delete("/cars/remove/{id}", testCarVintage.getId())
+                .get("/cars/remove/{id}", testCarVintage.getId())
                         //.param("id", testCarVintage.getId().toString())
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection())
