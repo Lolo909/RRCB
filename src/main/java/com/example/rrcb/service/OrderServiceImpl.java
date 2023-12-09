@@ -26,9 +26,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderViewModel> findAllRentsOfTheUserByName(String name) {
-//        List<Order> test = orderRepository.customQuery("user");
-//        List<Order> test2 = orderRepository.findAllByUser_Username(name);
-        //List<Order> test = orderRepository.findByUser_Username(name);
+
         return orderRepository.findAllByUser_Username(name).stream().map(order -> {
             OrderViewModel orderViewModel = modelMapper.map(order, OrderViewModel.class);
             DateTimeFormatter pattern = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);

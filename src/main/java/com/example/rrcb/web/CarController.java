@@ -115,7 +115,7 @@ public class CarController {
 
 
 
-    @GetMapping("/remove/{id}")
+    @DeleteMapping("/remove/{id}")
     public String remove(@PathVariable Long id) {
         carService.remove(id);
         return "redirect:/cars/allCarsAdmin";
@@ -186,20 +186,20 @@ public class CarController {
     }
 
 
-    //TODO: DONT TOUCH the comment bellow!!!!!!!!!!
+    //TODO: DONT TOUCH the comment bellow it's only for inserting of all available days in cars!!!!!!!!!!
     //0 59 23 31 12 *
-    @Scheduled(fixedDelay = 30000, initialDelay = 1)
-    public void insertingCarsAllAvailableDaysInDataBase(){
-        System.out.println(LocalDateTime.now());
-        if (carService.isThereNOTDataAboutAllAvailableDaysInDataBase()){
-            carService.updateOfCarsAllAvailableDays();
-        }
-    }
+//    @Scheduled(fixedDelay = 2147483646, initialDelay = 1)
+//    public void insertingCarsAllAvailableDaysInDataBase(){
+//        System.out.println(LocalDateTime.now());
+//        if (carService.isThereNOTDataAboutAllAvailableDaysInDataBase()){
+//            carService.updateOfCarsAllAvailableDays();
+//        }
+//    }
 
 
         @Scheduled(cron = "59 59 23 L * ?")
         public void monthlyUpdateOfCars(){
-            System.out.println(LocalDateTime.now());
+            //System.out.println(LocalDateTime.now());
                 orderService.ClearUp();
                 carService.updateOfCarsAllAvailableDays();
 

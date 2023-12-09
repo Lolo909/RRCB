@@ -33,7 +33,7 @@ public class UserController {
 
 
     @GetMapping("/all")
-    public String allCars(Model model) {
+    public String allUsers(Model model) {
 
         //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("users", userService.findAllUsersView());

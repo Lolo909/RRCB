@@ -15,6 +15,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model){
+
         model.addAttribute("newestCarImage", carService.findNewestCarImageUrl());
 
         return "index";

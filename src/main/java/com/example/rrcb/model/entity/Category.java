@@ -13,7 +13,7 @@ public class Category extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private CategoryNameEnum name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(length=10000)
     private String description;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)

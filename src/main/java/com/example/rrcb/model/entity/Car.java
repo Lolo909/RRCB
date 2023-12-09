@@ -14,7 +14,7 @@ public class Car extends BaseEntity{
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(length=10000)
     private String description;
 
     @Column(nullable = false)
@@ -29,7 +29,7 @@ public class Car extends BaseEntity{
 //    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 //    private Set<Image> images;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length=2147483647)
     private String imageUrl;
 
     @ManyToOne

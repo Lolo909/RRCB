@@ -15,6 +15,7 @@ import com.example.rrcb.repository.OrderRepository;
 import com.example.rrcb.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -45,14 +46,10 @@ public class CarServiceImpl implements CarService {
         this.userService = userService;
         this.categoryService = categoryService;
     }
-
     @Override
     public void addNewCar(CarServiceModel carServiceModel) {
         Car car = modelMapper.map(carServiceModel, Car.class);
-//        car.setCategories(carServiceModel.getCategories().stream().map(
-//                categoryNameEnum ->
-//                        categoryService.findCategoryByName(categoryNameEnum.getName())
-//        ).collect(Collectors.toSet()));
+
         //TODO set current user
 
         List<Integer> allAvailableDays = new ArrayList<>();
@@ -65,20 +62,8 @@ public class CarServiceImpl implements CarService {
         }
 
         car.setAllAvailableDays(allAvailableDays);
-        //car.setDays(days);
-
 
         carRepository.save(car);
-        /*Route route = modelMapper.map(routeServiceModel, Route.class);
-
-        //route.setAuthor(userService.findCurrentLoginUserEntity());
-        route.setCategories(routeServiceModel.getCategories().stream().map(
-                categoryNameEnum ->
-                    categoryService.findCategoryByName(categoryNameEnum)
-
-        ).collect(Collectors.toSet()));
-
-        routeRepository.save(route);*/
     }
 
     @Override
@@ -132,7 +117,6 @@ public class CarServiceImpl implements CarService {
         return carRepository.findAll().stream().map(car -> {
             CarDetailsViewModel carDetailsViewModel = modelMapper.map(car, CarDetailsViewModel.class);
             carDetailsViewModel.setCategory(car.getCategory().getName());
-            //carViewModel.setImageUrl((car.getImages().stream().findFirst().get().getUrl()));
             return carDetailsViewModel.getImageUrl();
         }).collect(Collectors.toList());
     }
@@ -145,11 +129,6 @@ public class CarServiceImpl implements CarService {
     //@CachePut("newest car image")
     @Override
     public String findNewestCarImageUrl() {
-
-//        List<CarViewModel> test = carRepository.findAll().stream().map(car -> {
-//            //carViewModel.setImageUrl((car.getImages().stream().findFirst().get().getUrl()));
-//            return modelMapper.map(car, CarViewModel.class);
-//        }).toList();
 
         List<Long> listWithIds = carRepository.findAll().stream().map(car -> {
             CarViewModel carViewModel = modelMapper.map(car, CarViewModel.class);
@@ -185,7 +164,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void editCar(Long id, CarEditBindingModel carEditBindingModel) {
-        Car carForEdit = carRepository.findById(id).orElse(null);
+        Car carForEdit = carRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Car with is "+id+ " is not found."));
 
         carForEdit.setName(carEditBindingModel.getName())
                 .setBrand(carEditBindingModel.getBrand())
@@ -206,32 +185,14 @@ public class CarServiceImpl implements CarService {
                     carRentViewModel.setCategory(car.getCategory().getName());
                     return carRentViewModel;
                 })
-                .orElseThrow(()->new ObjectNotFoundException("Car with id "+id+" is not found."));
+                .orElseThrow(()->new ObjectNotFoundException("Car for rent with id "+id+" is not found."));
     }
-
-
-
-
-//    @Override
-//    public Car findCarForRentById(Long id) {
-//        return carRepository.findById(id)
-//                .orElseThrow(()->new ObjectNotFoundException("Car with id "+id+" is not found."));
-//    }
-
 
 
     @Override
     public void rent(Long id, OrderAddBindingModel orderAddBindingModel, Principal principal) {
-        Car carForRent = carRepository.findById(id).orElse(null);
+        Car carForRent = carRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Car with id "+id+" is not found."));
 
-//        List<Integer> allAvailableDays = new ArrayList<>();
-//
-//        int year = Calendar.getInstance().get(Calendar.YEAR);
-//        int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
-//        int numberOfDaysInMonth = getNumberOfDaysInMonth(year, month);
-//        for (int i = 1; i <= numberOfDaysInMonth; i++) {
-//            allAvailableDays.add(i);
-//        }
 
         carForRent.setAllAvailableDays(getAllAvailableDaysMethod(carForRent.getAllAvailableDays(), orderAddBindingModel.getAllOrderDays()));
         //days.setAllOrderedDays(orderAddBindingModel.getAllOrderedDays());
@@ -247,49 +208,20 @@ public class CarServiceImpl implements CarService {
         carForRent.setAllOrderDays(allOrderDays);
 
         Order order = new Order();
-        User user = userService.findUserByName(principal.getName()).orElse(null);
+        User user = userService.findUserByName(principal.getName()).orElseThrow(() ->  new UsernameNotFoundException("User with " + principal.getName()+" is not found."));
         order.setUser(user);
-        order.setCar(carRepository.findById(id).orElse(null));
+        order.setCar(carRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Car with id "+id+" is not found.")));
         order.setDateTime(LocalDateTime.now());
         order.setAllOrderedDays(orderAddBindingModel.getAllOrderDays());
 
         BigDecimal price = BigDecimal.valueOf(orderAddBindingModel.getAllOrderDays().size() * priceMultiplayer);
         order.setPrice(price);
         orderRepository.save(order);
-        //carForRent.setDays(days);
 
         carRepository.saveAndFlush(carForRent);
     }
 
 
-//    @Override
-//    public void rent(Car carForRent, OrderAddBindingModel orderAddBindingModel) {
-//        Days days = new Days();
-//        List<Integer> allAvailableDays = new ArrayList<>();
-//
-//        int year = Calendar.getInstance().get(Calendar.YEAR);
-//        int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
-//        int numberOfDaysInMonth = getNumberOfDaysInMonth(year, month);
-//        for (int i = 1; i <= numberOfDaysInMonth; i++) {
-//            allAvailableDays.add(i);
-//        }
-//        days.setAllAvailableDays(allAvailableDays);
-//
-//
-//        List<Integer> test = orderAddBindingModel.getAllOrderedDays();
-//        int n=1;
-//        List<Integer> allOrderedDays = new ArrayList<>();
-//        for (int i = 0; i < orderAddBindingModel.getAllOrderedDays().size(); i++) {
-//            allOrderedDays.add(i);
-//        }
-//
-//        //List<Integer> allOrderedDays = new ArrayList<>(orderAddBindingModel.getAllOrderedDays());
-//        days.setAllOrderedDays(allOrderedDays);
-//
-//        carForRent.setDays(days);
-//
-//        carRepository.saveAndFlush(carForRent);
-//    }
 
     @Override
     public List<Integer> getAllAvailableDaysMethod(List<Integer> allAvailableDays, List<Integer> allOrderedDays) {

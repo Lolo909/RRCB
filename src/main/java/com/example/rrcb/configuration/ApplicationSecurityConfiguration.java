@@ -1,6 +1,7 @@
 package com.example.rrcb.configuration;
 
 
+import com.example.rrcb.model.entity.enums.RoleNameEnum;
 import com.example.rrcb.repository.UserRepository;
 import com.example.rrcb.service.RRCBUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -28,8 +29,12 @@ public class ApplicationSecurityConfiguration {
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers("/").permitAll()
                                 .requestMatchers("/about").permitAll()
+                                .requestMatchers("/rentsInfo").permitAll()
                                 .requestMatchers("/users/login", "/users/register", "/users/login-error").permitAll() //.anonymous()
-                                .requestMatchers("/users/profile").authenticated()
+                                .requestMatchers("/users/profile, /users/rents, /users/profile/edit/**").hasRole(RoleNameEnum.USER.name())
+                                .requestMatchers("/users/all, /users/allRents, /users/changeRole/**, /users/remove/**").hasRole(RoleNameEnum.ADMIN.name())
+                                .requestMatchers("/cars/all, /cars/vintage, /cars/antique, /cars/classic, /cars/details/**, /cars/rent/**").hasRole(RoleNameEnum.USER.name())
+                                .requestMatchers("/cars/allCarsAdmin, /cars/add, /cars/remove/**, /cars/edit/**").hasRole(RoleNameEnum.ADMIN.name())
                                 .anyRequest().authenticated()
 
 

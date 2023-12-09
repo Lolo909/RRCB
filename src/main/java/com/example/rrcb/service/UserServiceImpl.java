@@ -8,10 +8,12 @@ import com.example.rrcb.model.service.UserServiceModel;
 import com.example.rrcb.model.view.OrderViewModel;
 import com.example.rrcb.model.view.UserViewModel;
 import com.example.rrcb.repository.UserRepository;
+import com.example.rrcb.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -62,7 +64,7 @@ public class UserServiceImpl implements UserService {
         return userRepository
                 .findById(id)
                 .map(user -> modelMapper.map(user, UserServiceModel.class))
-                .orElse(null);
+                .orElseThrow(() -> new ObjectNotFoundException("User with id "+id+" is not found."));
     }
 
     @Override
@@ -93,9 +95,10 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+
     @Override
     public void changeRole(Long id) {
-        User user = userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("User with id "+id+" is not found."));
         List<String> roleList = user.getRoles().stream().map(role -> {
             if (role.getName().equals(ADMIN)) {
                 return "ADMIN";
@@ -115,7 +118,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserViewModel getUserViewByUsername(String name) {
-        User user = userRepository.findByUsername(name).orElse(null);
+        User user = userRepository.findByUsername(name).orElseThrow(() -> new ObjectNotFoundException("Use with username "+name+" is not found."));
         UserViewModel userViewModel = modelMapper.map(user, UserViewModel.class);
 
         List<String> roleList = user.getRoles().stream().map(role -> {
@@ -134,12 +137,13 @@ public class UserServiceImpl implements UserService {
 
         return userViewModel;
     }
-
+    //.orElseThrow(()->new ObjectNotFoundException("Car for rent with id "+id+" is not found."));
     @Override
     public void editProfile(Long id, UserProfileEditBindingModel userProfileEditBindingModel) {
-        User userForEdit = userRepository.findById(id).orElse(null);
+        User userForEdit = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("User with id "+id+" is not found."));
 
-        userForEdit.setUsername(userProfileEditBindingModel.getUsername())
+        userForEdit
+//                .setUsername(userProfileEditBindingModel.getUsername())
                 .setFullName(userProfileEditBindingModel.getFullName())
                 .setEmail(userProfileEditBindingModel.getEmail());
 
