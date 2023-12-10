@@ -6,4 +6,4 @@ This is a project inspired by my mother's love of vintage cars and her dream to 
 
 This site is for orders, not direct sales.
 
-There are users entered for test. Administrator username: admin password: 12345 Client username: user password: 12345
+There are users entered for test. Administrator username: # admin password: # 12345 Client username: # user password: # 12345
