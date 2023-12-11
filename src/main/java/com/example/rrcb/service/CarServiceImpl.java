@@ -56,14 +56,26 @@ public class CarServiceImpl implements CarService {
 
         List<Integer> allAvailableDays = new ArrayList<>();
 
+        //add max days in month for all available days
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
         int numberOfDaysInMonth = getNumberOfDaysInMonth(year, month);
-        for (int i = 1; i <= numberOfDaysInMonth; i++) {
+
+        //subtract days from all available days based on what day it is now
+        LocalDateTime todayData = LocalDateTime.now();
+        int dayToday = todayData.getDayOfMonth();
+
+        for (int i = dayToday; i <= numberOfDaysInMonth; i++) {
         allAvailableDays.add(i);
         }
 
         car.setAllAvailableDays(allAvailableDays);
+
+        //subtract days from all available days based on what day it is now
+        //LocalDateTime todayData = LocalDateTime.now();
+        //int dayToday = todayData.getDayOfMonth();
+
+
 
         carRepository.save(car);
     }

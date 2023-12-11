@@ -186,15 +186,7 @@ public class CarController {
     }
 
 
-    //TODO: DONT TOUCH the comment bellow it's only for inserting of all available days in cars!!!!!!!!!!
-    //0 59 23 31 12 *
-//    @Scheduled(fixedDelay = 2147483646, initialDelay = 1)
-//    public void insertingCarsAllAvailableDaysInDataBase(){
-//        System.out.println(LocalDateTime.now());
-//        if (carService.isThereNOTDataAboutAllAvailableDaysInDataBase()){
-//            carService.updateOfCarsAllAvailableDays();
-//        }
-//    }
+
 
 
         @Scheduled(cron = "59 59 23 L * ?")
@@ -204,6 +196,4 @@ public class CarController {
                 carService.updateOfCarsAllAvailableDays();
 
         }
-
-
 }
