@@ -70,7 +70,7 @@ public class CarServiceImpl implements CarService {
         }
 
         car.setAllAvailableDays(allAvailableDays);
-        
+
         carRepository.save(car);
     }
 
