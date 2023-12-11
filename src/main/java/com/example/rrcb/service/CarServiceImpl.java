@@ -70,13 +70,7 @@ public class CarServiceImpl implements CarService {
         }
 
         car.setAllAvailableDays(allAvailableDays);
-
-        //subtract days from all available days based on what day it is now
-        //LocalDateTime todayData = LocalDateTime.now();
-        //int dayToday = todayData.getDayOfMonth();
-
-
-
+        
         carRepository.save(car);
     }
 
