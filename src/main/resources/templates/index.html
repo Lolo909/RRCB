@@ -6,8 +6,24 @@
 <head th:replace="~{fragments/commons::head}">
 </head>
 <script>
+
 </script>
 <body>
+<div class="container">
+    <div class="slideshow-container">
+<!--        <div class="slideshow">-->
+            <!--					images can be used inside the .slide divs instead of numbers-->
+            <div class="slide active"><i>0</i></div>
+            <div class="slide"><i>1</i></div>
+            <div class="slide last-slide"><i>2</i></div>
+<!--        </div>-->
+<!--        <div class="controls">-->
+<!--            &lt;!&ndash; 					<div class="left"><i>&#10094;</i></div>-->
+<!--                                <div class="right"><i>&#10095;</i></div> &ndash;&gt;-->
+<!--        </div>-->
+    </div>
+</div>
+
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="~{fragments/commons::navigation}">
@@ -20,6 +36,7 @@
             <p>Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
             <a href="/cars/all" class="btn">To cars</a>
         </div>
+
     </section>
 
     <!-- Boxes Section -->
@@ -56,7 +73,7 @@
 
     <!-- Info Section -->
     <section class="road-spic" style="">
-        <img th:src="${newestCarImage}" alt="" style="height: 100%; margin: auto">
+        <img th:src="${newestCarImage}" alt="" style="height: 100%; margin: auto; border-radius: 15px;">
         <div>
             <h2>The newest car in our collection</h2>
             <p>Read more about the car and do not miss the
