@@ -139,7 +139,7 @@ img {
     grid-area: showcase;
     min-height: 400px;
     image-rendering:high-quality;
-    background-image: url("../images/backgroundCar.jpg");
+    background-image: url("../images/background2.png");
     background-size: cover;
     background-position: center;
     padding: 3rem;
@@ -471,4 +471,12 @@ body {
 .div-login-register-text{
     color: #0C5679;
 }
+
+/*font text style*/
+.lemon-regular {
+    font-family: "Lemon", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 
