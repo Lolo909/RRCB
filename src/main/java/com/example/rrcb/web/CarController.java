@@ -14,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.Base64;
 
 @Controller
 @RequestMapping("/cars")
@@ -103,6 +105,11 @@ public class CarController {
             carServiceModel.setCategory(categoryService.findCategoryByName(CategoryNameEnum.CLASSIC));
         }
 
+        carServiceModel.setFile("data:image/jpeg;base64," + Base64.getEncoder().encodeToString(carAddBindingModel.getFile().getBytes()));
+
+        //carServiceModel.setImageUrl(StringUtils.cleanPath(carAddBindingModel.getFile().getOriginalFilename()));
+        //TODO ADD EXCEPTION ABOUT NULL IMAGE
+        //carServiceModel.setImageUrl(carAddBindingModel.getFile().toString());
         carService.addNewCar(carServiceModel);
 
         return "redirect:all";

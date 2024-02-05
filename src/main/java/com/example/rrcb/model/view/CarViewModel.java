@@ -14,6 +14,8 @@ public class CarViewModel {
 
     private String imageUrl;
 
+    private String file;
+
     public CarViewModel() {
     }
 
@@ -68,6 +70,15 @@ public class CarViewModel {
 
     public CarViewModel setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public CarViewModel setFile(String file) {
+        this.file = file;
         return this;
     }
 }

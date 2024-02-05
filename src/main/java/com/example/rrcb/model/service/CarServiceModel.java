@@ -21,6 +21,8 @@ public class CarServiceModel {
 
     private String imageUrl;
 
+    private String file;
+
     private Category category;
 
     private List<Integer> allAvailableDays;
@@ -118,6 +120,15 @@ public class CarServiceModel {
 
     public CarServiceModel setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public CarServiceModel setFile(String file) {
+        this.file = file;
         return this;
     }
 }

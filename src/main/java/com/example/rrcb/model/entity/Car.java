@@ -26,11 +26,16 @@ public class Car extends BaseEntity{
     @Column(nullable = false)
     private Integer created;
 
+//TODO IN FUTURE ADD MORE IMAGES SOMEHOW
 //    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 //    private Set<Image> images;
 
     @Column(nullable = false, length=2147483647)
     private String imageUrl;
+
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String file;
 
     @ManyToOne
     private Category category;
@@ -124,6 +129,16 @@ public class Car extends BaseEntity{
 
     public Car setAllAvailableDays(List<Integer> allAvailableDays) {
         this.allAvailableDays = allAvailableDays;
+        return this;
+    }
+
+
+    public String getFile() {
+        return file;
+    }
+
+    public Car setFile(String file) {
+        this.file = file;
         return this;
     }
 }

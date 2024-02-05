@@ -27,6 +27,14 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
+
+#  spring:
+#    servlet:
+#      multipart:
+#        enabled: true
+#        max-file-size: 128KB
+#        max-request-size: 128KB
+
   #Cloudinary Properties
   #cloudinary:
   #api-key:

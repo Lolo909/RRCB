@@ -20,6 +20,8 @@ public class CarDetailsViewModel {
 
     private CategoryNameEnum category;
 
+    private String file;
+
 
 
     public CarDetailsViewModel() {
@@ -94,6 +96,15 @@ public class CarDetailsViewModel {
 
     public CarDetailsViewModel setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public CarDetailsViewModel setFile(String file) {
+        this.file = file;
         return this;
     }
 }

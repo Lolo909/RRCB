@@ -5,6 +5,19 @@
 
 <head th:replace="fragments/commons::head"></head>
 <body>
+<script>
+    function upload_check()
+    {
+        var upl = document.getElementById("file_id");
+        var max = document.getElementById("max_id").value;
+
+        if(upl.files[0].size > max)
+        {
+            alert("File too big!");
+            upl.value = "";
+        }
+    };
+</script>
 <!--<div class="wrapper">-->
 <!-- Navigation -->
 <header th:replace="fragments/commons::navigation">
@@ -117,6 +130,18 @@
                        id="imageUrl" type="text"
                        required minlength="1"
                        class="form-control" placeholder="Image url">
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group">
+                <label for="imageUrl">Put here FILE for image of the car.</label>
+                <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="131072" />
+                <input onchange="upload_check()" th:field="*{file}"
+                       id="file_id" type="file"
+                       required minlength="1"
+                       class="form-control" placeholder="File url"
+                       accept=".jpg,.png">
             </div>
         </div>
 

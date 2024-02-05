@@ -1,10 +1,12 @@
 package com.example.rrcb.model.binding;
 
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
+import jakarta.persistence.Lob;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Set;
 
@@ -42,6 +44,10 @@ public class CarAddBindingModel {
 
     @NotNull
     private String imageUrl;
+
+    @Lob
+    @NotNull
+    private MultipartFile file;
 
     @Min(1900)
     private Integer created;
@@ -106,6 +112,15 @@ public class CarAddBindingModel {
 
     public CarAddBindingModel setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public CarAddBindingModel setFile(MultipartFile file) {
+        this.file = file;
         return this;
     }
 }
