@@ -11,18 +11,23 @@
     </header>
 
     <section th:each="c : ${cars}" th:object="${c}" class="road" >
-        <img th:src="*{file}" alt="Title file" style="min-height: 250px; min-width: 900px; border-radius: 15px; margin: auto;">
+        <img th:src="*{file}" alt="Title file" style="min-height: 250px;max-height: 500px; min-width: 900px; border-radius: 15px; margin: auto;">
         <div>
             <h2 th:text="*{name}">Your Route</h2>
             <p th:text="*{brand}">Brand car</p>
             <p th:text="*{model}">Model car</p>
             <p th:text="*{created}">Year of the car</p>
-            <p style="text-align: justify;text-align-last: center;" th:text="*{description}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae alias reiciendis deleniti possimus nemo
+            <p style="text-align: justify;text-align-last: center; " th:text="*{description}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae alias reiciendis deleniti possimus nemo
                 non repellendus?
                 Quae atque vero modi quidem! Autem cupiditate fugit doloribus ad amet, asperiores provident commodi.</p>
-            <a th:href="@{/cars/edit/{id} (id = *{id})}" class="btn">Edit</a>
-            <a th:href="@{/cars/remove/{id} (id = *{id})}" class="btn">Remove</a>
+
+            <div style="display: inline-block;white-space: normal;">
+                <a th:href="@{/cars/edit/{id} (id = *{id})}" class="btn">Edit</a>
+                <a th:href="@{/cars/remove/{id} (id = *{id})}" class="btn">Remove</a>
+            </div>
         </div>
+
+
     </section>
 </div>
 <!-- Wrapper Ends -->

@@ -87,7 +87,7 @@ public class CarControllerTestIT {
                 .setDescription("Very long description for test.")
                 .setModel("testModel")
                 .setCategory(categoryVintage)
-                .setImageUrl("ImageUrl with beautiful test image.")
+                .setFile("ImageUrl with beautiful test image.")
                 .setCreated(1919);
         testCarAntique = new Car()
                 .setAllAvailableDays(allAvailableDaysListT)
@@ -96,7 +96,7 @@ public class CarControllerTestIT {
                 .setDescription("Very long description for test.2")
                 .setModel("testModel2")
                 .setCategory(categoryAntique)
-                .setImageUrl("ImageUrl with beautiful test image.2")
+                .setFile("ImageUrl with beautiful test image.2")
                 .setCreated(1975);
         testCarClassic = new Car()
                 .setAllAvailableDays(allAvailableDaysListT)
@@ -105,7 +105,7 @@ public class CarControllerTestIT {
                 .setDescription("Very long description for test.3")
                 .setModel("testModel3")
                 .setCategory(categoryClassic)
-                .setImageUrl("ImageUrl with beautiful test image.3")
+                .setFile("ImageUrl with beautiful test image.3")
                 .setCreated(2000);
 
         carRepository.saveAndFlush(testCarVintage);

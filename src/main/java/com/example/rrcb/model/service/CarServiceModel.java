@@ -19,8 +19,6 @@ public class CarServiceModel {
 
     private Integer created;
 
-    private String imageUrl;
-
     private String file;
 
     private Category category;
@@ -93,15 +91,6 @@ public class CarServiceModel {
 
     public CarServiceModel setCreated(Integer created) {
         this.created = created;
-        return this;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public CarServiceModel setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
         return this;
     }
 

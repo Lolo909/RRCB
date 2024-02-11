@@ -110,17 +110,30 @@
             </div>
         </div>
 
+<!--        <div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="imageUrl">Put here cloud URL for image of the car.</label>-->
+<!--                <input th:field="*{file}"-->
+<!--                       id="imageUrl" type="text"-->
+<!--                       required minlength="1"-->
+<!--                       class="form-control"-->
+<!--                       th:value="*{file}">-->
+<!--            </div>-->
+<!--        </div>-->
         <div>
             <div class="form-group">
-                <label for="imageUrl">Put here cloud URL for image of the car.</label>
-                <input th:field="*{imageUrl}"
-                       id="imageUrl" type="text"
+                <label>Put here FILE for image of the car.</label>
+                <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="131072"/>
+                <input onchange="upload_check()" th:field="*{file}"
+                       id="file_id" type="file"
                        required minlength="1"
-                       class="form-control"
-                       th:value="*{imageUrl}">
+                       class="form-control" placeholder="File url"
+                       accept=".jpg,.png">
+<!--                <label id="file-input-label" for="file_id"-->
+<!--                >Select a File</label>-->
             </div>
         </div>
-
+        <a th:href="@{/cars/allCarsAdmin}" class="btn"> 🠈 CANCEL</a>
         <div class="d-flex justify-content-center mt-4">
             <button class="btn btn-primary btn-block w-50" type="submit">Edit Car</button>
         </div>

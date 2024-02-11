@@ -16,11 +16,9 @@ public class CarDetailsViewModel {
 
     private Integer created;
 
-    private String imageUrl;
+    private String file;
 
     private CategoryNameEnum category;
-
-    private String file;
 
 
 
@@ -90,14 +88,6 @@ public class CarDetailsViewModel {
         return this;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public CarDetailsViewModel setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
 
     public String getFile() {
         return file;

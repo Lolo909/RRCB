@@ -42,9 +42,6 @@ public class CarAddBindingModel {
     @Size(min = 10)
     private String description;
 
-    @NotNull
-    private String imageUrl;
-
     @Lob
     @NotNull
     private MultipartFile file;
@@ -88,14 +85,6 @@ public class CarAddBindingModel {
     }
 
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public CarAddBindingModel setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
 
     public Integer getCreated() {
         return created;

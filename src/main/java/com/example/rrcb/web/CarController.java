@@ -5,6 +5,7 @@ import com.example.rrcb.model.binding.CarEditBindingModel;
 import com.example.rrcb.model.binding.OrderAddBindingModel;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 import com.example.rrcb.model.service.CarServiceModel;
+import com.example.rrcb.model.view.CarDetailsViewModel;
 import com.example.rrcb.model.view.CarRentViewModel;
 import com.example.rrcb.service.CarService;
 import com.example.rrcb.service.CategoryService;
@@ -14,14 +15,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.Base64;
 
 @Controller

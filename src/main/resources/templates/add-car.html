@@ -123,19 +123,19 @@
             </div>
         </div>
 
-        <div>
-            <div class="form-group">
-                <label for="imageUrl">Put here cloud URL for image of the car.</label>
-                <input th:field="*{imageUrl}"
-                       id="imageUrl" type="text"
-                       required minlength="1"
-                       class="form-control" placeholder="Image url">
-            </div>
-        </div>
+<!--        <div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="imageUrl">Put here cloud URL for image of the car.</label>-->
+<!--                <input th:field="*{imageUrl}"-->
+<!--                       id="imageUrl" type="text"-->
+<!--                       required minlength="1"-->
+<!--                       class="form-control" placeholder="Image url">-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div>
             <div class="form-group">
-                <label for="imageUrl">Put here FILE for image of the car.</label>
+                <label>Put here FILE for image of the car.</label>
                 <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="131072" />
                 <input onchange="upload_check()" th:field="*{file}"
                        id="file_id" type="file"
@@ -144,7 +144,6 @@
                        accept=".jpg,.png">
             </div>
         </div>
-
         <div class="d-flex justify-content-center mt-4">
             <button class="btn btn-primary btn-block w-50" type="submit">Add Car</button>
         </div>

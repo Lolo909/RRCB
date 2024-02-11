@@ -50,7 +50,7 @@ public class    HomeControllerTestIT {
                 .setDescription("Very long description for test.")
                 .setModel("testModel")
                 .setCategory(category)
-                .setImageUrl("ImageUrl with beautiful test image.")
+                .setFile("ImageUrl with beautiful test image.")
                 .setCreated(1919);
         Car car2 = new Car()
                 .setAllAvailableDays(allAvailableDaysListT)
@@ -59,7 +59,7 @@ public class    HomeControllerTestIT {
                 .setDescription("Very long description for test.2")
                 .setModel("testModel2")
                 .setCategory(category)
-                .setImageUrl("ImageUrl with beautiful test image.2")
+                .setFile("ImageUrl with beautiful test image.2")
                 .setCreated(1919);
         carRepository.saveAndFlush(car1);
         carRepository.saveAndFlush(car2);

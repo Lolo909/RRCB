@@ -20,14 +20,12 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -126,7 +124,7 @@ public class CarServiceImpl implements CarService {
         return carRepository.findAll().stream().map(car -> {
             CarDetailsViewModel carDetailsViewModel = modelMapper.map(car, CarDetailsViewModel.class);
             carDetailsViewModel.setCategory(car.getCategory().getName());
-            return carDetailsViewModel.getImageUrl();
+            return carDetailsViewModel.getFile();
         }).collect(Collectors.toList());
     }
 
@@ -148,7 +146,7 @@ public class CarServiceImpl implements CarService {
 
         Long result = getMax(listWithIds);
         Optional<Car> car = carRepository.findById(result);
-        return car.get().getImageUrl();
+        return car.get().getFile();
     }
 
     public Long getMax(List<Long> list){
@@ -172,14 +170,15 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void editCar(Long id, CarEditBindingModel carEditBindingModel) {
+    public void editCar(Long id, CarEditBindingModel carEditBindingModel) throws IOException {
         Car carForEdit = carRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Car with is "+id+ " is not found."));
 
         carForEdit.setName(carEditBindingModel.getName())
                 .setBrand(carEditBindingModel.getBrand())
                 .setModel(carEditBindingModel.getModel())
                 .setDescription(carEditBindingModel.getDescription())
-                .setImageUrl(carEditBindingModel.getImageUrl())
+                //TODO: potential error on setFile
+                .setFile("data:image/jpeg;base64," + Base64.getEncoder().encodeToString(carEditBindingModel.getFile().getBytes()))
                 .setCreated(carEditBindingModel.getCreated())
                 .setCategory(carEditBindingModel.getCategory());
 

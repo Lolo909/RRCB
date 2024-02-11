@@ -12,7 +12,6 @@ public class CarViewModel {
 
     private Integer created;
 
-    private String imageUrl;
 
     private String file;
 
@@ -64,14 +63,6 @@ public class CarViewModel {
         return this;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public CarViewModel setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
 
     public String getFile() {
         return file;

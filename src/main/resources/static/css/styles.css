@@ -220,10 +220,19 @@ img {
     grid-template-columns: repeat(2, 1fr);
     padding: 3rem;
     grid-row: auto;
+
 }
 
 .road div{
     text-align: center;
+    white-space: pre-line;
+    word-break:break-word;
+}
+
+.road-div-2{
+    text-align: unset;
+    white-space: normal;
+    word-break:unset;
 }
 
 .road section{

@@ -9,6 +9,7 @@ import com.example.rrcb.model.view.CarDetailsViewModel;
 import com.example.rrcb.model.view.CarRentViewModel;
 import com.example.rrcb.model.view.CarViewModel;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public interface CarService {
 
     CarDetailsViewModel findCarById(Long id);
 
-    void editCar(Long id, CarEditBindingModel carEditBindingModel);
+    void editCar(Long id, CarEditBindingModel carEditBindingModel) throws IOException;
 
     
 

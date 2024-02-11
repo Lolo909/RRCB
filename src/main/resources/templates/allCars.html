@@ -20,15 +20,17 @@
         <div>
             <h2>Here you can see all our cars:</h2>
 <!--            TODO make searchbar here-->
+            <div style="display: inline-block;white-space: normal;">
             <a href="/cars/vintage" class="btn">Vintage</a>
             <a href="/cars/antique" class="btn">Antique</a>
             <a href="/cars/classic" class="btn">Classic</a>
+            </div>
         </div>
         <img src="/images/AllCarsImage.png" height="150px" width="100%" alt="">
     </section>
 
     <section th:each="c : ${cars}" th:object="${c}" class="road">
-        <img th:src="*{file}" alt="Title file" style="min-height: 250px; min-width: 900px; border-radius: 15px; margin: auto;">
+        <img th:src="*{file}" alt="Title file" style="min-height: 250px; max-height: 500px; min-width: 900px; border-radius: 15px; margin: auto;">
         <div>
             <h2 th:text="*{name}">Car name</h2>
             <p th:text="*{brand}">Brand car</p>

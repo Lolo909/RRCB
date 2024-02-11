@@ -1,9 +1,11 @@
 package com.example.rrcb.model.binding;
 
 import com.example.rrcb.model.entity.Category;
+import jakarta.persistence.Lob;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 public class CarEditBindingModel {
 
@@ -19,8 +21,10 @@ public class CarEditBindingModel {
     @Size(min = 10)
     private String description;
 
+
+    @Lob
     @NotNull
-    private String imageUrl;
+    private MultipartFile file;
 
     @Min(1900)
     private Integer created;
@@ -75,12 +79,12 @@ public class CarEditBindingModel {
         return this;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public MultipartFile getFile() {
+        return file;
     }
 
-    public CarEditBindingModel setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public CarEditBindingModel setFile(MultipartFile file) {
+        this.file = file;
         return this;
     }
 

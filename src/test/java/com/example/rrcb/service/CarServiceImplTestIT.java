@@ -56,7 +56,7 @@ public class CarServiceImplTestIT {
                 .setDescription("Very long description for test.")
                 .setModel("testModel")
                 .setCategory(category)
-                .setImageUrl("ImageUrl with beautiful test image.")
+                .setFile("ImageUrl with beautiful test image.")
                 .setCreated(1900);
 
         carServiceToTest.addNewCar(testCarServiceModel);

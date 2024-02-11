@@ -11,12 +11,13 @@
     </header>
 
     <div class="details-car" style="background: var(--primary); box-shadow: var(--shadow);" th:object="${car}">
-        <div class="center">
+        <div class="center" style="white-space: pre-line;">
             <span class="bg-secondary p-1 px-4 rounded text-white"  th:text="*{category}">Pro</span>
-            <img th:src="*{imageUrl}" alt="Title image">
-
+            <img th:src="*{file}" alt="Title image" style="min-height: 250px;max-height: 500px; min-width: 900px; border-radius: 15px; margin: auto;">
         </div>
-        <div style="">
+        <div style="text-align: center;
+    white-space: pre-line;
+    word-break:break-word;">
             <h1 th:text="*{name}">Name of the car</h1>
             <h3 th:text="|*{brand} *{model}|">Brand and Model</h3>
             <h3 th:text="*{created}">Year created</h3>

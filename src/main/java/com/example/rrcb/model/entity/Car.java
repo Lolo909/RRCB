@@ -30,8 +30,8 @@ public class Car extends BaseEntity{
 //    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 //    private Set<Image> images;
 
-    @Column(nullable = false, length=2147483647)
-    private String imageUrl;
+//    @Column(nullable = false, length=2147483647)
+//    private String imageUrl;
 
     @Lob
     @Column(columnDefinition = "MEDIUMBLOB")
@@ -114,14 +114,6 @@ public class Car extends BaseEntity{
         return this;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public Car setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
 
     public List<Integer> getAllAvailableDays() {
         return allAvailableDays;
