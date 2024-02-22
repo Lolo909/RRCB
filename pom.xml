@@ -98,6 +98,12 @@
 <!--            <artifactId>maven-compiler-plugin</artifactId>-->
 <!--            <version>3.11.0</version>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.11.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
