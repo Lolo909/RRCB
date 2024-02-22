@@ -113,5 +113,5 @@
         </pluginManagement>
     </build>
 
-
+<!--    https://stackoverflow.com/questions/49105941/intellij-maven-project-fatal-error-compiling-invalid-flag-release-->
 </project>
