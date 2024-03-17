@@ -1,10 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-#    url: "jdbc:mysql://root:ERg8pdChuS2eJ56kZQKfKIXhKRmEyjyy@ufe5pw.stackhero-network.com/root?useSSL=true&requireSSL=true"
-    url: "jdbc:mysql://localhost:3306/rrcb_application?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password: 9ol.)P:?
+    url: "jdbc:mysql://root:ERg8pdChuS2eJ56kZQKfKIXhKRmEyjyy@ufe5pw.stackhero-network.com/root?useSSL=true&requireSSL=true"
+#    username: root
+#    password: 9ol.)P:?
   servlet:
     multipart:
       max-file-size: 1MB
