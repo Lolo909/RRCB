@@ -5,28 +5,28 @@
 
 <head th:replace="fragments/commons::head"></head>
 <body>
-<div class="wrapper">
+<div class="wrapper-About">
     <!-- Navigation -->
     <header th:replace="fragments/commons::navigation">
     </header>
 
+    <!-- About Us Section -->
     <div class="info lemon-regular" style="background-color: #0C5679">
-        <div></div>
+<!--        <div></div>-->
         <div style="text-align: justify;text-align-last: left">
             <h4 style="text-align-last: center">About us</h4>
-            We wanted to provide a unique service to people and that is to be able to touch a nice old classic car
-            collection.
-            To show them the beauty of the old and to be able to gather people's eyes with their car.
-            And that's why we created R.R.C.B (Rent Retro Car Bulgaria).
-            <br></br>
-            Are you a lover of old beautiful cars? Want to stand out from the crowd? Do you want to drive high value
-            cars?
-            This is your place! Enjoy all kinds of nice old school cars and book them for any occasion:
-            wedding, prom, date and many more! What are you waiting for? Look at them:
-            <a th:href="@{/cars/all}" class="btn" style="border: 1px solid #f28a0f !important;"> Learn more</a>
+            <p>We wanted to provide a unique service to people and that is to be able to touch a nice old classic car collection.
+                To show them the beauty of the old and to be able to gather people's eyes with their car.
+                And that's why we created R.R.C.B (Rent Retro Car Bulgaria).</p>
+
+            <p>Are you a lover of old beautiful cars? Want to stand out from the crowd? Do you want to drive high value cars?
+                This is your place! Enjoy all kinds of nice old school cars and book them for any occasion:
+                wedding, prom, date, and many more!</p>
+
+            <p>What are you waiting for? Look at them: <a th:href="@{/cars/all}" class="btn" style="border: 1px solid #f28a0f !important;"> Learn more</a></p>
         </div>
 
-        <div></div>
+<!--        <div></div>-->
     </div>
 
 </div>
