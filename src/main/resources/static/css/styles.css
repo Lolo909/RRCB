@@ -320,6 +320,7 @@ footer {
 }
 
 .info p {
+    text-indent: 50px;
     font-size: 1.25rem;
     line-height: 1.8;
     margin-left: 8rem;
@@ -606,7 +607,93 @@ body {
     CSS for login-register
  */
 .div-login-register-text{
-    color: #0C5679;
+    color: white;
+}
+
+/*LOGIN*/
+.login-wrapper{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(63, 138, 140, 0.9);
+    padding-bottom: 2rem;
+    border-radius: 5rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    max-width: 400px;
+    margin:auto;
+    width: 90%;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.background-login{
+    margin: 0;
+    margin-top: 0;
+    image-rendering:high-quality;
+    min-height: 100vh;
+    padding: 0 2rem 2rem;
+    background-image: url("../images/background2.png");
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    .login-wrapper {
+        padding: 1.5rem;
+        border-radius: 2rem;
+    }
+
+    input {
+        font-size: 1rem; /* Adjusts input size for smaller screens */
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .login-wrapper {
+        margin-top: 10rem;
+        padding: 1rem; /* Reduce padding for smaller screens */
+        border-radius: 1rem; /* Smaller border-radius for compact appearance */
+    }
+
+    input {
+        width: 100%; /* Ensure inputs take full width */
+        font-size: 0.85rem; /* Smaller font size to fit */
+        padding: 8px; /* Reduce padding for better space management */
+    }
+
+    button {
+        font-size: 0.85rem; /* Smaller button text */
+        padding: 10px; /* Adjust button padding */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Reduce the heading size */
+    }
+
+    footer {
+        padding: 0.5rem; /* Reduce footer padding */
+        font-size: 0.75rem; /* Smaller text for the footer */
+    }
+}
+
+
+@media (max-width: 576px) {
+    .login-wrapper {
+        width: 100%; /* Full width on smaller screens */
+        border-radius: 1rem;
+    }
+
+    input {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
 }
 
 /*font text style*/

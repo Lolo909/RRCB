@@ -4,7 +4,8 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/commons::head"></head>
 <body>
-<main class="p-5 align-content-center bg-blur my-register-div">
+<main class="p-5 align-content-center bg-blur my-register-div background-login" style="margin-top: -40px">
+    <div class="login-wrapper">
     <h1 class="div-login-register-text lemon-regular">Login</h1>
     <div class="d-flex justify-content-center lemon-regular">
 
@@ -44,9 +45,7 @@
                                aria-describedby="passwordHelpInline">
                     </div>
                 </div>
-                <p>
 
-                </p>
                 <p th:if="${bad_credentials}" class="alert-danger">
                     <!--                        class="invalid-feedback"-->
                     <span class="bg-danger">Username or password is not correct!</span>
@@ -57,6 +56,7 @@
             </form>
         </div>
 
+    </div>
     </div>
 </main>
 <footer th:replace="fragments/commons::footer" class="div-login-footer">
