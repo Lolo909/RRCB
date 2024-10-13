@@ -30,6 +30,7 @@ html {
     padding: 0.6rem 1.3rem;
     text-decoration: none;
     border: 1px solid #0C5679;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 
 .btn:hover{
@@ -198,11 +199,12 @@ img {
     text-align: center;
     padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
+    transition: transform 0.3s ease-in-out, background 0.5s ease-in-out;
 }
 
 .box:hover{
-    transition : background 0.5s ease-in-out;
     background: rgba(253, 183, 97, 0.6);
+    transform: scale(1.05);
 }
 
 

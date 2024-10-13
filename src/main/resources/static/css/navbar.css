@@ -143,7 +143,7 @@ nav.shift ul li a form input{
     z-index: 1;
 }
 nav.shift ul li a:hover form input {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     color: #91640F;
 }
 nav.shift ul li a:after form input{
@@ -164,7 +164,7 @@ nav.shift ul li a:after form input{
     z-index: -1;
 }
 nav.shift ul li a:hover:after form input{
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     opacity: 1;
     visibility: visible;
     height: 100%;

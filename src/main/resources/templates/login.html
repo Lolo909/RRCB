@@ -21,8 +21,11 @@
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label div-login-register-text">Username</label>
                     </div>
-                    <div class="col-auto">
-                        <input type="text"
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user" style="color: #0C5679"></i></span>
+                        </div>
+                            <input type="text"
                                name="username"
                                th:value="${username}"
                                required minlength="4" maxlength="20"
@@ -30,13 +33,17 @@
                                placeholder="Enter username"
                                class="form-control"
                                aria-describedby="usernameHelpInline">
+
                     </div>
                 </div>
                 <div>
                     <div class="col-auto">
                         <label for="inputPassword" class="col-form-label div-login-register-text">Password</label>
                     </div>
-                    <div class="col-auto">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key" style="color: #0C5679"></i></span>
+                        </div>
                         <input type="password"
                                name="password"
                                required minlength="4" maxlength="20"
