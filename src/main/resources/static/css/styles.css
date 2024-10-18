@@ -33,7 +33,7 @@ html {
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 
-.btn:hover{
+.btn:hover {
     color: white;
     background: #F28A0F;
     border: 1px solid #0C5679
@@ -60,7 +60,7 @@ img {
     grid-gap: 20px;
 }
 
-.wrapperAdmin{
+.wrapperAdmin {
     display: grid;
     grid-gap: 20px;
 }
@@ -85,7 +85,7 @@ img {
     border-radius: 0;
 }
 
-.center-block:hover{
+.center-block:hover {
     transition: 0ms;
     background: var(--dark);
     color: var(--light);
@@ -139,7 +139,7 @@ img {
 .showcase {
     grid-area: showcase;
     min-height: 400px;
-    image-rendering:high-quality;
+    image-rendering: high-quality;
     background-image: url("../images/background2.png");
     background-size: cover;
     background-position: center;
@@ -202,12 +202,10 @@ img {
     transition: transform 0.3s ease-in-out, background 0.5s ease-in-out;
 }
 
-.box:hover{
+.box:hover {
     background: rgba(253, 183, 97, 0.6);
     transform: scale(1.05);
 }
-
-
 
 
 /* Info */
@@ -225,19 +223,19 @@ img {
 
 }
 
-.road div{
+.road div {
     text-align: center;
     white-space: pre-line;
-    word-break:break-word;
+    word-break: break-word;
 }
 
-.road-div-2{
+.road-div-2 {
     text-align: unset;
     white-space: normal;
-    word-break:unset;
+    word-break: unset;
 }
 
-.road section{
+.road section {
     text-align: center;
 }
 
@@ -257,12 +255,112 @@ img {
     grid-row: auto;
 }
 
-.road-spic div{
+.road-spic div {
     text-align: center;
 }
 
-.road-spic section{
+.road-spic section {
     text-align: center;
+}
+
+
+/*Responsive for Boxes and road spicific*/
+@media (max-width: 1024px) {
+    .boxes {
+        grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .road-spic {
+        grid-template-columns: 1fr; /* Single-column for road-spic */
+        padding: 2.5rem;
+    }
+
+    .box {
+        padding: 1.2rem; /* Slightly smaller padding */
+    }
+
+    .showcase h1 {
+        font-size: 2rem;
+    }
+
+    .showcase p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .boxes {
+        grid-template-columns: 1fr; /* Single-column layout */
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .road-spic {
+        grid-template-columns: 1fr; /* Keep single-column layout */
+        padding: 2rem; /* Smaller padding */
+        margin-bottom: 1.5rem;
+    }
+
+    .box {
+        padding: 1rem; /* Smaller padding for boxes */
+    }
+
+    .showcase h1 {
+        font-size: 1.8rem; /* Reduce heading size */
+    }
+
+    .showcase p {
+        font-size: 1rem;
+    }
+
+    .road-spic h2 {
+        font-size: 1.3rem;
+    }
+
+    .road-spic p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .boxes {
+        grid-template-columns: 1fr; /* Single-column */
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .box {
+        padding: 0.8rem; /* Even smaller padding */
+        font-size: 0.9rem;
+    }
+
+    .road-spic {
+        grid-template-columns: 1fr; /* Keep single-column */
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .showcase h1 {
+        font-size: 1.5rem;
+    }
+
+    .showcase p {
+        font-size: 0.9rem;
+    }
+
+    .road-spic h2 {
+        font-size: 1.2rem;
+    }
+
+    .road-spic p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.9rem; /* Adjust button font size */
+    }
 }
 
 /* Portfolio */
@@ -296,6 +394,243 @@ footer {
     min-height: 100vh;
 }
 
+.infoAbout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-gap: 2rem;
+    background-color: #005cbf;
+    color: white;
+    padding: 5rem 1rem;
+    border-radius: 5rem;
+    margin: 0 8rem;
+    /*margin-top: 8rem;*/
+    text-align: center;
+}
+
+.infoAbout div {
+    text-align: center;
+}
+
+.infoAbout h4 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.infoAbout p {
+    text-indent: 50px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-left: 8rem;
+    margin-right: 8rem;
+}
+
+.infoAbout div:nth-child(1) {
+    background-image: url("/images/pic4.jpg");
+    background-size: cover;
+    border-bottom-right-radius: 5rem;
+    border-top-left-radius: 5rem;
+}
+
+.infoAbout div:nth-child(3) {
+    background-image: url("/images/pic1.jpg");
+    background-size: cover;
+    border-bottom-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+}
+
+@media (max-width: 1024px) {
+    .infoAbout {
+        padding: 4rem 2rem;
+        margin: 4rem 4rem 0;
+    }
+
+    .infoAbout h4 {
+        font-size: 2.25rem; /* Adjust font size */
+    }
+
+    .infoAbout p {
+        font-size: 1.2rem; /* Adjust font size */
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .infoAbout {
+        padding: 3rem 1rem; /* Reduce padding */
+        margin: 5rem 0 2rem; /* Reduce margin */
+    }
+
+    .infoAbout h4 {
+        font-size: 2rem; /* Smaller font size */
+    }
+
+    .infoAbout p {
+        font-size: 1.1rem; /* Adjust font size */
+        margin: 0 1rem; /* Less margin */
+    }
+}
+
+@media (max-width: 375px) {
+    .infoAbout {
+        padding: 2rem 1rem; /* Reduce padding */
+        margin: 10rem 0 1rem; /* Reduce margin to fit the smaller screen */
+    }
+
+    .infoAbout h4 {
+        font-size: 1.75rem; /* Reduce font size for smaller screen */
+    }
+
+    .infoAbout p {
+        font-size: 1rem; /* Smaller font size for iPhone Mini */
+        margin-left: 1rem; /* Less margin on the sides */
+        margin-right: 1rem;
+    }
+}
+
+/*Rents Info*/
+
+.wrapper-Rents {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.infoRents {
+    display: flex; /* Flexbox for centering */
+    flex-direction: row; /* Default layout */
+    justify-content: center;
+    align-items: center; /* Vertical centering */
+    grid-gap: 2rem;
+    background-color: #005cbf;
+    color: white;
+    padding: 5rem 1rem;
+    border-radius: 2rem;
+    margin: 2rem 8rem;
+    text-align: center;
+}
+
+.infoRents div {
+    text-align: center;
+    flex: 1; /* Ensure it takes full available space */
+}
+
+.infoRents h4 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.infoRents p {
+    text-indent: 50px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+/* Center text div vertically */
+.infoRents div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    text-align-last: left;
+}
+
+.infoRents div:nth-child(1),
+.infoRents div:nth-child(3) {
+    background-size: cover;
+    border-radius: 5rem;
+}
+
+/* Fix for iPad landscape (1024px width) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .infoRents {
+        flex-direction: column; /* Stack vertically on iPad landscape */
+        padding: 4rem 2rem;
+        margin: 4rem 2rem;
+        margin-top: 10rem;
+    }
+
+    .infoRents h4 {
+        font-size: 2.25rem; /* Slightly smaller font */
+    }
+
+    .infoRents p {
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .infoRents div:nth-child(1),
+    .infoRents div:nth-child(3) {
+        border-radius: 4rem; /* Adjusted border-radius for smoother look */
+    }
+
+    footer {
+        padding: 1rem 2rem; /* Adjust footer padding */
+    }
+}
+
+/* Fix for iPad portrait (768px width) */
+@media (max-width: 768px) {
+    .infoRents {
+        flex-direction: column; /* Stack vertically for portrait */
+        padding: 3rem 1rem;
+        margin: 2rem 1rem;
+        margin-top: 6rem;
+    }
+
+    .infoRents h4 {
+        font-size: 2rem;
+    }
+
+    .infoRents p {
+        font-size: 1.1rem;
+        margin: 0 1rem;
+    }
+
+    .infoRents div:nth-child(1),
+    .infoRents div:nth-child(3) {
+        border-radius: 3rem;
+    }
+
+    footer {
+        padding: 1rem 1rem; /* Adjust footer padding */
+    }
+}
+
+/* Mobile (375px width) */
+@media (max-width: 375px) {
+    .infoRents {
+        padding: 2rem 0.5rem;
+        margin: 2rem 0.5rem;
+        margin-top: 5rem;
+    }
+
+    .infoRents h4 {
+        font-size: 1.75rem;
+    }
+
+    .infoRents p {
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+    footer {
+        padding: 1rem 0.5rem; /* Adjust footer padding for smaller screens */
+    }
+}
+
+/*General Info*/
 .info {
     display: flex;
     flex-direction: column;
@@ -328,55 +663,6 @@ footer {
     margin-left: 8rem;
     margin-right: 8rem;
 }
-
-/*.info {*/
-/*    display: grid;*/
-/*    grid-gap: 4rem; !* Increase the gap between the columns *!*/
-/*    grid-template-columns: 1fr 2fr 1fr; !* Centralize the main content by widening the middle column *!*/
-/*    background-color: #005cbf;*/
-/*    color: white;*/
-/*    padding: 6rem 8rem; !* Add more padding for a spacious look *!*/
-/*    border-radius: 5rem;*/
-/*    max-width: 1200px; !* Limit the max width for better readability *!*/
-/*    margin: 0 auto; !* Center the entire section horizontally *!*/
-/*}*/
-
-/*.info div {*/
-/*    text-align: center;*/
-/*}*/
-
-/*!* Adjust text styling *!*/
-/*.info h4 {*/
-/*    font-size: 2.5rem;*/
-/*    margin-bottom: 1.5rem;*/
-/*    font-weight: bold;*/
-/*    text-align: center;*/
-/*}*/
-
-/*.info p {*/
-/*    font-size: 1.25rem;*/
-/*    line-height: 1.8; !* Increase line height for better readability *!*/
-/*    max-width: 800px; !* Limit the width of the text block for better focus *!*/
-/*    margin: 0 auto; !* Center the text block *!*/
-/*}*/
-
-/*.info a.btn {*/
-/*    margin-top: 2rem;*/
-/*    padding: 0.75rem 1.5rem;*/
-/*    font-size: 1.2rem;*/
-/*    text-transform: uppercase;*/
-/*    border-radius: 0.5rem;*/
-/*    background-color: transparent;*/
-/*    color: #f28a0f;*/
-/*    transition: background-color 0.3s ease, color 0.3s ease;*/
-/*}*/
-
-/*!* Add hover effect for the button *!*/
-/*.info a.btn:hover {*/
-/*    background-color: #f28a0f;*/
-/*    color: white;*/
-/*}*/
-
 
 .info div:nth-child(1) {
     background-image: url("/images/pic4.jpg");
@@ -428,7 +714,7 @@ footer {
 @media (max-width: 375px) {
     .info {
         padding: 2rem 1rem; /* Reduce padding */
-        margin:10rem 0 1rem; /* Reduce margin to fit the smaller screen */
+        margin: 10rem 0 1rem; /* Reduce margin to fit the smaller screen */
     }
 
     .info h4 {
@@ -442,13 +728,15 @@ footer {
     }
 }
 
+
 /*Details cars*/
 /*-------------*/
-.details-car{
+.details-car {
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: 1fr 1fr;
-    background: var(--primary); box-shadow: var(--shadow);
+    background: var(--primary);
+    box-shadow: var(--shadow);
     color: #0C5679;
     padding: 5rem;
     border-radius: 5rem;
@@ -458,6 +746,7 @@ footer {
     text-align: justify;
     text-align-last: center;
 }
+
 /*-------------*/
 .details-main {
     display: grid;
@@ -605,15 +894,16 @@ body {
     height: 40px;
     background-color: #0833e3
 }
+
 /*
     CSS for login-register
  */
-.div-login-register-text{
+.div-login-register-text {
     color: white;
 }
 
 /*LOGIN*/
-.login-wrapper{
+.login-wrapper {
     display: flex;
     flex-direction: column;
     background-color: rgba(63, 138, 140, 0.9);
@@ -622,16 +912,16 @@ body {
     padding-right: 2rem;
     padding-left: 2rem;
     max-width: 400px;
-    margin:auto;
+    margin: auto;
     width: 90%;
     box-sizing: border-box;
     margin-top: 0;
 }
 
-.background-login{
+.background-login {
     margin: 0;
     margin-top: 0;
-    image-rendering:high-quality;
+    image-rendering: high-quality;
     min-height: 100vh;
     padding: 0 2rem 2rem;
     background-image: url("../images/background2.png");
@@ -700,7 +990,7 @@ body {
 
 /*REGISTER*/
 
-.register-wrapper{
+.register-wrapper {
     display: flex;
     flex-direction: column;
     background-color: rgba(63, 138, 140, 0.9);
@@ -709,14 +999,14 @@ body {
     padding-right: 2rem;
     padding-left: 2rem;
     max-width: 400px;
-    margin:auto;
+    margin: auto;
     width: 90%;
     box-sizing: border-box;
 }
 
-.background-register{
+.background-register {
     margin: 0;
-    image-rendering:high-quality;
+    image-rendering: high-quality;
     min-height: 100vh;
     padding: 0 2rem 2rem;
     background-image: url("../images/background2.png");
