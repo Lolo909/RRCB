@@ -619,6 +619,173 @@ footer {
         padding: 1rem 0.5rem; /* Adjust footer padding for smaller screens */
     }
 }
+/*---profileUser info---*/
+
+.wrapper-Profile {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.profileUser {
+    display: flex; /* Flexbox for centering */
+    flex-direction: row; /* Default layout */
+    justify-content: center;
+    align-items: center; /* Vertical centering */
+    grid-gap: 2rem;
+    background-color: #005cbf;
+    color: white;
+    padding: 5rem 1rem;
+    border-radius: 2rem;
+    margin: 2rem 8rem;
+    text-align: center;
+}
+
+.profileUser div {
+    text-align: center;
+    flex: 1; /* Ensure it takes full available space */
+}
+
+.profileUser h4 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.profileUser p {
+    text-indent: 50px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+/* Profile Card Styling */
+.card {
+    border-radius: .5rem;
+}
+
+.gradient-custom {
+    background: linear-gradient(45deg, #0C5679, #005cbf);
+}
+
+.card img {
+    width: 100px;
+}
+
+.card .col-md-8 .card-body h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.btn {
+    margin-top: 1rem;
+}
+
+/* Responsive Adjustments */
+
+/* Fix for iPad landscape (1024px width) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .profileUser {
+        flex-direction: column; /* Stack vertically on iPad landscape */
+        padding: 4rem 2rem;
+        margin: 10rem 2rem 4rem 1rem;
+    }
+
+    .profileUser h4 {
+        font-size: 2.25rem; /* Slightly smaller font */
+    }
+
+    .profileUser p {
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .profileUser div:nth-child(1),
+    .profileUser div:nth-child(3) {
+        border-radius: 4rem; /* Adjusted border-radius for smoother look */
+    }
+
+    footer {
+        padding: 1rem 2rem; /* Adjust footer padding */
+    }
+}
+
+@media (max-width: 768px) {
+    .profileUser {
+        flex-direction: column; /* Stack vertically for portrait */
+        padding: 3rem 1rem;
+        margin: 6rem 1rem 2rem;
+    }
+
+    .profileUser h4 {
+        font-size: 2rem;
+    }
+
+    .profileUser p {
+        font-size: 1.1rem;
+        margin: 0 1rem;
+    }
+
+    .profileUser div:nth-child(1),
+    .profileUser div:nth-child(3) {
+        border-radius: 3rem;
+    }
+
+    footer {
+        padding: 1rem 1rem; /* Adjust footer padding */
+    }
+
+    /* Stack profile card columns */
+    .card .row.g-0 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card .col-md-4 {
+        border-radius: .5rem .5rem 0 0;
+    }
+
+    .card .col-md-8 {
+        border-radius: 0 0 .5rem .5rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .profileUser {
+        padding: 2rem 0.5rem;
+        margin: 2rem 0.5rem;
+        margin-top: 5rem;
+    }
+
+    .profileUser h4 {
+        font-size: 1.75rem;
+    }
+
+    .profileUser p {
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+    footer {
+        padding: 1rem 0.5rem; /* Adjust footer padding for smaller screens */
+    }
+
+    /* Further reduce padding on smaller screens */
+    .card .card-body {
+        padding: 1rem;
+    }
+
+    .card .col-md-8 {
+        border-radius: 0 0 .5rem .5rem;
+    }
+}
+/*------*/
+
 
 /*General Info*/
 .info {
