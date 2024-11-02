@@ -637,13 +637,14 @@ footer {
     color: white;
     padding: 5rem 1rem;
     border-radius: 2rem;
-    margin: 2rem 8rem;
+    margin: 1rem 4rem;
     text-align: center;
 }
 
 .profileUser div {
     text-align: center;
     flex: 1; /* Ensure it takes full available space */
+    z-index: 1;
 }
 
 .profileUser h4 {
@@ -662,7 +663,10 @@ footer {
 
 /* Profile Card Styling */
 .card {
-    border-radius: .5rem;
+    border-radius: 0.5rem;
+    position: relative;
+    z-index: 1;
+    padding: 1rem;
 }
 
 .gradient-custom {
