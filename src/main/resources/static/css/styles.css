@@ -633,7 +633,6 @@ footer {
     justify-content: center;
     align-items: center; /* Vertical centering */
     grid-gap: 2rem;
-    background-color: #005cbf;
     color: white;
     padding: 5rem 1rem;
     border-radius: 2rem;
@@ -789,6 +788,157 @@ footer {
     }
 }
 /*------*/
+
+/*---edit profile user info---*/
+
+.wrapper-Edit-Profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.editProfileUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    margin: auto;
+    max-width: 600px; /* Limits the form's width on larger screens */
+    text-align: center;
+    width: 100%;
+}
+
+form#w-50 {
+    width: 100%;
+    max-width: 400px; /* Limits form width for better readability */
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.editProfileUser div {
+    text-align: center;
+    flex: 1; /* Ensure it takes full available space */
+    z-index: 1;
+}
+
+.editProfileUser h4 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.editProfileUser p {
+    text-indent: 50px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.gradient-custom {
+    background: linear-gradient(45deg, #0C5679, #005cbf);
+}
+
+.btn {
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+/* Responsive Adjustments */
+
+/* Fix for iPad landscape (1024px width) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .editProfileUser {
+        flex-direction: column; /* Stack vertically on iPad landscape */
+        padding: 2rem 0;
+        margin: 10rem 1rem 4rem 1rem;
+    }
+
+    .editProfileUser h4 {
+        font-size: 2.25rem; /* Slightly smaller font */
+    }
+
+    .editProfileUser p {
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .editProfileUser div:nth-child(1),
+    .editProfileUser div:nth-child(3) {
+        border-radius: 4rem; /* Adjusted border-radius for smoother look */
+    }
+
+    footer {
+        padding: 1rem 2rem; /* Adjust footer padding */
+    }
+}
+
+@media (max-width: 768px) {
+    .editProfileUser {
+        padding: 2rem 0;
+        margin: 4rem 0rem;
+    }
+
+    .form-group input, .form-group label {
+        font-size: 1rem;
+    }
+
+    .btn {
+        width: 100%; /* Full-width buttons for smaller screens */
+        margin-bottom: 1rem; /* Adds spacing between buttons */
+    }
+
+    .btn + .btn {
+        margin-top: 0;
+    }
+
+    .editProfileUser h4 {
+        font-size: 2rem;
+    }
+
+    .editProfileUser p {
+        font-size: 1.1rem;
+        margin: 0 1rem;
+    }
+
+    .editProfileUser div:nth-child(1),
+    .editProfileUser div:nth-child(3) {
+        border-radius: 3rem;
+    }
+
+    footer {
+        padding: 1rem 1rem; /* Adjust footer padding */
+    }
+}
+
+@media (max-width: 375px) {
+    .editProfileUser {
+        padding: 2rem 0rem;
+        margin: 2rem 0rem;
+        margin-top: 5rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+
+    .editProfileUser h4 {
+        font-size: 1.75rem;
+    }
+
+    .editProfileUser p {
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    footer {
+        padding: 1rem 0.5rem; /* Adjust footer padding for smaller screens */
+    }
+}
+/*------*/
+
+
 
 
 /*General Info*/
