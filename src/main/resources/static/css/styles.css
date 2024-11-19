@@ -136,7 +136,7 @@ img {
     padding: 3rem;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     box-shadow: var(--shadow);
 }
@@ -202,6 +202,7 @@ img {
     max-width: 1200px;
     margin: auto;
     padding: 0 20px;
+    margin-bottom: 10px;
 }
 
 .top-container-All-Cars {
@@ -236,12 +237,36 @@ img {
     margin-top: 0;
 }
 
+.car-left {
+    background-color: orange;
+    padding: 20px;
+    /*border-radius: 15px;*/
+    color: white;
+    margin: 0
+}
+
+.car-right {
+    background-color: #3F8A8C;
+    padding: 20px;
+    /*border-radius: 15px;*/
+    color: white;
+    margin: 0
+}
+
+.road-All-Cars:nth-child(2n) .car-left {
+    order: 2;
+}
+
+.road-All-Cars:nth-child(2n) .car-right {
+    order: 1;
+}
+
 .road-All-Cars {
     display: grid;
-    grid-gap: 20px;
+    /*grid-gap: 20px;*/
     grid-template-columns: repeat(2, 1fr);
     /*grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));*/
-    padding: 2rem 15px;
+    /*padding: 2rem 15px;*/
     color: #0C5679;
     background: var(--primary);
     box-shadow: var(--shadow);
@@ -268,6 +293,42 @@ img {
     text-align: center;
 }
 
+
+.road-All-Cars-Nav .car-top {
+    order: 1;
+}
+
+.road-All-Cars-Nav .car-bottom {
+    order: 2;
+}
+
+
+.road-All-Cars-Nav {
+    display: grid;
+    /*grid-gap: 20px;*/
+    grid-template-columns: repeat(2, 1fr);
+    /*grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));*/
+    /*padding: 2rem 15px;*/
+    color: #0C5679;
+    background: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.road-All-Cars-Nav img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.road-All-Cars-Nav div {
+    padding: 10px;
+    text-align: center;
+}
+
+.road-All-Cars-Nav section {
+    text-align: center;
+}
+
 /*-----All Cars User------*/
 /* Media Queries */
 
@@ -276,10 +337,15 @@ img {
     .showcase-All-Cars h1 {
         font-size: 2.5rem;
     }
+
     .showcase-All-Cars p {
         font-size: 1rem;
     }
+
     .road-All-Cars {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .road-All-Cars-Nav{
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
@@ -289,37 +355,81 @@ img {
     .showcase-All-Cars h1 {
         font-size: 2rem;
     }
+
     .showcase-All-Cars p {
         font-size: 0.9rem;
     }
+
     .road-All-Cars {
-        padding: 1rem;
+        /*padding: 1rem;*/
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
+    .road-All-Cars-Nav{
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
     .btn {
         font-size: 0.9rem;
         padding: 6px 12px;
+    }
+
+    .road-All-Cars:nth-child(2n) .car-left {
+        order: 1;
+    }
+
+    .road-All-Cars:nth-child(2n) .car-right {
+        order: 2;
+    }
+
+    .road-All-Cars-Nav .car-top {
+        order: 2;
+    }
+    .road-All-Cars-Nav .car-bottom {
+        order: 1;
     }
 }
 
 /* Mobile screens */
 @media (max-width: 480px) {
     .showcase-All-Cars {
-        padding: 2rem;
+        /*padding: 2rem;*/
     }
+
     .showcase-All-Cars h1 {
         font-size: 1.8rem;
     }
+
     .showcase-All-Cars p {
         font-size: 0.8rem;
     }
+
     .road-All-Cars {
         grid-template-columns: 1fr;
         padding: 0.5rem;
     }
+    .road-All-Cars-Nav{
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+    }
+
     .btn {
         font-size: 0.8rem;
         padding: 5px 10px;
+    }
+
+    .road-All-Cars:nth-child(2n) .car-left {
+        order: 1;
+    }
+
+    .road-All-Cars:nth-child(2n) .car-right {
+        order: 2;
+    }
+
+    .road-All-Cars-Nav .car-top {
+        order: 2;
+    }
+    .road-All-Cars-Nav.car-bottom {
+        order: 1;
     }
 }
 
@@ -742,10 +852,12 @@ footer {
     .btn {
         font-size: 0.9rem;
     }
+
     footer {
         padding: 1rem 0.5rem; /* Adjust footer padding for smaller screens */
     }
 }
+
 /*---profileUser info---*/
 
 .wrapper-Profile {
@@ -901,6 +1013,7 @@ footer {
     .btn {
         font-size: 0.9rem;
     }
+
     footer {
         padding: 1rem 0.5rem; /* Adjust footer padding for smaller screens */
     }
@@ -914,9 +1027,9 @@ footer {
         border-radius: 0 0 .5rem .5rem;
     }
 }
+
 /*------*/
 /*--All Cars--*/
-
 
 /*---edit profile user info---*/
 
@@ -964,6 +1077,7 @@ form#w-50 {
     margin-left: 2rem;
     margin-right: 2rem;
 }
+
 .gradient-custom {
     background: linear-gradient(45deg, #0C5679, #005cbf);
 }
@@ -1065,9 +1179,8 @@ form#w-50 {
         padding: 1rem 0.5rem; /* Adjust footer padding for smaller screens */
     }
 }
+
 /*------*/
-
-
 
 
 /*General Info*/
@@ -1168,6 +1281,70 @@ form#w-50 {
     }
 }
 
+/*Add car TODO FIX FOR KINDLE FIRE HDX LINUX*/
+.wrapper-Add-Car {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.form-add-car{
+    background: #3F8A8C;
+    border: solid #0c5679;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+@media (min-width: 1024px) and (max-width: 1600px) {
+    .form-add-car {
+        padding: 1.8rem; /* Adjust padding for high-resolution displays */
+        border-radius: 8px; /* Refined border-radius */
+        margin: 2rem auto;
+    }
+
+    .div-add-car {
+        /* Add spacing for better readability */
+        margin: 5rem 2rem 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .form-add-car {
+        padding: 1.5rem; /* Slightly reduced padding */
+        border-radius: 8px; /* Reduced border-radius for a compact look */
+    }
+
+    .div-add-car{
+        margin: 4rem 1rem 0;
+    }
+}
+
+/* For tablets and medium devices (768px and below) */
+@media (max-width: 768px) {
+    .form-add-car {
+        padding: 1rem; /* Reduce padding */
+        border-radius: 6px; /* Adjust border radius */
+        margin: 3rem 1rem;
+    }
+
+    .form-add-car {
+        margin: 3rem 0;
+    }
+}
+
+/* For small mobile devices (375px and below) */
+@media (max-width: 375px) {
+    .form-add-car {
+        padding: 0.8rem; /* Compact padding for small screens */
+        border-radius: 5px; /* Minimal border-radius */
+        margin: 2rem 0;
+    }
+
+    .form-add-car {
+        margin: 2rem 0;
+    }
+}
+
 
 /*Details cars*/
 /*-------------*/
@@ -1185,6 +1362,88 @@ form#w-50 {
 .details-car div {
     text-align: justify;
     text-align-last: center;
+}
+
+.details-car img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.details-car .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+@media (max-width: 1024px) {
+    .details-car {
+        grid-template-columns: 1fr;
+        padding: 4rem;
+    }
+
+    .details-car img {
+        max-width: 100%;
+    }
+
+    .details-car div {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .details-car {
+        grid-template-columns: 1fr;
+        padding: 3rem;
+    }
+
+    .details-car img {
+        max-width: 100%;
+    }
+
+    .details-car div {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .details-car h1, .details-car h3 {
+        font-size: 1.5rem;
+    }
+
+    .details-car p {
+        font-size: 1rem;
+    }
+
+    .details-car  .btn {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .details-car {
+        grid-template-columns: 1fr;
+    }
+
+    .details-car img {
+        max-width: 100%;
+    }
+
+    .details-car div {
+        text-align: center;
+        padding: 0.5rem;
+    }
+
+    .details-car h1, .details-car h3 {
+        font-size: 1.2rem;
+    }
+
+    .details-car p {
+        font-size: 0.8rem;
+    }
+
+    .details-car  .btn {
+        font-size: 0.8rem;
+    }
 }
 
 /*-------------*/
@@ -1227,11 +1486,11 @@ form#w-50 {
 
 }
 
-#add-route-form {
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
-}
+/*#add-route-form {*/
+/*    border-radius: 10px;*/
+/*    background:  #3F8A8C;*/
+/*    padding: 2rem;*/
+/*}*/
 
 #map {
     height: 500px;

@@ -6,13 +6,11 @@
 <head th:replace="fragments/commons::head"></head>
 <body>
 <script>
-    function upload_check()
-    {
+    function upload_check() {
         var upl = document.getElementById("file_id");
         var max = document.getElementById("max_id").value;
 
-        if(upl.files[0].size > max)
-        {
+        if (upl.files[0].size > max) {
             alert("File too big!");
             upl.value = "";
         }
@@ -20,17 +18,18 @@
 </script>
 <!--<div class="wrapper">-->
 <!-- Navigation -->
+<div class="wrapper-Add-Car">
 <header th:replace="fragments/commons::navigation">
 </header>
 
 <!-- Top Container -->
-<div class="row justify-content-center lemon-regular" style="width: 100%">
-    <form id="add-route-form" class="w-50 rounded text-white mt-5" style="background: #3F8A8C; border: solid #0B0835"
+<div class="row justify-content-center lemon-regular div-add-car">
+<!--    id="add-route-form"  and formAddCar how to fix-->
+    <form class="w-50 rounded text-white mt-5 form-add-car"
           th:action="@{/cars/add}"
           th:method="POST"
           th:object="${carAddBindingModel}"
           enctype="multipart/form-data">
-
         <h3 class="pl-2" style="text-align: center">Add a new car</h3>
         <div>
             <div class="form-group">
@@ -123,20 +122,20 @@
             </div>
         </div>
 
-<!--        <div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="imageUrl">Put here cloud URL for image of the car.</label>-->
-<!--                <input th:field="*{imageUrl}"-->
-<!--                       id="imageUrl" type="text"-->
-<!--                       required minlength="1"-->
-<!--                       class="form-control" placeholder="Image url">-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div>-->
+        <!--            <div class="form-group">-->
+        <!--                <label for="imageUrl">Put here cloud URL for image of the car.</label>-->
+        <!--                <input th:field="*{imageUrl}"-->
+        <!--                       id="imageUrl" type="text"-->
+        <!--                       required minlength="1"-->
+        <!--                       class="form-control" placeholder="Image url">-->
+        <!--            </div>-->
+        <!--        </div>-->
 
         <div>
             <div class="form-group">
                 <label>Put here FILE for image of the car.</label>
-                <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="131072" />
+                <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="131072"/>
                 <input onchange="upload_check()" th:field="*{file}"
                        id="file_id" type="file"
                        required minlength="1"
@@ -148,6 +147,7 @@
             <button class="btn btn-primary btn-block w-50" type="submit">Add Car</button>
         </div>
     </form>
+</div>
 </div>
 </body>
 <footer th:replace="fragments/commons::footer">
