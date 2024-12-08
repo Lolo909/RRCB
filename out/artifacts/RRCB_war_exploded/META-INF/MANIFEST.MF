@@ -1,0 +1,53 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: Arnaudov
+Build-Jdk: Amazon Corretto version 17.0.10
+Implementation-Title: RRCB
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.example
+Main-Class: com.mypackage.MyClass
+Class-Path: lib/spring-boot-starter-data-jpa-3.1.5.jar lib/spring-boot-s
+ tarter-aop-3.1.5.jar lib/aspectjweaver-1.9.20.jar lib/spring-boot-start
+ er-jdbc-3.1.5.jar lib/HikariCP-5.0.1.jar lib/spring-jdbc-6.0.13.jar lib
+ /hibernate-core-6.2.13.Final.jar lib/jakarta.persistence-api-3.1.0.jar 
+ lib/jakarta.transaction-api-2.0.1.jar lib/jboss-logging-3.5.3.Final.jar
+  lib/hibernate-commons-annotations-6.0.6.Final.jar lib/jandex-3.0.5.jar
+  lib/classmate-1.5.1.jar lib/byte-buddy-1.14.9.jar lib/jaxb-runtime-4.0
+ .3.jar lib/jaxb-core-4.0.3.jar lib/angus-activation-2.0.1.jar lib/txw2-
+ 4.0.3.jar lib/istack-commons-runtime-4.1.2.jar lib/jakarta.inject-api-2
+ .0.1.jar lib/antlr4-runtime-4.10.1.jar lib/spring-data-jpa-3.1.5.jar li
+ b/spring-data-commons-3.1.5.jar lib/spring-orm-6.0.13.jar lib/spring-co
+ ntext-6.0.13.jar lib/spring-tx-6.0.13.jar lib/spring-beans-6.0.13.jar l
+ ib/jakarta.annotation-api-2.1.1.jar lib/spring-aspects-6.0.13.jar lib/s
+ pring-boot-starter-thymeleaf-3.1.5.jar lib/spring-boot-starter-3.1.5.ja
+ r lib/spring-boot-starter-logging-3.1.5.jar lib/logback-classic-1.4.11.
+ jar lib/logback-core-1.4.11.jar lib/log4j-to-slf4j-2.20.0.jar lib/log4j
+ -api-2.20.0.jar lib/jul-to-slf4j-2.0.9.jar lib/snakeyaml-1.33.jar lib/t
+ hymeleaf-spring6-3.1.2.RELEASE.jar lib/thymeleaf-3.1.2.RELEASE.jar lib/
+ attoparser-2.0.7.RELEASE.jar lib/unbescape-1.1.6.RELEASE.jar lib/spring
+ -boot-starter-validation-3.1.5.jar lib/tomcat-embed-el-10.1.15.jar lib/
+ hibernate-validator-8.0.1.Final.jar lib/jakarta.validation-api-3.0.2.ja
+ r lib/spring-boot-starter-web-3.1.5.jar lib/spring-boot-starter-json-3.
+ 1.5.jar lib/jackson-databind-2.15.3.jar lib/jackson-annotations-2.15.3.
+ jar lib/jackson-core-2.15.3.jar lib/jackson-datatype-jdk8-2.15.3.jar li
+ b/jackson-datatype-jsr310-2.15.3.jar lib/jackson-module-parameter-names
+ -2.15.3.jar lib/spring-boot-starter-tomcat-3.1.5.jar lib/tomcat-embed-c
+ ore-10.1.15.jar lib/tomcat-embed-websocket-10.1.15.jar lib/spring-web-6
+ .0.13.jar lib/micrometer-observation-1.11.5.jar lib/micrometer-commons-
+ 1.11.5.jar lib/spring-webmvc-6.0.13.jar lib/spring-expression-6.0.13.ja
+ r lib/spring-boot-devtools-3.1.5.jar lib/spring-boot-3.1.5.jar lib/spri
+ ng-boot-autoconfigure-3.1.5.jar lib/mysql-connector-j-8.0.33.jar lib/ja
+ karta.xml.bind-api-4.0.1.jar lib/jakarta.activation-api-2.1.2.jar lib/s
+ pring-core-6.0.13.jar lib/spring-jcl-6.0.13.jar lib/spring-boot-starter
+ -cache-3.1.5.jar lib/spring-context-support-6.0.13.jar lib/spring-boot-
+ starter-security-3.1.5.jar lib/spring-aop-6.0.13.jar lib/spring-securit
+ y-config-6.1.5.jar lib/spring-security-web-6.1.5.jar lib/thymeleaf-extr
+ as-springsecurity6-3.1.2.RELEASE.jar lib/slf4j-api-2.0.9.jar lib/modelm
+ apper-3.0.0.jar lib/spring-security-core-6.1.5.jar lib/spring-security-
+ crypto-6.1.5.jar lib/maven-compiler-plugin-3.11.0.jar lib/maven-shared-
+ utils-3.3.4.jar lib/commons-io-2.6.jar lib/maven-shared-incremental-1.1
+ .jar lib/plexus-component-annotations-1.5.5.jar lib/plexus-java-1.1.2.j
+ ar lib/asm-9.4.jar lib/qdox-2.0.3.jar lib/plexus-compiler-api-2.13.0.ja
+ r lib/plexus-utils-3.4.2.jar lib/plexus-compiler-manager-2.13.0.jar lib
+ /plexus-compiler-javac-2.13.0.jar
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+<body>
+<div class="wrapper lemon-regular">
+    <!-- Navigation -->
+    <header th:replace="fragments/commons::navigation">
+    </header>
+
+    <section class="top-container">
+        <div class="showcase">
+            <h1>Find amazing retro cars</h1>
+            <p>Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
+
+        </div>
+    </section>
+    <section class="road">
+        <div>
+            <h2>Here you can see all our cars:</h2>
+<!--            TODO make searchbar here-->
+            <a href="/cars/all" class="btn">All cars</a>
+            <a href="/cars/antique" class="btn">Antique</a>
+            <a href="/cars/classic" class="btn">Classic</a>
+        </div>
+        <img src="/images/Vintage.png" height="150px" width="100%" alt="">
+    </section>
+
+    <section th:each="c : ${cars}" th:object="${c}" class="road">
+        <img th:src="*{file}" alt="Title file" style="min-height: 250px; min-width: 900px; border-radius: 15px; margin: auto;">
+        <div>
+            <h2 th:text="*{name}">Car name</h2>
+            <p th:text="*{brand}">Brand car</p>
+            <p th:text="*{model}">Model car</p>
+            <p th:text="*{created}">Year of the car</p>
+            <a th:href="@{/cars/details/{id} (id = *{id})}" class="btn">Details</a>
+        </div>
+    </section>
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer th:replace="fragments/commons::footer">
+</footer>
+</html>

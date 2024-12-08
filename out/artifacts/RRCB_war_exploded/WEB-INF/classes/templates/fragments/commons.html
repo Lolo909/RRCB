@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>RRCB</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon/logo2.ico">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!--        <link rel="stylesheet" href="/css/mobile.css">-->
+    <link rel="stylesheet" href="/css/navbar.css">
+    <!--    <link rel="stylesheet" href="/css/slideshow.css">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:fragment="navigation" style="z-index: 2;">
+    <nav class="shift lemon-regular navbar navbar-expand-sm navbar-dark">
+        <div class="container">
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#n_bar"
+                    aria-controls="navbarNavAltMarkup" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="n_bar">
+                <ul>
+                    <a th:href="@{/}" ><img alt="pizza picture" src="/images/icon/logo.ico"
+                                           style="max-height: 60px; "></a>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <th:block sec:authorize="!isAuthenticated()">
+                        <li>
+                            <a href="/users/login">Login</a>
+                        </li>
+                        <li>
+                            <a href="/users/register">Register</a>
+                        </li>
+                        <li>
+                            <a href="/about">About</a>
+                        </li>
+                    </th:block>
+                    <th:block sec:authorize="isAuthenticated() && !hasRole('ADMIN')">
+                        <li>
+                            <a href="/users/rents">My rents</a>
+                        </li>
+                        <li>
+                            <a href="/rentsInfo">Rents info</a>
+                        </li>
+                        <li>
+                            <!--                <a th:href="@{/users/profile/{id}(id=*{id})}">Profile</a>-->
+                            <a th:href="@{/users/profile}">Profile</a>
+                            <!--                sec:authentication="name"-->
+                        </li>
+                    </th:block>
+                    <th:block sec:authorize="hasRole('ADMIN')">
+                        <li>
+                            <a href="/cars/add">Add car</a>
+                        </li>
+                        <li>
+                            <a href="/cars/allCarsAdmin">All cars</a>
+                        </li>
+                        <li>
+                            <a href="/users/all">All users</a>
+                        </li>
+                        <li>
+                            <a href="/users/allRents">All rents</a>
+                        </li>
+                    </th:block>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <li>
+                            <a>
+                                <form th:method="POST"
+                                      th:action="@{/users/logout}">
+
+                                    <input
+                                            type="submit" th:value="LOGOUT">
+
+                                </form>
+                            </a>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<footer th:fragment="footer" class="footer bg-blur">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; R.R.C.B. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

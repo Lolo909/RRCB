@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+<body>
+<div class="wrapper-Profile lemon-regular">
+    <!-- Navigation -->
+    <header th:replace="fragments/commons::navigation">
+    </header>
+    <div class="profileUser" th:object="${user}">
+
+<!--        TODO: MAKE IT RESPONSIVE-->
+<!--        <div style="text-align: left; color: #0C5679">-->
+<!--            <h1 style="text-align: center">Your profile:</h1>-->
+<!--            <h3 th:text="|Username: *{username}|">Username</h3>-->
+<!--            <h3 th:text="|Fullname: *{fullName}|">Full name</h3>-->
+<!--            <h3 th:text="|Email: *{email}|">Email</h3>-->
+<!--&lt;!&ndash;            <h3 th:text="|Role: *{role.getName()}|">Year created</h3>&ndash;&gt;-->
+<!--            <a th:href="@{/users/profile/edit/{id} (id = *{id})}" class="btn">EDIT PROFILE</a>-->
+<!--        </div>-->
+        <div class="info py-5 h-100" style="background: var(--primary); box-shadow: var(--shadow); color: #0C5679" th:object="${user}">
+            <h1 style="text-align: center">Your profile:</h1>
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-lg-6 mb-4 mb-lg-0">
+                    <div class="card mb-3" style="border-radius: .5rem;">
+                        <div class="row g-0" style="row-gap: 10px">
+                            <div class="col-md-4 gradient-custom text-center text-white"
+                                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                <img src="/images/userProfile.png"
+                                     alt="Avatar" class="img-fluid my-5" style="width: 100px;" />
+                                <a th:href="@{/users/profile/edit/{id} (id = *{id})}" class="btn"><i class="far fa-edit"></i>EDIT PROFILE</a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <h2>Information</h2>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="col pt-1">
+                                        <div class="row mb-3" style="text-align: left">
+                                            <h3 th:text="|Username: *{username}|">Username</h3>
+                                        </div>
+                                        <div class="row mb-3" style="text-align: left">
+                                            <h3 th:text="|Fullname: *{fullName}|">Full name</h3>
+                                        </div>
+                                        <div class="row mb-3" style="text-align: left">
+                                            <h3 th:text="|Email: *{email}|">Email</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<!-- Wrapper Ends -->
+</body>
+<footer th:replace="fragments/commons::footer">
+</footer>
+</html>

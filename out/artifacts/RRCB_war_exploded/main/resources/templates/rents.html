@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head">
+</head>
+<body>
+<div class="wrapper lemon-regular">
+    <!-- Navigation -->
+    <header th:replace="fragments/commons::navigation">
+    </header>
+
+    <div class="info" style="background-color: #0C5679; size: auto">
+        <div></div>
+        <div style="text-align: justify;text-align-last: left">
+            <h4 style="text-align-last: center; font-size: 500%">Rents:</h4>
+        </div>
+
+        <div></div>
+    </div>
+    <!-- Info Section -->
+    <section class="road" th:each="r : ${rents}" th:object="${r}">
+        <div style="text-align-last: left; padding-left: 10%">
+            <h3 th:text="|car name: *{car.getName()}|">car name</h3>
+            <h3 th:text="|date of order: *{dateTime}|">datetime</h3>
+            <h3 th:text="|price: *{price}lv|">price</h3>
+            <h3 th:text="|rented days: *{allOrderedDays}|">allOrderedDays</h3>
+
+        </div>
+        <div>
+<!--            TODO:-->
+<!--            <a th:href="@{/users/remove/{id} (id = *{id})}" class="btn">Cancel rent</a>-->
+        </div>
+    </section>
+
+</div>
+<!-- Wrapper Ends -->'
+
+<footer th:replace="fragments/commons::footer">
+</footer>
+</body>
+
+</html>

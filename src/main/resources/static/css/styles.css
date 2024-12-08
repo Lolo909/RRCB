@@ -58,13 +58,13 @@ img {
 /* Navigation */
 
 .main-nav ul {
-    display: grid;
+    display: flex;
     grid-gap: 20px;
     padding: 0;
     list-style: none;
     grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 0;
 }
-
 
 .center-block {
     display: block;
@@ -190,6 +190,7 @@ img {
     padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease-in-out, background 0.5s ease-in-out;
+    border: 2px solid;
 }
 
 .box:hover {
@@ -263,10 +264,7 @@ img {
 
 .road-All-Cars {
     display: grid;
-    /*grid-gap: 20px;*/
     grid-template-columns: repeat(2, 1fr);
-    /*grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));*/
-    /*padding: 2rem 15px;*/
     color: #0C5679;
     background: var(--primary);
     box-shadow: var(--shadow);
@@ -305,13 +303,11 @@ img {
 
 .road-All-Cars-Nav {
     display: grid;
-    /*grid-gap: 20px;*/
     grid-template-columns: repeat(2, 1fr);
-    /*grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));*/
-    /*padding: 2rem 15px;*/
     color: #0C5679;
     background: var(--primary);
     box-shadow: var(--shadow);
+    align-items: center;
 }
 
 .road-All-Cars-Nav img {
@@ -497,6 +493,8 @@ img {
         grid-template-columns: repeat(2, 1fr); /* Two-column layout */
         padding-left: 10px;
         padding-right: 10px;
+        justify-content: center;
+        align-items: center;
     }
 
     .road-spic {
@@ -505,6 +503,7 @@ img {
     }
 
     .box {
+
         padding: 1.2rem; /* Slightly smaller padding */
     }
 
@@ -522,6 +521,8 @@ img {
         grid-template-columns: 1fr; /* Single-column layout */
         padding-left: 10px;
         padding-right: 10px;
+        justify-content: center;
+        align-items: center;
     }
 
     .road-spic {
@@ -556,6 +557,8 @@ img {
         grid-template-columns: 1fr; /* Single-column */
         padding-left: 5px;
         padding-right: 5px;
+        justify-content: center;
+        align-items: center;
     }
 
     .box {

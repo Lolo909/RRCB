@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.spring.servlet.multipart.max-request-size",
+      "type": "java.lang.String",
+      "description": "Description for spring.spring.servlet.multipart.max-request-size."
+  }
+] }

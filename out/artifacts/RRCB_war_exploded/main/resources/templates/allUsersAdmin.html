@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head">
+</head>
+<body>
+<div class="wrapper lemon-regular">
+    <!-- Navigation -->
+    <header th:replace="fragments/commons::navigation">
+    </header>
+
+    <!-- Info Section -->
+    <section class="road" th:each="u : ${users}" th:object="${u}">
+        <div>
+            <h3 th:text="|Username: *{username}|">username</h3>
+            <h3 th:text="|Fullname: *{fullName}|">fullName</h3>
+            <h3 th:text="|Email: *{email}|">email</h3>
+        </div>
+        <div>
+            <h2 th:text="|Role: *{role.getName()}|">role</h2>
+
+            <div style="display: inline-block;white-space: normal;">
+            <a th:href="@{/users/remove/{id} (id = *{id})}" class="btn">Remove user</a>
+            <a th:href="@{/users/changeRole/{id} (id = *{id})}" class="btn">Change role</a>
+                </div>
+        </div>
+    </section>
+
+</div>
+<!-- Wrapper Ends -->'
+
+<footer th:replace="fragments/commons::footer">
+</footer>
+</body>
+
+</html>
