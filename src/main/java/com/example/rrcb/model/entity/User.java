@@ -26,7 +26,7 @@ public class User extends BaseEntity {
             //, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH})//fetch = FetchType.EAGER
     private List<Role> roles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Order> orders;
 
 

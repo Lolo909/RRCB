@@ -4,6 +4,7 @@ package com.example.rrcb.model.entity;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -39,6 +40,9 @@ public class Car extends BaseEntity{
 
     @ManyToOne
     private Category category;
+
+    @OneToMany
+    private List<Order> orders;
 
     @Column
     @ElementCollection(fetch = FetchType.EAGER)

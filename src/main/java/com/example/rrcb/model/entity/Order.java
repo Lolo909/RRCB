@@ -1,6 +1,7 @@
 package com.example.rrcb.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,11 +12,13 @@ import java.util.List;
 @Table(name = "orders")
 public class Order extends BaseEntity{
 
-//    @Column(nullable = false)
-//    private LocalDateTime startDate;
-//
-//    @Column(nullable = false)
-//    private LocalDateTime endDate;
+    @Column(nullable = true)//nullable = false
+    private LocalDateTime startDate;
+
+    @Future
+    @Column(nullable = true)//nullable = false
+    private LocalDateTime endDate;
+
     @Column
     private LocalDateTime dateTime;
 
@@ -40,6 +43,32 @@ public class Order extends BaseEntity{
     */
 
     public Order() {
+    }
+
+    public Order(LocalDateTime startDate, LocalDateTime endDate, BigDecimal price, User user, Car car) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.price = price;
+        this.user = user;
+        this.car = car;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public Order setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public Order setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+        return this;
     }
 
     public LocalDateTime getDateTime() {
