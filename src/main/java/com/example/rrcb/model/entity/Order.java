@@ -12,13 +12,6 @@ import java.util.List;
 @Table(name = "orders")
 public class Order extends BaseEntity{
 
-    @Column(nullable = true)//nullable = false
-    private LocalDateTime startDate;
-
-    @Future
-    @Column(nullable = true)//nullable = false
-    private LocalDateTime endDate;
-
     @Column
     private LocalDateTime dateTime;
 
@@ -45,30 +38,10 @@ public class Order extends BaseEntity{
     public Order() {
     }
 
-    public Order(LocalDateTime startDate, LocalDateTime endDate, BigDecimal price, User user, Car car) {
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public Order(BigDecimal price, User user, Car car) {
         this.price = price;
         this.user = user;
         this.car = car;
-    }
-
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
-
-    public Order setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-        return this;
-    }
-
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    public Order setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-        return this;
     }
 
     public LocalDateTime getDateTime() {

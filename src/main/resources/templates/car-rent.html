@@ -75,6 +75,36 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
+        <script>
+            $(document).ready(function () {
+                var date_input = $('#date'); // Select the date input
+
+                // Initialize the multidatepicker
+                date_input.datepicker({
+                    format: 'mm/dd/yyyy',
+                    todayHighlight: true,
+                    autoclose: false, // Keep the picker open for multiple selections
+                    multidate: true, // Enable multiple date selection
+                    beforeShowDay: function (date) {
+                        // Example: Mark certain dates as unavailable
+                        var unavailableDates = ["01/20/2025", "01/22/2025", "01/25/2025"];
+                        var formattedDate =
+                            ("0" + (date.getMonth() + 1)).slice(-2) + "/" +
+                            ("0" + date.getDate()).slice(-2) + "/" +
+                            date.getFullYear();
+
+                        if (unavailableDates.includes(formattedDate)) {
+                            return {
+                                enabled: false,
+                                classes: 'unavailable-date',
+                                tooltip: 'Date unavailable'
+                            };
+                        }
+                        return true;
+                    }
+                });
+            });
+        </script>
     </form>
 
 
@@ -97,36 +127,7 @@
         cursor: not-allowed !important;
     }
 </style>
-<script>
-    $(document).ready(function () {
-        var date_input = $('#date'); // Select the date input
 
-        // Initialize the multidatepicker
-        date_input.datepicker({
-            format: 'mm/dd/yyyy',
-            todayHighlight: true,
-            autoclose: false, // Keep the picker open for multiple selections
-            multidate: true, // Enable multiple date selection
-            beforeShowDay: function (date) {
-                // Example: Mark certain dates as unavailable
-                var unavailableDates = ["01/20/2025", "01/22/2025", "01/25/2025"];
-                var formattedDate =
-                    ("0" + (date.getMonth() + 1)).slice(-2) + "/" +
-                    ("0" + date.getDate()).slice(-2) + "/" +
-                    date.getFullYear();
-
-                if (unavailableDates.includes(formattedDate)) {
-                    return {
-                        enabled: false,
-                        classes: 'unavailable-date',
-                        tooltip: 'Date unavailable'
-                    };
-                }
-                return true;
-            }
-        });
-    });
-</script>
 
 
 <footer th:replace="fragments/commons::footer">

@@ -171,7 +171,7 @@ public class CarController {
     public String rent(@PathVariable Long id, Model model){
 
         CarRentViewModel test = carService.findCarForRentById(id);
-        model.addAttribute("carForRent", test);//TODO debug id=null
+        model.addAttribute("carForRent", test);
 
         return "car-rent";
     }

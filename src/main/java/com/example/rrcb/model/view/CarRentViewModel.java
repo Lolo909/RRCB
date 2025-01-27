@@ -26,6 +26,8 @@ public class CarRentViewModel {
 
     private List<Integer> allOrderDays;
 
+    private List<String> AllOrderedDaysStringList;
+
     public CarRentViewModel() {
     }
 
@@ -116,6 +118,15 @@ public class CarRentViewModel {
 
     public CarRentViewModel setCategory(CategoryNameEnum category) {
         this.category = category;
+        return this;
+    }
+
+    public List<String> getAllOrderedDaysStringList() {
+        return AllOrderedDaysStringList;
+    }
+
+    public CarRentViewModel setAllOrderedDaysStringList(List<String> allOrderedDaysStringList) {
+        AllOrderedDaysStringList = allOrderedDaysStringList;
         return this;
     }
 }
