@@ -11,13 +11,9 @@ public class OrderDay extends BaseEntity{
     @Column
     private String dayOrdered;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToOne()
-    @JoinColumn(name = "car_id")
-    private Car car;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     public OrderDay() {
     }
@@ -31,21 +27,12 @@ public class OrderDay extends BaseEntity{
         return this;
     }
 
-    public User getUser() {
-        return user;
+    public Order getOrder() {
+        return order;
     }
 
-    public OrderDay setUser(User user) {
-        this.user = user;
-        return this;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public OrderDay setCar(Car car) {
-        this.car = car;
+    public OrderDay setOrder(Order order) {
+        this.order = order;
         return this;
     }
 }

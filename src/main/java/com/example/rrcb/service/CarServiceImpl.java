@@ -4,6 +4,7 @@ import com.example.rrcb.model.binding.CarEditBindingModel;
 import com.example.rrcb.model.binding.OrderAddBindingModel;
 import com.example.rrcb.model.entity.Car;
 import com.example.rrcb.model.entity.Order;
+import com.example.rrcb.model.entity.OrderDay;
 import com.example.rrcb.model.entity.User;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 import com.example.rrcb.model.service.CarServiceModel;
@@ -51,7 +52,7 @@ public class CarServiceImpl implements CarService {
         Car car = modelMapper.map(carServiceModel, Car.class);
 
         //TODO set current user
-
+        /*
         List<Integer> allAvailableDays = new ArrayList<>();
 
         //add max days in month for all available days
@@ -68,6 +69,7 @@ public class CarServiceImpl implements CarService {
         }
 
         car.setAllAvailableDays(allAvailableDays);
+        */
 
         carRepository.save(car);
     }
@@ -84,7 +86,7 @@ public class CarServiceImpl implements CarService {
     public boolean isThereNOTDataAboutAllAvailableDaysInDataBase() {
 
         List<Boolean> listForCheck= carRepository.findAll().stream().map(car -> {
-            return car.getAllAvailableDays().isEmpty();
+            return car.getOrders().isEmpty();
 
         }).collect(Collectors.toList());
 
@@ -191,6 +193,17 @@ public class CarServiceImpl implements CarService {
         return carRepository.findById(id).map(car ->{
                     CarRentViewModel carRentViewModel = modelMapper.map(car, CarRentViewModel.class);
                     carRentViewModel.setCategory(car.getCategory().getName());
+                    List<OrderDay> orderedDays = new ArrayList<>();
+                    for (Order order : car.getOrders()) {
+                        orderedDays.addAll(order.getAllOrderedDaysT());
+                    }
+                    List<String> daysIntoString = new ArrayList<>();
+                    for (OrderDay orderDay : orderedDays) {
+                        daysIntoString.add(orderDay.getDayOrdered());
+                    }
+
+                    carRentViewModel.setOrderedDays(daysIntoString);
+
                     return carRentViewModel;
                 })
                 .orElseThrow(()->new ObjectNotFoundException("Car for rent with id "+id+" is not found."));
@@ -201,6 +214,9 @@ public class CarServiceImpl implements CarService {
     public void rent(Long id, OrderAddBindingModel orderAddBindingModel, Principal principal) {
         Car carForRent = carRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Car with id "+id+" is not found."));
 
+
+
+        /*
 
         carForRent.setAllAvailableDays(getAllAvailableDaysMethod(carForRent.getAllAvailableDays(), orderAddBindingModel.getAllOrderDays()));
         //days.setAllOrderedDays(orderAddBindingModel.getAllOrderedDays());
@@ -227,6 +243,7 @@ public class CarServiceImpl implements CarService {
         orderRepository.save(order);
 
         carRepository.saveAndFlush(carForRent);
+        */
     }
 
 
@@ -245,6 +262,12 @@ public class CarServiceImpl implements CarService {
         return listWithAllAvailableDays;
     }
 
+    @Override
+    public void updateOfCarsAllAvailableDays() {
+
+    }
+
+    /*
     @Override
     public void updateOfCarsAllAvailableDays() {
         List<Integer> allAvailableDays = new ArrayList<>();
@@ -268,6 +291,7 @@ public class CarServiceImpl implements CarService {
         }).collect(Collectors.toList());
 
     }
+    */
 
 
 }

@@ -5,5 +5,5 @@ import com.example.rrcb.model.view.OrderDayViewModel;
 
 public interface OrderDayService {
 
-    OrderDayViewModel findOrderDayById(Long id);
+
 }

@@ -62,6 +62,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void restoreCarAvailableDaysByUserId(Long id) {
+        /*
         List<Order> allOrdersByUser = orderRepository.findAllByUserId(id);
         for (var order: allOrdersByUser) {
             List<Integer> daysOrdered = order.getAllOrderedDays();
@@ -85,5 +86,6 @@ public class OrderServiceImpl implements OrderService {
 
             carRepository.saveAndFlush(car);
         }
+        */
     }
 }

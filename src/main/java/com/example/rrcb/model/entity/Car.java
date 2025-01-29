@@ -41,27 +41,10 @@ public class Car extends BaseEntity{
     @ManyToOne
     private Category category;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Order> orders;
 
-    @Column
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Integer> allAvailableDays;
-
-    @Column
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Integer> allOrderDays;
-
     public Car() {
-    }
-
-    public List<Integer> getAllOrderDays() {
-        return allOrderDays;
-    }
-
-    public Car setAllOrderDays(List<Integer> allOrderDays) {
-        this.allOrderDays = allOrderDays;
-        return this;
     }
 
     public String getName() {
@@ -119,16 +102,6 @@ public class Car extends BaseEntity{
     }
 
 
-    public List<Integer> getAllAvailableDays() {
-        return allAvailableDays;
-    }
-
-    public Car setAllAvailableDays(List<Integer> allAvailableDays) {
-        this.allAvailableDays = allAvailableDays;
-        return this;
-    }
-
-
     public String getFile() {
         return file;
     }
@@ -137,4 +110,15 @@ public class Car extends BaseEntity{
         this.file = file;
         return this;
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public Car setOrders(List<Order> orders) {
+        this.orders = orders;
+        return this;
+    }
+
+
 }

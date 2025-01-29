@@ -1,6 +1,7 @@
 package com.example.rrcb.model.view;
 
 import com.example.rrcb.model.entity.Car;
+import com.example.rrcb.model.entity.Order;
 import com.example.rrcb.model.entity.User;
 
 public class OrderDayViewModel {
@@ -8,9 +9,7 @@ public class OrderDayViewModel {
 
     private String dayOrdered;
 
-    private User user;
-
-    private Car car;
+    private Order order;
 
     public OrderDayViewModel() {
     }
@@ -33,21 +32,12 @@ public class OrderDayViewModel {
         return this;
     }
 
-    public User getUser() {
-        return user;
+    public Order getOrder() {
+        return order;
     }
 
-    public OrderDayViewModel setUser(User user) {
-        this.user = user;
-        return this;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public OrderDayViewModel setCar(Car car) {
-        this.car = car;
+    public OrderDayViewModel setOrder(Order order) {
+        this.order = order;
         return this;
     }
 }

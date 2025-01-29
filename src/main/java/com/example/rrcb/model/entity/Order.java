@@ -18,9 +18,13 @@ public class Order extends BaseEntity{
     @Column
     private BigDecimal price;
 
+//    @Column
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    private List<Integer> allOrderedDays;
+
     @Column
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Integer> allOrderedDays;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<OrderDay> allOrderedDaysT;
 
     @ManyToOne(fetch = FetchType.EAGER)
     //@JoinColumn(name = "user_id")
@@ -80,12 +84,21 @@ public class Order extends BaseEntity{
         return this;
     }
 
-    public List<Integer> getAllOrderedDays() {
-        return allOrderedDays;
+//    public List<Integer> getAllOrderedDays() {
+//        return allOrderedDays;
+//    }
+//
+//    public Order setAllOrderedDays(List<Integer> allOrderedDays) {
+//        this.allOrderedDays = allOrderedDays;
+//        return this;
+//    }
+
+    public List<OrderDay> getAllOrderedDaysT() {
+        return allOrderedDaysT;
     }
 
-    public Order setAllOrderedDays(List<Integer> allOrderedDays) {
-        this.allOrderedDays = allOrderedDays;
+    public Order setAllOrderedDaysT(List<OrderDay> allOrderedDaysT) {
+        this.allOrderedDaysT = allOrderedDaysT;
         return this;
     }
 }

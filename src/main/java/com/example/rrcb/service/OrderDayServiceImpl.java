@@ -24,10 +24,5 @@ public class OrderDayServiceImpl implements OrderDayService{
     }
 
 
-    @Override
-    public OrderDayViewModel findOrderDayById(Long id) {
-        List<OrderDay> allOrdersByUser = orderDayRepository.findAllByUserId(id);
 
-        return null;
-    }
 }

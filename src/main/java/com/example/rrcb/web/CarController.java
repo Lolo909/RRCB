@@ -170,8 +170,8 @@ public class CarController {
     @GetMapping("/rent/{id}")
     public String rent(@PathVariable Long id, Model model){
 
-        CarRentViewModel test = carService.findCarForRentById(id);
-        model.addAttribute("carForRent", test);
+        CarRentViewModel carForRent = carService.findCarForRentById(id);
+        model.addAttribute("carForRent", carForRent);
 
         return "car-rent";
     }
@@ -193,7 +193,7 @@ public class CarController {
 
 
 
-
+        /*
 
         @Scheduled(cron = "59 59 23 L * ?")
         public void monthlyUpdateOfCars(){
@@ -202,4 +202,6 @@ public class CarController {
                 carService.updateOfCarsAllAvailableDays();
 
         }
+
+        */
 }

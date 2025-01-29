@@ -1,6 +1,7 @@
 package com.example.rrcb.model.view;
 
 import com.example.rrcb.model.entity.Car;
+import com.example.rrcb.model.entity.OrderDay;
 import com.example.rrcb.model.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -19,7 +20,7 @@ public class OrderViewModel {
 
     private BigDecimal price;
 
-    private List<Integer> allOrderedDays;
+    private List<OrderDay> allOrderedDays;
 
     private User user;
 
@@ -55,11 +56,11 @@ public class OrderViewModel {
         return this;
     }
 
-    public List<Integer> getAllOrderedDays() {
+    public List<OrderDay> getAllOrderedDays() {
         return allOrderedDays;
     }
 
-    public OrderViewModel setAllOrderedDays(List<Integer> allOrderedDays) {
+    public OrderViewModel setAllOrderedDays(List<OrderDay> allOrderedDays) {
         this.allOrderedDays = allOrderedDays;
         return this;
     }

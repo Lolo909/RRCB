@@ -2,6 +2,7 @@ package com.example.rrcb.model.service;
 
 
 import com.example.rrcb.model.entity.Category;
+import com.example.rrcb.model.entity.Order;
 
 import java.util.List;
 
@@ -23,9 +24,7 @@ public class CarServiceModel {
 
     private Category category;
 
-    private List<Integer> allAvailableDays;
-
-    private List<Integer> allOrderDays;
+    private List<Order> orders;
 
     public CarServiceModel() {
     }
@@ -40,21 +39,12 @@ public class CarServiceModel {
         return this;
     }
 
-    public List<Integer> getAllOrderDays() {
-        return allOrderDays;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public CarServiceModel setAllOrderDays(List<Integer> allOrderDays) {
-        this.allOrderDays = allOrderDays;
-        return this;
-    }
-
-    public List<Integer> getAllAvailableDays() {
-        return allAvailableDays;
-    }
-
-    public CarServiceModel setAllAvailableDays(List<Integer> allAvailableDays) {
-        this.allAvailableDays = allAvailableDays;
+    public CarServiceModel setOrders(List<Order> orders) {
+        this.orders = orders;
         return this;
     }
 

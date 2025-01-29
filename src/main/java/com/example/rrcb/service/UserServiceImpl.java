@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void remove(Long id) {
         //carService.restoreCarAvailableDaysByUserId(id);
-        orderService.restoreCarAvailableDaysByUserId(id);
+        //orderService.restoreCarAvailableDaysByUserId(id);
         orderService.clearAllOrdersFromUserByUserId(id);
         userRepository.deleteById(id);
     }

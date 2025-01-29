@@ -1,5 +1,7 @@
 package com.example.rrcb.model.view;
 
+import com.example.rrcb.model.entity.Order;
+import com.example.rrcb.model.entity.OrderDay;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 
 import java.util.List;
@@ -22,11 +24,7 @@ public class CarRentViewModel {
 
     private CategoryNameEnum category;
 
-    private List<Integer> allAvailableDays;
-
-    private List<Integer> allOrderDays;
-
-    private List<String> AllOrderedDaysStringList;
+    private List<String> orderedDays;
 
     public CarRentViewModel() {
     }
@@ -40,21 +38,12 @@ public class CarRentViewModel {
         return this;
     }
 
-    public List<Integer> getAllOrderDays() {
-        return allOrderDays;
+    public List<String> getOrderedDays() {
+        return orderedDays;
     }
 
-    public CarRentViewModel setAllOrderDays(List<Integer> allOrderDays) {
-        this.allOrderDays = allOrderDays;
-        return this;
-    }
-
-    public List<Integer> getAllAvailableDays() {
-        return allAvailableDays;
-    }
-
-    public CarRentViewModel setAllAvailableDays(List<Integer> allAvailableDays) {
-        this.allAvailableDays = allAvailableDays;
+    public CarRentViewModel setOrderedDays(List<String> orderedDays) {
+        this.orderedDays = orderedDays;
         return this;
     }
 
@@ -121,12 +110,4 @@ public class CarRentViewModel {
         return this;
     }
 
-    public List<String> getAllOrderedDaysStringList() {
-        return AllOrderedDaysStringList;
-    }
-
-    public CarRentViewModel setAllOrderedDaysStringList(List<String> allOrderedDaysStringList) {
-        AllOrderedDaysStringList = allOrderedDaysStringList;
-        return this;
-    }
 }

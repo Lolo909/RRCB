@@ -1,9 +1,6 @@
 package com.example.rrcb.web;
 
-import com.example.rrcb.model.entity.Car;
-import com.example.rrcb.model.entity.Category;
-import com.example.rrcb.model.entity.Role;
-import com.example.rrcb.model.entity.User;
+import com.example.rrcb.model.entity.*;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 import com.example.rrcb.model.entity.enums.RoleNameEnum;
 import com.example.rrcb.repository.CarRepository;
@@ -65,6 +62,8 @@ public class CarControllerTestIT {
             add(7);
             add(31);
         }};
+
+        List<Order> orders = new ArrayList<>();
         Category categoryVintage = new Category()
                 .setName(CategoryNameEnum.VINTAGE)
                 .setDescription("Manufactured between 1919 and 1930.");
@@ -81,7 +80,7 @@ public class CarControllerTestIT {
         categoryRepository.save(categoryClassic);
 
         testCarVintage = new Car()
-                .setAllAvailableDays(allAvailableDaysListT)
+                .setOrders(orders)
                 .setBrand("testBrand")
                 .setName("testName")
                 .setDescription("Very long description for test.")
@@ -90,7 +89,7 @@ public class CarControllerTestIT {
                 .setFile("ImageUrl with beautiful test image.")
                 .setCreated(1919);
         testCarAntique = new Car()
-                .setAllAvailableDays(allAvailableDaysListT)
+                .setOrders(orders)
                 .setBrand("testBrand2")
                 .setName("testName2")
                 .setDescription("Very long description for test.2")
@@ -99,7 +98,7 @@ public class CarControllerTestIT {
                 .setFile("ImageUrl with beautiful test image.2")
                 .setCreated(1975);
         testCarClassic = new Car()
-                .setAllAvailableDays(allAvailableDaysListT)
+                .setOrders(orders)
                 .setBrand("testBrand3")
                 .setName("testName3")
                 .setDescription("Very long description for test.3")

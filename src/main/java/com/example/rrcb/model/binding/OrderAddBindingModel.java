@@ -6,7 +6,6 @@ import java.util.Set;
 public class OrderAddBindingModel {
 
     private List<Integer> allOrderDays;
-    private List<String> AllOrderedDaysStringList;
 
     public OrderAddBindingModel() {
     }
@@ -20,12 +19,4 @@ public class OrderAddBindingModel {
         return this;
     }
 
-    public List<String> getAllOrderedDaysStringList() {
-        return AllOrderedDaysStringList;
-    }
-
-    public OrderAddBindingModel setAllOrderedDaysStringList(List<String> allOrderedDaysStringList) {
-        AllOrderedDaysStringList = allOrderedDaysStringList;
-        return this;
-    }
 }
