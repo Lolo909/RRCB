@@ -18,18 +18,12 @@
           th:action="@{/cars/rent/{id}(id=${carForRent.id})}"
           enctype="multipart/form-data">
 
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <h1 th:text="*{name}">Name of the car</h1>
+            <img th:src="*{imageUrl}" alt="Title image" style="max-width: 100%; height: auto;border-radius: 15px;">
+        </div>
         <h3 class="pl-2" style="text-align: center">Choose which days would you like to rent the car</h3>
 
-<!--        <div>-->
-<!--            <div class="form-group p-3">-->
-<!--                <label class="p-2" for="days">Days:</label>-->
-<!--                <input  th:field="*{allOrderDays}"-->
-<!--                        th:each="d : *{allAvailableDays}"-->
-<!--                        th:text="${d}" th:value="${d}" class="m-3" type="checkbox" name="days" id="days">-->
-<!--                &lt;!&ndash;                       value="1" text="Category"> TODO:allAvailableDays INTO days.neshtosi&ndash;&gt;-->
-<!--                <br>-->
-<!--            </div>-->
-<!--        </div>-->
         <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 
         <!--Font Awesome (added because you use icons in your prepend/append)-->
@@ -54,27 +48,6 @@
             <button class="btn btn-primary btn-block w-50" type="submit">RENT</button>
         </div>
 
-        <!--        <div class="bootstrap-iso">-->
-        <!--            <div class="container-fluid">-->
-        <!--                <div class="row">-->
-        <!--                    <div class="col-md-6 col-sm-6 col-xs-12">-->
-        <!--                        <form class="form-horizontal" method="post">-->
-        <!--                            <div class="form-group ">-->
-        <!--                                <div class="col-sm-10">-->
-        <!--                                    <div class="input-group">-->
-        <!--                                        <div class="input-group-addon">-->
-        <!--                                            <i class="fa fa-calendar">-->
-        <!--                                            </i>-->
-        <!--                                        </div>-->
-        <!--                                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>-->
-        <!--                                    </div>-->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                        </form>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
     </form>
 
 
@@ -97,7 +70,7 @@
         cursor: not-allowed !important;
     }
 </style>
-<script>
+<script th:inline="javascript">
     $(document).ready(function () {
         var date_input = $('#date'); // Select the date input
 
@@ -109,7 +82,11 @@
             multidate: true, // Enable multiple date selection
             beforeShowDay: function (date) {
                 // Example: Mark certain dates as unavailable
-                var unavailableDates = ["01/20/2025", "01/22/2025", "01/25/2025"];
+               // var unavailableDates = /*[[${carForRent.orderedDays}]]*/ [];
+                var unavailableDates = /*[[${carForRent.orderedDays}]]*/ [];
+                // unavailableDates.push("02/15/2025");
+                console.log(unavailableDates);
+
                 var formattedDate =
                     ("0" + (date.getMonth() + 1)).slice(-2) + "/" +
                     ("0" + date.getDate()).slice(-2) + "/" +

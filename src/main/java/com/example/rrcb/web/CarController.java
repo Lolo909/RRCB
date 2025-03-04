@@ -3,6 +3,7 @@ package com.example.rrcb.web;
 import com.example.rrcb.model.binding.CarAddBindingModel;
 import com.example.rrcb.model.binding.CarEditBindingModel;
 import com.example.rrcb.model.binding.OrderAddBindingModel;
+import com.example.rrcb.model.entity.OrderDay;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 import com.example.rrcb.model.service.CarServiceModel;
 import com.example.rrcb.model.view.CarDetailsViewModel;
@@ -21,7 +22,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/cars")
@@ -171,6 +175,15 @@ public class CarController {
     public String rent(@PathVariable Long id, Model model){
 
         CarRentViewModel carForRent = carService.findCarForRentById(id);
+        carForRent.setImageUrl(carService.findCarById(id).getFile());//?TODO: optimize not to do two zaqvki
+
+        carForRent.setOrderedDays(carService.getAllOrderedDays(id));
+        //TODO:FIX getting all orderedDays();
+        List<String> test = carForRent.getOrderedDays();
+        System.out.println("-test-");
+        System.out.println(test);
+        System.out.println("-----");
+
         model.addAttribute("carForRent", carForRent);
 
         return "car-rent";
@@ -178,13 +191,19 @@ public class CarController {
 
     @PatchMapping("/rent/{id}")
     public String rentConfirm(@Valid OrderAddBindingModel orderAddBindingModel, BindingResult bindingResult,
-                              RedirectAttributes redirectAttributes, @PathVariable Long id, Model model, Principal principal) throws IOException{
+                              RedirectAttributes redirectAttributes, @PathVariable Long id, Model model, Principal principal,  @RequestParam("date") String selectedDates) throws IOException{
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("orderAddBindingModel", orderAddBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.routeAddBindingModel", bindingResult);
             return "redirect:/cars/rent/{id}";
         }
+
+        List<String> dateList = Arrays.stream(selectedDates.split(","))
+                .map(String::trim).toList();
+
+        System.out.println(dateList);
+        orderAddBindingModel.setAllOrderDays(dateList);
 
         carService.rent(id, orderAddBindingModel, principal);
 

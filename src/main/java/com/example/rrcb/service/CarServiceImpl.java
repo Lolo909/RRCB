@@ -93,6 +93,12 @@ public class CarServiceImpl implements CarService {
         return listForCheck.contains(true);
     }
 
+    @Override
+    public List<String> getAllOrderedDays(Long id) {
+
+        return null;
+    }
+
 
     @Override
     public List<CarDetailsViewModel> findAllCarsView() {
@@ -214,8 +220,29 @@ public class CarServiceImpl implements CarService {
     public void rent(Long id, OrderAddBindingModel orderAddBindingModel, Principal principal) {
         Car carForRent = carRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Car with id "+id+" is not found."));
 
+        List<String> listWithOrderedDaysStringFormat = orderAddBindingModel.getAllOrderDays();
+        List<OrderDay> listWithOrderedDaysOrderDayFormat = new ArrayList<>();
 
+        Order order = new Order();
 
+        for (var day: listWithOrderedDaysStringFormat) {
+            OrderDay orderDay = new OrderDay();
+            orderDay.setDayOrdered(day);
+            orderDay.setOrder(order);
+
+            listWithOrderedDaysOrderDayFormat.add(orderDay);
+        }
+
+        User user = userService.findUserByName(principal.getName()).orElseThrow(() ->  new UsernameNotFoundException("User with " + principal.getName()+" is not found."));
+        order.setUser(user);
+        order.setCar(carForRent);
+        BigDecimal price = BigDecimal.valueOf(orderAddBindingModel.getAllOrderDays().size() * priceMultiplayer);
+        order.setPrice(price);
+        order.setDateTime(LocalDateTime.now());
+        order.setAllOrderedDaysT(listWithOrderedDaysOrderDayFormat);
+
+        orderRepository.save(order);
+        carRepository.saveAndFlush(carForRent);
         /*
 
         carForRent.setAllAvailableDays(getAllAvailableDaysMethod(carForRent.getAllAvailableDays(), orderAddBindingModel.getAllOrderDays()));

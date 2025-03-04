@@ -31,8 +31,6 @@ public interface CarService {
 
     void editCar(Long id, CarEditBindingModel carEditBindingModel) throws IOException;
 
-    
-
     CarRentViewModel findCarForRentById(Long id);
 
     void rent(Long id, OrderAddBindingModel orderAddBindingModel, Principal principal);
@@ -44,6 +42,8 @@ public interface CarService {
     int getNumberOfDaysInMonth(int year,int month);
 
     boolean isThereNOTDataAboutAllAvailableDaysInDataBase();
+
+    List<String> getAllOrderedDays(Long id);
 
     //void restoreCarAvailableDaysByUserId(Long id);
 }

@@ -48,6 +48,13 @@ public class Order extends BaseEntity{
         this.car = car;
     }
 
+    public Order(BigDecimal price, User user, Car car, List<OrderDay> allOrderedDaysT){
+        this.price = price;
+        this.user = user;
+        this.car = car;
+        this.allOrderedDaysT = allOrderedDaysT;
+    }
+
     public LocalDateTime getDateTime() {
         return dateTime;
     }

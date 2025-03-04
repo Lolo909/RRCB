@@ -5,16 +5,16 @@ import java.util.Set;
 
 public class OrderAddBindingModel {
 
-    private List<Integer> allOrderDays;
+    private List<String> allOrderDays;
 
     public OrderAddBindingModel() {
     }
 
-    public List<Integer> getAllOrderDays() {
+    public List<String> getAllOrderDays() {
         return allOrderDays;
     }
 
-    public OrderAddBindingModel setAllOrderDays(List<Integer> allOrderDays) {
+    public OrderAddBindingModel setAllOrderDays(List<String> allOrderDays) {
         this.allOrderDays = allOrderDays;
         return this;
     }
