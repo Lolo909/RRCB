@@ -95,8 +95,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<String> getAllOrderedDays(Long id) {
-
-        return null;
+        //TODO FIX
+        return List.of("02/15/2025", "02/20/2025");
     }
 
 

@@ -45,6 +45,7 @@ public class UserController {
 
         //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("rents", orderService.findAllRentsOfTheUserByName(principal.getName()));
+
         return "rents";
     }
     @GetMapping("/allRents")

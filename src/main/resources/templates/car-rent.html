@@ -82,10 +82,7 @@
             multidate: true, // Enable multiple date selection
             beforeShowDay: function (date) {
                 // Example: Mark certain dates as unavailable
-               // var unavailableDates = /*[[${carForRent.orderedDays}]]*/ [];
                 var unavailableDates = /*[[${carForRent.orderedDays}]]*/ [];
-                // unavailableDates.push("02/15/2025");
-                console.log(unavailableDates);
 
                 var formattedDate =
                     ("0" + (date.getMonth() + 1)).slice(-2) + "/" +

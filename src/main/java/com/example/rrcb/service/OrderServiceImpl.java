@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 
         return orderRepository.findAllByUser_Username(name).stream().map(order -> {
             OrderViewModel orderViewModel = modelMapper.map(order, OrderViewModel.class);
-            DateTimeFormatter pattern = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
+            DateTimeFormatter pattern = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(Locale.ENGLISH);
             orderViewModel.setDateTime(order.getDateTime().format(pattern));
             return orderViewModel;
         }).collect(Collectors.toList());

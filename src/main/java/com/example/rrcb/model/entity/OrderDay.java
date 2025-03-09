@@ -2,14 +2,16 @@ package com.example.rrcb.model.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "ordered_days")
 public class OrderDay extends BaseEntity{
 
     @Column
-    private String dayOrdered;
+    private LocalDate dayOrdered;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")
@@ -19,11 +21,13 @@ public class OrderDay extends BaseEntity{
     }
 
     public String getDayOrdered() {
-        return dayOrdered;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return dayOrdered.format(formatter);
     }
 
     public OrderDay setDayOrdered(String dayOrdered) {
-        this.dayOrdered = dayOrdered;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        this.dayOrdered = LocalDate.parse(dayOrdered, formatter);
         return this;
     }
 

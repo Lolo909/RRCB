@@ -180,6 +180,7 @@ public class CarController {
         carForRent.setOrderedDays(carService.getAllOrderedDays(id));
         //TODO:FIX getting all orderedDays();
         List<String> test = carForRent.getOrderedDays();
+        List<String> test2 = List.of("02/15/2025", "02/20/2025");
         System.out.println("-test-");
         System.out.println(test);
         System.out.println("-----");
