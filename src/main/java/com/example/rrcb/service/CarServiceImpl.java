@@ -15,17 +15,17 @@ import com.example.rrcb.repository.CarRepository;
 import com.example.rrcb.repository.OrderRepository;
 import com.example.rrcb.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
-import org.springframework.cache.annotation.CachePut;
 
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -95,8 +95,24 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<String> getAllOrderedDays(Long id) {
-        //TODO FIX
-        return List.of("02/15/2025", "02/20/2025");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        Optional<Car> car = carRepository.findById(id);
+        List<Order> ordersCar = car.get().getOrders();
+
+        List<String> daysOrdered = new ArrayList<>();
+
+        for (var order: ordersCar) {
+            for(var day :order.getAllOrderedDaysT()){
+                LocalDate parsedDate = LocalDate.parse(day.getDayOrdered(), inputFormatter);
+                String formattedDate = parsedDate.format(outputFormatter);
+                daysOrdered.add(formattedDate);
+            }
+        }
+
+        daysOrdered.add("03/18/2025");
+        return daysOrdered;
     }
 
 

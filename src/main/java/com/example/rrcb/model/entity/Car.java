@@ -41,7 +41,7 @@ public class Car extends BaseEntity{
     @ManyToOne
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "car",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Order> orders;
 
     public Car() {
@@ -112,13 +112,11 @@ public class Car extends BaseEntity{
     }
 
     public List<Order> getOrders() {
-        return orders;
+        return this.orders;
     }
 
     public Car setOrders(List<Order> orders) {
         this.orders = orders;
         return this;
     }
-
-
 }
