@@ -57,6 +57,13 @@ img {
 
 /* Navigation */
 
+.active-link {
+    color: yellow !important;  /* Change text color */
+    font-weight: bold;
+    background-color: transparent;
+    border-bottom: 3px solid yellow; /* Optional underline effect */
+}
+
 .main-nav ul {
     display: flex;
     grid-gap: 20px;
@@ -244,6 +251,15 @@ img {
     /*border-radius: 15px;*/
     color: white;
     margin: 0
+}
+
+.car-left img {
+    margin: auto;
+    width: 100%; /* Make the image take up the full width */
+    height: 100%; /* Ensure it fills the container */
+    object-fit: contain; /* Ensures it covers the available space */
+    border-radius: 15px;
+    display: block;
 }
 
 .car-right {

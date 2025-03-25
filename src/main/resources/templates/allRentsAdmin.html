@@ -26,8 +26,10 @@
             <h3 th:text="|car name: *{car.getName()}|">car name</h3>
             <h3 th:text="|date of order: *{dateTime}|">datetime</h3>
             <h3 th:text="|price: *{price}lv|">price</h3>
-            <h3 th:text="|rented days: *{allOrderedDays}|">allOrderedDays</h3>
-
+<!--            <h3 th:text="|rented days: *{allOrderedDays}|">allOrderedDays</h3>-->
+            <ul>
+                <li th:each="day : *{allOrderedDays}" th:text="${day.getDayOrdered()}"></li>
+            </ul>
         </div>
         <div>
             <!--            TODO:-->

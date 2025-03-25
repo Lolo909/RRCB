@@ -33,7 +33,7 @@
 
     <section th:each="c : ${cars}" th:object="${c}" class="road-All-Cars">
         <div class="car-left">
-            <img th:src="*{file}" alt="Title file" style="border-radius: 15px; margin: auto;">
+            <img th:src="*{file}" alt="Title file">
         </div>
         <div class="car-right">
             <h2 th:text="*{name}">Car name</h2>

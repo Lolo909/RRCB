@@ -5,32 +5,37 @@
 
 <head th:replace="fragments/commons::head"></head>
 <body>
-<div class="wrapper lemon-regular">
+<div class="wrapper-All-Cars lemon-regular">
     <!-- Navigation -->
     <header th:replace="fragments/commons::navigation">
     </header>
 
-    <section class="top-container">
-        <div class="showcase">
+    <section class="top-container-All-Cars">
+        <div class="showcase-All-Cars">
             <h1>Find amazing retro cars</h1>
             <p>Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
-
         </div>
     </section>
-    <section class="road">
-        <div>
+    <section class="road-All-Cars-Nav">
+        <div class="car-top">
             <h2>Here you can see all our cars:</h2>
-<!--            TODO make searchbar here-->
-            <a href="/cars/vintage" class="btn">Vintage</a>
-            <a href="/cars/antique" class="btn">Antique</a>
-            <a href="/cars/all" class="btn">All cars</a>
+            <!--            TODO make searchbar here-->
+            <div style="display: inline-block;white-space: normal;">
+                <a href="/cars/vintage" class="btn">Vintage</a>
+                <a href="/cars/antique" class="btn">Antique</a>
+                <a href="/cars/all" class="btn">All cars</a>
+            </div>
         </div>
-        <img src="/images/ClassicImage.png" height="150px" width="100%" alt="">
+        <div class="car-bottom">
+            <img src="/images/ClassicImage.png" height="150px" alt="AllCarsImage.png">
+        </div>
     </section>
 
-    <section th:each="c : ${cars}" th:object="${c}" class="road">
-        <img th:src="*{file}" alt="Title file" style="min-height: 250px; min-width: 900px; border-radius: 15px; margin: auto;">
-        <div>
+    <section th:each="c : ${cars}" th:object="${c}" class="road-All-Cars">
+        <div class="car-left">
+            <img th:src="*{file}" alt="Title file">
+        </div>
+        <div class="car-right">
             <h2 th:text="*{name}">Car name</h2>
             <p th:text="*{brand}">Brand car</p>
             <p th:text="*{model}">Model car</p>
