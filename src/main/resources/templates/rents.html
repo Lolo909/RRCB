@@ -26,14 +26,14 @@
             <h3 th:text="|date of order: *{dateTime}|">datetime</h3>
             <h3 th:text="|price: *{price}lv|">price</h3>
             <h3>Rented Days:</h3>
-            <ul>
+            <ul style="padding-left: 12px; display: flex; flex-direction: column; gap: 1px;">
                 <li th:each="day : *{allOrderedDays}" th:text="${day.getDayOrdered()}"></li>
             </ul>
 
         </div>
         <div>
-<!--            TODO:-->
-<!--            <a th:href="@{/users/remove/{id} (id = *{id})}" class="btn">Cancel rent</a>-->
+            <!--            TODO:-->
+            <!--            <a th:href="@{/users/remove/{id} (id = *{id})}" class="btn">Cancel rent</a>-->
         </div>
     </section>
 

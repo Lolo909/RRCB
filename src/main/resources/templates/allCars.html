@@ -4,6 +4,32 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/commons::head"></head>
+<script>
+    function searchFunction() {
+        const input = document.getElementById('searchBar').value.toUpperCase();
+        const carSections = document.querySelectorAll('.road-All-Cars');
+
+        carSections.forEach((section) => {
+            const carName = section.querySelector('h2').textContent.toUpperCase();
+            const carBrand = section
+                .querySelector('p:first-of-type')
+                .textContent.toUpperCase();
+            const carModel = section.querySelector('p:nth-of-type(2)').textContent.toUpperCase(); // Get car model
+            const carYear = section.querySelector('p:nth-of-type(3)').textContent.toUpperCase(); // Get car year
+
+            if (
+                carName.includes(input) ||
+                carBrand.includes(input) ||
+                carModel.includes(input) ||
+                carYear.includes(input)
+            ) {
+                section.style.display = '';
+            } else {
+                section.style.display = 'none';
+            }
+        });
+    }
+</script>
 <body>
 <div class="wrapper-All-Cars lemon-regular">
     <!-- Navigation -->
@@ -20,6 +46,10 @@
         <div class="car-top">
             <h2>Here you can see all our cars:</h2>
             <!--            TODO make searchbar here-->
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="Search for car name or brand..." onkeyup="searchFunction()">
+                <button type="submit">Search</button>
+            </div>
             <div style="display: inline-block;white-space: normal;">
                 <a href="/cars/vintage" class="btn">Vintage</a>
                 <a href="/cars/antique" class="btn">Antique</a>

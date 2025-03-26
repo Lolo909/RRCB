@@ -50,6 +50,23 @@ img {
     grid-gap: 20px;
 }
 
+@media (max-width: 1024px) {
+    .wrapper {
+        margin-top: 8rem;
+    }
+}
+@media (max-width: 768px) {
+    .wrapper {
+        margin-top: 8rem;
+    }
+}
+@media (max-width: 480px) {
+    .wrapper {
+        margin-top: 4rem;
+    }
+}
+
+
 .wrapperAdmin {
     display: grid;
     grid-gap: 20px;
@@ -57,11 +74,11 @@ img {
 
 /* Navigation */
 
-.active-link {
-    color: yellow !important;  /* Change text color */
+
+.navbar ul li a.active-page {
     font-weight: bold;
-    background-color: transparent;
-    border-bottom: 3px solid yellow; /* Optional underline effect */
+    color: #96670c;
+    background: #f1c40f;
 }
 
 .main-nav ul {
@@ -198,6 +215,7 @@ img {
     box-shadow: var(--shadow);
     transition: transform 0.3s ease-in-out, background 0.5s ease-in-out;
     border: 2px solid;
+    height: 100%;
 }
 
 .box:hover {
@@ -650,7 +668,7 @@ footer {
     padding: 5rem 1rem;
     border-radius: 5rem;
     margin: 0 8rem;
-    /*margin-top: 8rem;*/
+    margin-top: 8rem;
     text-align: center;
 }
 
@@ -690,7 +708,7 @@ footer {
 @media (max-width: 1024px) {
     .infoAbout {
         padding: 4rem 2rem;
-        margin: 4rem 4rem 0;
+        margin: 8rem 4rem 0;
     }
 
     .infoAbout h4 {
@@ -707,7 +725,8 @@ footer {
 @media (max-width: 768px) {
     .infoAbout {
         padding: 3rem 1rem; /* Reduce padding */
-        margin: 5rem 0 2rem; /* Reduce margin */
+        /* Reduce margin */
+        margin: 8rem 0 2rem;
     }
 
     .infoAbout h4 {
@@ -756,6 +775,7 @@ footer {
     padding: 5rem 1rem;
     border-radius: 2rem;
     margin: 2rem 8rem;
+    margin-top: 8rem;
     text-align: center;
 }
 
@@ -800,7 +820,7 @@ footer {
         flex-direction: column; /* Stack vertically on iPad landscape */
         padding: 4rem 2rem;
         margin: 4rem 2rem;
-        margin-top: 10rem;
+        margin-top: 8rem;
     }
 
     .infoRents h4 {
@@ -829,7 +849,7 @@ footer {
         flex-direction: column; /* Stack vertically for portrait */
         padding: 3rem 1rem;
         margin: 2rem 1rem;
-        margin-top: 6rem;
+        margin-top: 8rem;
     }
 
     .infoRents h4 {
@@ -856,7 +876,7 @@ footer {
     .infoRents {
         padding: 2rem 0.5rem;
         margin: 2rem 0.5rem;
-        margin-top: 5rem;
+        margin-top: 10rem;
     }
 
     .infoRents h4 {
@@ -1213,7 +1233,7 @@ form#w-50 {
     padding: 5rem 1rem;
     border-radius: 5rem;
     margin: 0 8rem;
-    /*margin-top: 8rem;*/
+    margin-top: 4rem;
     text-align: center;
 }
 
@@ -1789,6 +1809,33 @@ body {
     button {
         font-size: 0.9rem;
     }
+}
+
+
+/*Searchbar*/
+.search-container {
+    display: flex;
+    width: 100%;
+    gap: 5px; /* Spacing between input and button */
+    margin-bottom: 10px; /* Space below the search bar */
+}
+
+#searchBar {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* Remove fixed width, use flex-grow instead */
+    flex-grow: 1; /* Allow input to grow to fill available space */
+}
+
+.search-container button {
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap; /* Prevent the button text from wrapping */
 }
 
 /*font text style*/
