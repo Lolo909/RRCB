@@ -55,11 +55,13 @@ img {
         margin-top: 8rem;
     }
 }
+
 @media (max-width: 768px) {
     .wrapper {
         margin-top: 8rem;
     }
 }
+
 @media (max-width: 480px) {
     .wrapper {
         margin-top: 4rem;
@@ -375,7 +377,8 @@ img {
     .road-All-Cars {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
-    .road-All-Cars-Nav{
+
+    .road-All-Cars-Nav {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
@@ -394,7 +397,8 @@ img {
         /*padding: 1rem;*/
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
-    .road-All-Cars-Nav{
+
+    .road-All-Cars-Nav {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
 
@@ -414,6 +418,7 @@ img {
     .road-All-Cars-Nav .car-top {
         order: 2;
     }
+
     .road-All-Cars-Nav .car-bottom {
         order: 1;
     }
@@ -437,7 +442,8 @@ img {
         grid-template-columns: 1fr;
         padding: 0.5rem;
     }
-    .road-All-Cars-Nav{
+
+    .road-All-Cars-Nav {
         grid-template-columns: 1fr;
         padding: 0.5rem;
     }
@@ -458,6 +464,7 @@ img {
     .road-All-Cars-Nav .car-top {
         order: 2;
     }
+
     .road-All-Cars-Nav.car-bottom {
         order: 1;
     }
@@ -1029,6 +1036,7 @@ footer {
         margin-bottom: 0.5rem !important;
     }
 }
+
 /*------*/
 /*--All Cars--*/
 
@@ -1289,7 +1297,7 @@ form#w-50 {
     min-height: 100vh;
 }
 
-.form-add-car{
+.form-add-car {
     background: #3F8A8C;
     border: solid #0c5679;
     border-radius: 10px;
@@ -1315,7 +1323,7 @@ form#w-50 {
         border-radius: 8px; /* Reduced border-radius for a compact look */
     }
 
-    .div-add-car{
+    .div-add-car {
         margin: 4rem 1rem 0;
     }
 }
@@ -1415,7 +1423,7 @@ form#w-50 {
         font-size: 1rem;
     }
 
-    .details-car  .btn {
+    .details-car .btn {
         font-size: 0.9rem;
     }
 }
@@ -1442,7 +1450,7 @@ form#w-50 {
         font-size: 0.8rem;
     }
 
-    .details-car  .btn {
+    .details-car .btn {
         font-size: 0.8rem;
     }
 }
@@ -1805,26 +1813,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    background-color: #e0dcdc; /* Light gray background */
+    padding: 10px; /* Add some padding around the pagination links */
+    border-radius: 0px; /* Optional: Add rounded corners to the pagination container */
+    box-shadow: var(--shadow);
 }
 
 .pagination a {
     color: black;
-    padding: 8px 16px;
+    padding: 8px 12px; /* Adjusted padding */
     text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
+    transition: background-color 0.3s;
+    border: 1px solid #3f8a8c;
     margin: 0 4px;
+    border-radius: 5px; /* Rounded corners for the links */
 }
 
 .pagination a.active {
-    background-color: #4CAF50; /* Green */
+    background-color: #4caf50; /* Green */
     color: white;
-    border: 1px solid #4CAF50;
+    border: 1px solid #3f8a8c;
 }
 
 .pagination a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: #4caf50;
+    color: white;
 }
 
 /*font text style*/
