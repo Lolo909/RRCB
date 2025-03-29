@@ -16,6 +16,10 @@ import com.example.rrcb.repository.OrderRepository;
 import com.example.rrcb.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -115,6 +119,23 @@ public class CarServiceImpl implements CarService {
         return daysOrdered;
     }
 
+    @Override
+    public Page<CarDetailsViewModel> searchCars(String searchTerm, Pageable pageable) {
+        Page<Car> carPage = carRepository.searchAllCars(searchTerm, pageable); //call the search term
+
+        List<CarDetailsViewModel> carDetailsViewModels = carPage.getContent().stream()
+                .map(car -> {
+                    CarDetailsViewModel carDetailsViewModel = modelMapper.map(car, CarDetailsViewModel.class);
+                    carDetailsViewModel.setCategory(car.getCategory().getName());
+                    return carDetailsViewModel;
+                })
+                .collect(Collectors.toList());
+
+        long totalElements = carRepository.countSearchAllCars(searchTerm); // Get total result number
+
+        return new PageImpl<>(carDetailsViewModels, pageable, totalElements);  //return the total number of the serch
+    }
+
 
     @Override
     public List<CarDetailsViewModel> findAllCarsView() {
@@ -129,6 +150,22 @@ public class CarServiceImpl implements CarService {
             return carDetailsViewModel;
         }).collect(Collectors.toList());
     }
+
+    @Override
+    public Page<CarDetailsViewModel> findAllCarsView(Pageable pageable) {
+        Page<Car> carPage = carRepository.findAll(pageable);
+
+        List<CarDetailsViewModel> carDetailsViewModels = carPage.getContent().stream()
+                .map(car -> {
+                    CarDetailsViewModel carDetailsViewModel = modelMapper.map(car, CarDetailsViewModel.class);
+                    carDetailsViewModel.setCategory(car.getCategory().getName());
+                    return carDetailsViewModel;
+                })
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(carDetailsViewModels, pageable, carPage.getTotalElements());
+    }
+
 
     public List<CarViewModel> findAllCarsViewByCategory(CategoryNameEnum categoryNameEnum) {
         return carRepository.findAllByCategory_Name(categoryNameEnum).stream().map(car -> {

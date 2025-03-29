@@ -3,6 +3,7 @@ package com.example.rrcb.web;
 import com.example.rrcb.model.binding.CarAddBindingModel;
 import com.example.rrcb.model.binding.CarEditBindingModel;
 import com.example.rrcb.model.binding.OrderAddBindingModel;
+import com.example.rrcb.model.entity.Car;
 import com.example.rrcb.model.entity.OrderDay;
 import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 import com.example.rrcb.model.service.CarServiceModel;
@@ -13,6 +14,8 @@ import com.example.rrcb.service.CategoryService;
 import com.example.rrcb.service.OrderService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,9 +49,27 @@ public class CarController {
 
 
     @GetMapping("/all")
-    public String allCars(Model model) {
+    public String allCars(
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "3") int size,
+            @RequestParam(name = "search", required = false) String search, // Add search parameter
+            Model model) {
 
-        model.addAttribute("cars", carService.findAllCarsView());
+        Page<CarDetailsViewModel> carPage;
+
+        if (search != null && !search.isEmpty()) {
+            // Perform a search
+            carPage = carService.searchCars(search, PageRequest.of(page, size));  //Create this function on the carService.java
+        } else {
+            // No search term, just get all cars with pagination
+            carPage = carService.findAllCarsView(PageRequest.of(page, size));
+        }
+
+        model.addAttribute("cars", carPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", carPage.getTotalPages());
+        model.addAttribute("pageSize", size);
+        model.addAttribute("search", search); // Add search to model
         return "allCars";
     }
 
