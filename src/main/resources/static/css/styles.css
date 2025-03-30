@@ -68,15 +68,136 @@ img {
     }
 }
 
-
+/*Admin*/
 .wrapperAdmin {
-    display: grid;
-    grid-gap: 20px;
+     display: grid;
+     grid-template-columns: repeat(3, 1fr); /* Default: 3 columns */
+     grid-gap: 10px;
+     padding: 10px;
+ }
+
+.sectionCarsAdmin {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    align-items: center;
+    text-align: center;
+    color: #0c5679;
+    background: var(--primary);
+    box-shadow: var(--shadow);
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
+.car-image {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.car-details h2 {
+    font-size: 1.1em;
+    margin-bottom: 0.2em;
+}
+
+.car-details p {
+    font-size: 0.9em;
+    margin: 0.1em 0;
+}
+
+.search-container-admin{
+    display: flex;
+    width: 90%;
+    gap: 5px;
+    margin: 100px auto 10px;
+}
+
+
+.search-container-admin button {
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap; /* Prevent the button text from wrapping */
+}
+
+/* Media Queries Admin*/
+@media (max-width: 1024px) {
+    .wrapperAdmin {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .search-container-admin{
+        margin-top: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapperAdmin {
+        grid-template-columns: 1fr; /* 1 column on smaller screens */
+    }
+
+    .sectionCarsAdmin {
+        flex-direction: column; /* Stack image above info */
+        align-items: center; /* Center horizontally */
+        text-align: center;
+        padding: 8px; /* Slightly reduce padding on smaller screens */
+    }
+
+    .car-image {
+        max-height: 120px; /* Slightly reduce image height */
+    }
+
+    .search-container-admin{
+        margin-top: 200px;
+    }
+}
+
+@media (max-width: 375px) {
+    .wrapperAdmin {
+        grid-template-columns: 1fr; /* 1 column on smaller screens */
+    }
+
+    .sectionCarsAdmin {
+        flex-direction: column; /* Ensure stacking */
+        align-items: center; /* Ensure centering */
+        text-align: center;
+    }
+
+    .car-image {
+        max-height: 150px; /* Further reduce image height on very small screens */
+    }
+
+    .car-details h2 {
+        font-size: 1em; /* Further reduce font size */
+    }
+
+    .car-details p {
+        font-size: 0.8em; /* Further reduce font size */
+    }
+
+    .btn {
+        padding: 0.2em 0.4em; /* Smaller button padding */
+        font-size: 0.7em; /* Smaller button font size */
+    }
+
+    .search-container-admin{
+        margin-top: 100px;
+    }
+}
+
+
+
+
 /* Navigation */
-
-
 .navbar ul li a.active-page {
     font-weight: bold;
     color: #96670c;
@@ -657,8 +778,6 @@ footer {
 }
 
 /* About */
-
-
 .wrapper-About {
     display: flex;
     flex-direction: column;

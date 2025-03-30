@@ -76,10 +76,26 @@ public class CarController {
 
     //allCarsAdmin
     @GetMapping("/allCarsAdmin")
-    public String allCarsAdmin(Model model) {
+    public String allCarsAdmin( @RequestParam(name = "page", defaultValue = "0") int page,
+                                @RequestParam(name = "size", defaultValue = "20") int size,
+                                @RequestParam(name = "search", required = false) String search,
+                                Model model) {
+        Page<CarDetailsViewModel> carPage;
 
-        //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
-        model.addAttribute("cars", carService.findAllCarsView());
+        if (search != null && !search.isEmpty()) {
+            // Perform a search
+            carPage = carService.searchCars(search, PageRequest.of(page, size));  //Create this function on the carService.java
+        } else {
+            // No search term, just get all cars with pagination
+            carPage = carService.findAllCarsView(PageRequest.of(page, size));
+        }
+
+        model.addAttribute("cars", carPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", carPage.getTotalPages());
+        model.addAttribute("pageSize", size);
+        model.addAttribute("search", search);
+
         return "allCarsAdmin";
     }
 
