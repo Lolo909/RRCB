@@ -1414,13 +1414,21 @@ form#w-50 {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-add-car {
-    background: #3F8A8C;
+    background: #3f8a8c;
     border: solid #0c5679;
     border-radius: 10px;
-    padding: 2rem;
+    padding: 1.5rem; /* Default padding */
+    margin: 2rem auto; /* Center the form and add margin */
+    width: 90%; /* Occupy most of the screen width */
+    max-width: 1000px;
+}
+.div-add-car {
+    margin: 1rem 1rem 0;
 }
 
 @media (min-width: 1024px) and (max-width: 1600px) {
@@ -1436,27 +1444,27 @@ form#w-50 {
     }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
     .form-add-car {
-        padding: 1.5rem; /* Slightly reduced padding */
-        border-radius: 8px; /* Reduced border-radius for a compact look */
+        padding: 2.5rem;
+        border-radius: 12px;
     }
 
     .div-add-car {
-        margin: 4rem 1rem 0;
+        margin: 2rem auto 0; /* Center horizontally */
+        width: 80%; /* Limit the width of the container */
     }
 }
 
 /* For tablets and medium devices (768px and below) */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .form-add-car {
-        padding: 1rem; /* Reduce padding */
-        border-radius: 6px; /* Adjust border radius */
-        margin: 3rem 1rem;
+        padding: 2rem;
+        border-radius: 10px;
     }
 
-    .form-add-car {
-        margin: 3rem 0;
+    .div-add-car {
+        margin: 4rem 2rem 0;
     }
 }
 
