@@ -9,6 +9,7 @@ import com.example.rrcb.model.entity.enums.CategoryNameEnum;
 import com.example.rrcb.model.service.CarServiceModel;
 import com.example.rrcb.model.view.CarDetailsViewModel;
 import com.example.rrcb.model.view.CarRentViewModel;
+import com.example.rrcb.model.view.CarViewModel;
 import com.example.rrcb.service.CarService;
 import com.example.rrcb.service.CategoryService;
 import com.example.rrcb.service.OrderService;
@@ -83,23 +84,76 @@ public class CarController {
     }
 
     @GetMapping("/vintage")
-    public String allVintageCars(Model model) {
+    public String allVintageCars(@RequestParam(name = "page", defaultValue = "0") int page,
+                                 @RequestParam(name = "size", defaultValue = "3") int size,
+                                 @RequestParam(name = "search", required = false) String search,
+                                 Model model) {
+        Page<CarViewModel> carPage;
 
-        model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.VINTAGE));
+        if (search != null && !search.isEmpty()) {
+            // Perform a search
+            carPage = carService.searchCarsByCategory(search, CategoryNameEnum.VINTAGE, PageRequest.of(page, size));   //Create this function on the carService.java
+        } else {
+            // No search term, just get all cars with pagination
+            carPage = carService.findAllCarsViewByCategory(CategoryNameEnum.VINTAGE, PageRequest.of(page, size));
+        }
+
+        model.addAttribute("cars", carPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", carPage.getTotalPages());
+        model.addAttribute("pageSize", size);
+        model.addAttribute("search", search);
+
         return "allVintageCars";
     }
 
     @GetMapping("/antique")
-    public String allAntiqueCars(Model model) {
+    public String allAntiqueCars(@RequestParam(name = "page", defaultValue = "0") int page,
+                                 @RequestParam(name = "size", defaultValue = "3") int size,
+                                 @RequestParam(name = "search", required = false) String search,
+                                 Model model) {
 
-        model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.ANTIQUE));
+        Page<CarViewModel> carPage;
+
+        if (search != null && !search.isEmpty()) {
+            // Perform a search
+            carPage = carService.searchCarsByCategory(search, CategoryNameEnum.ANTIQUE, PageRequest.of(page, size));   //Create this function on the carService.java
+        } else {
+            // No search term, just get all cars with pagination
+            carPage = carService.findAllCarsViewByCategory(CategoryNameEnum.ANTIQUE, PageRequest.of(page, size));
+        }
+
+        model.addAttribute("cars", carPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", carPage.getTotalPages());
+        model.addAttribute("pageSize", size);
+        model.addAttribute("search", search);
+
+        //model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.ANTIQUE,PageRequest.of(page, size)));
         return "allAntiqueCars";
     }
 
-    @GetMapping("/classic")
-    public String allClassicCars(Model model) {
+    @GetMapping("/classic")//TODO FIX
+    public String allClassicCars(@RequestParam(name = "page", defaultValue = "0") int page,
+                                 @RequestParam(name = "size", defaultValue = "3") int size,
+                                 @RequestParam(name = "search", required = false) String search,
+                                 Model model) {
+        Page<CarViewModel> carPage;
 
-        model.addAttribute("cars", carService.findAllCarsViewByCategory(CategoryNameEnum.CLASSIC));
+        if (search != null && !search.isEmpty()) {
+            // Perform a search
+            carPage = carService.searchCarsByCategory(search, CategoryNameEnum.CLASSIC, PageRequest.of(page, size));   //Create this function on the carService.java
+        } else {
+            // No search term, just get all cars with pagination
+            carPage = carService.findAllCarsViewByCategory(CategoryNameEnum.CLASSIC, PageRequest.of(page, size));
+        }
+
+        model.addAttribute("cars", carPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", carPage.getTotalPages());
+        model.addAttribute("pageSize", size);
+        model.addAttribute("search", search);
+
         return "allClassicCars";
     }
 

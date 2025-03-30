@@ -22,7 +22,9 @@ public interface CarService {
     List<CarDetailsViewModel> findAllCarsView();
     Page<CarDetailsViewModel> findAllCarsView(Pageable pageable);
 
+
     List<CarViewModel> findAllCarsViewByCategory(CategoryNameEnum categoryNameEnum);
+    Page<CarViewModel> findAllCarsViewByCategory(CategoryNameEnum categoryNameEnum, Pageable pageable);
 
     List<String> findAllUrlS();
 
@@ -50,6 +52,9 @@ public interface CarService {
     List<String> getAllOrderedDays(Long id);
 
     Page<CarDetailsViewModel> searchCars(String search, Pageable pageable);
+
+    Page<CarViewModel> searchCarsByCategory(String search, CategoryNameEnum category, Pageable pageable);
+
 
     //void restoreCarAvailableDaysByUserId(Long id);
 }

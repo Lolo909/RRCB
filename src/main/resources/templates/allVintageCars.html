@@ -4,6 +4,61 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/commons::head"></head>
+
+<script>
+    function applySearchFilter(input, carSections) {
+        carSections.forEach((section) => {
+            const carName = section.querySelector('h2').textContent.toUpperCase();
+            const carBrand = section
+                .querySelector('p:first-of-type')
+                .textContent.toUpperCase();
+            const carModel = section
+                .querySelector('p:nth-of-type(2)')
+                .textContent.toUpperCase();
+            const carYear = section
+                .querySelector('p:nth-of-type(3)')
+                .textContent.toUpperCase();
+
+            if (
+                carName.includes(input) ||
+                carBrand.includes(input) ||
+                carModel.includes(input) ||
+                carYear.includes(input)
+            ) {
+                section.style.display = '';
+            } else {
+                section.style.display = 'none';
+            }
+        });
+    }
+
+    function searchFunction() {
+        const input = document.getElementById('searchBar').value;
+        let url = new URL(window.location.origin + '/cars/vintage'); // Specific
+        // endpoint
+        const searchParams = new URLSearchParams();
+        searchParams.set('page', '0'); // Always start at page 0
+
+        if (input) {
+            searchParams.set('search', input);
+        }
+
+        url.search = searchParams.toString();
+        window.location.href = url.toString();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlParams.get('search');
+        const carSections = document.querySelectorAll('.road-All-Cars');
+
+        if (searchTerm) {
+            document.getElementById('searchBar').value = searchTerm;
+            applySearchFilter(searchTerm.toUpperCase(), carSections);
+        }
+    });
+</script>
+
 <body>
 <div class="wrapper-All-Cars lemon-regular">
     <!-- Navigation -->
@@ -19,7 +74,10 @@
     <section class="road-All-Cars-Nav">
         <div class="car-top">
             <h2>Here you can see all our cars:</h2>
-            <!--            TODO make searchbar here-->
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="Search for cars...">
+                <button type="submit" onclick="searchFunction()">Search</button>
+            </div>
             <div style="display: inline-block;white-space: normal;">
                 <a href="/cars/all" class="btn">All cars</a>
                 <a href="/cars/antique" class="btn">Antique</a>
@@ -43,6 +101,21 @@
             <a th:href="@{/cars/details/{id} (id = *{id})}" class="btn">Details</a>
         </div>
     </section>
+
+    <!-- Pagination -->
+    <div class="pagination" th:if="${totalPages > 1}">
+        <a th:if="${currentPage > 0}"
+           th:href="@{/cars/vintage(page=${currentPage - 1}, size=${pageSize}, search=${search})}">Previous</a>
+
+        <span th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+        <a th:href="@{/cars/vintage(page=${i}, size=${pageSize}, search=${search})}"
+           th:text="${i + 1}"
+           th:class="${currentPage == i ? 'active' : ''}"></a>
+    </span>
+
+        <a th:if="${currentPage < totalPages - 1}"
+           th:href="@{/cars/vintage(page=${currentPage + 1}, size=${pageSize}, search=${search})}">Next</a>
+    </div>
 </div>
 <!-- Wrapper Ends -->
 </body>

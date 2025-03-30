@@ -131,9 +131,18 @@ public class CarServiceImpl implements CarService {
                 })
                 .collect(Collectors.toList());
 
-        long totalElements = carRepository.countSearchAllCars(searchTerm); // Get total result number
+        return new PageImpl<>(carDetailsViewModels, pageable, carPage.getTotalElements());  //return the total number of the serch
+    }
 
-        return new PageImpl<>(carDetailsViewModels, pageable, totalElements);  //return the total number of the serch
+    @Override
+    public Page<CarViewModel> searchCarsByCategory(String search, CategoryNameEnum category, Pageable pageable) {
+        Page<Car> carPage = carRepository.searchCarsByCategory(search, category, pageable); // Use new Repository method
+
+        List<CarViewModel> carViewModels = carPage.getContent().stream()
+                .map(car -> modelMapper.map(car, CarViewModel.class))
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(carViewModels, pageable, carPage.getTotalElements());
     }
 
 
@@ -167,6 +176,7 @@ public class CarServiceImpl implements CarService {
     }
 
 
+    @Override
     public List<CarViewModel> findAllCarsViewByCategory(CategoryNameEnum categoryNameEnum) {
         return carRepository.findAllByCategory_Name(categoryNameEnum).stream().map(car -> {
             CarViewModel carViewModel = modelMapper.map(car, CarViewModel.class);
@@ -178,6 +188,21 @@ public class CarServiceImpl implements CarService {
 //            }
             return carViewModel;
         }).collect(Collectors.toList());
+    }
+
+    //TODO FIXXXXXXXXXXXXX
+    @Override
+    public Page<CarViewModel> findAllCarsViewByCategory(CategoryNameEnum categoryNameEnum, Pageable pageable) {
+        Page<Car> carPage = carRepository.findAllByCategory_Name(categoryNameEnum, pageable);
+
+        List<CarViewModel> carViewModels = carPage.getContent().stream()
+                .map(car -> {
+                    CarViewModel carViewModel = modelMapper.map(car, CarViewModel.class);
+                    return carViewModel;
+                })
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(carViewModels, pageable, carPage.getTotalElements());
     }
 
     @Override

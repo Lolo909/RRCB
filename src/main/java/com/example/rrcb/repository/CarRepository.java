@@ -17,7 +17,11 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findAllByCategory_Name(CategoryNameEnum categoryNameEnum);
 
+    Page<Car> findAllByCategory_Name(CategoryNameEnum categoryNameEnum,Pageable pageable);
+
     Page<Car> findAll(Pageable pageable);
+
+
 
     @Query("SELECT c FROM Car c WHERE " +
             "LOWER(c.name) LIKE %:searchTerm% OR " +
@@ -26,12 +30,19 @@ public interface CarRepository extends JpaRepository<Car, Long> {
             "CONCAT(c.created, '') LIKE %:searchTerm%")
     Page<Car> searchAllCars(@Param("searchTerm") String searchTerm, Pageable pageable);
 
-    @Query("SELECT COUNT(c) FROM Car c WHERE " +
+//    @Query("SELECT COUNT(c) FROM Car c WHERE " +
+//            "LOWER(c.name) LIKE %:searchTerm% OR " +
+//            "LOWER(c.brand) LIKE %:searchTerm% OR " +
+//            "LOWER(c.model) LIKE %:searchTerm% OR " +
+//            "CONCAT(c.created, '') LIKE %:searchTerm%")
+//    long countSearchAllCars(@Param("searchTerm") String searchTerm);
+
+    @Query("SELECT c FROM Car c WHERE c.category.name = :category AND (" +
             "LOWER(c.name) LIKE %:searchTerm% OR " +
             "LOWER(c.brand) LIKE %:searchTerm% OR " +
             "LOWER(c.model) LIKE %:searchTerm% OR " +
-            "CONCAT(c.created, '') LIKE %:searchTerm%")
-    long countSearchAllCars(@Param("searchTerm") String searchTerm);
+            "CONCAT(c.created, '') LIKE %:searchTerm%)")
+    Page<Car> searchCarsByCategory(@Param("searchTerm") String searchTerm, @Param("category") CategoryNameEnum category, Pageable pageable);
 
 
 }
