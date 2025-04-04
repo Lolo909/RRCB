@@ -17,7 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class ApplicationSecurityConfiguration {
 
-
     public ApplicationSecurityConfiguration() {
     }
 
@@ -25,7 +24,7 @@ public class ApplicationSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
-                                .requestMatchers("/favicon.ico", "/resources/**", "/error").permitAll()//test
+                                .requestMatchers("/favicon.ico", "/resources/**", "/error").permitAll()
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers("/").permitAll()
                                 .requestMatchers("/about").permitAll()
@@ -39,10 +38,10 @@ public class ApplicationSecurityConfiguration {
 
 
                 ).formLogin(formLogin -> formLogin.loginPage("/users/login")
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                        .defaultSuccessUrl("/")
-                        .failureForwardUrl("/users/login-error")
+                                .usernameParameter("username")
+                                .passwordParameter("password")
+                                .defaultSuccessUrl("/")
+                                .failureForwardUrl("/users/login-error")
 //                        .failureForwardUrl("/users/login?error=true").permitAll()
                 )
                 .logout(logout -> {
@@ -51,7 +50,14 @@ public class ApplicationSecurityConfiguration {
                             .logoutSuccessUrl("/")
                             .invalidateHttpSession(true)
                             .deleteCookies("JSESSIONID");
-                });
+                })
+                .sessionManagement(
+                        session ->
+                                session.sessionCreationPolicy(
+                                        org.springframework.security.config.http.SessionCreationPolicy.IF_REQUIRED)
+                                        .maximumSessions(1) // Allow only one session per user
+                                        .expiredUrl("/login")// Redirect to login page with an "expired" parameter
+                        );
 
 
         //TODO REMEMBER ME!
@@ -60,8 +66,9 @@ public class ApplicationSecurityConfiguration {
 
     }
 
+
     @Bean
-    public UserDetailsService userDetailsService(UserRepository userRepository){
+    public UserDetailsService userDetailsService(UserRepository userRepository) {
         return new RRCBUserDetailsService(userRepository);
     }
 
@@ -69,8 +76,6 @@ public class ApplicationSecurityConfiguration {
     public PasswordEncoder passwordEncoder() {
         return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
-
-
 
 
 }
