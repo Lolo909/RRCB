@@ -16,5 +16,9 @@ public interface OrderService {
 
     void removeOrderWithId(Long id);
 
+    void removeOrderWithIdWithinXDaysAway(Long id, int daysAway);
+
     void removeAllOrdersWithCarId(Long id);
+
+
 }

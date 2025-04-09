@@ -62,6 +62,18 @@ public class UserController {
         return "redirect:/users/all";
     }
 
+    @GetMapping("/rents/cancel/{id}")
+    public String removeOrderWithinXDaysAway(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            orderService.removeOrderWithIdWithinXDaysAway(id, 7);
+            redirectAttributes.addFlashAttribute("successMessage", "Rent successfully cancelled.");
+        } catch (IllegalStateException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
+//        orderService.removeOrderWithIdWithinXDaysAway(id, 7);
+        return "redirect:/users/rents";
+    }
+
     @GetMapping("/rents/remove/{id}")
     public String removeOrder(@PathVariable Long id) {
         orderService.removeOrderWithId(id);

@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/commons::head">
 </head>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let successMessage = /*[[${successMessage}]]*/ null;
+    let errorMessage = /*[[${errorMessage}]]*/ null;
+    let cancelClicked = sessionStorage.getItem('cancelClicked');
+
+    if (cancelClicked) {
+        if (successMessage) {
+            alert(successMessage);
+        } else if (errorMessage) {
+            alert(errorMessage);
+        }
+        sessionStorage.removeItem('cancelClicked'); // clear it so it doesn't show again on next page load
+    }
+    /*]]>*/
+</script>
+
 <body>
 <div class="wrapper lemon-regular">
     <!-- Navigation -->
@@ -13,7 +28,7 @@
 
     <div class="info" style="background-color: #0C5679; size: auto">
         <div></div>
-        <div style="text-align: justify;text-align-last: left">
+        <div style="text-align: justify; text-align-last: left">
             <h4 style="text-align-last: center; font-size: 500%">Rents:</h4>
         </div>
 
@@ -31,13 +46,13 @@
             </ul>
         </div>
         <div>
-<!--                        TODO:-->
-                        <a th:href="@{/users/rents/remove/{id} (id = *{id})}" class="btn">Cancel rent</a>
+            <a th:href="@{/users/rents/cancel/{id} (id = *{id})}" class="btn"
+               onclick="sessionStorage.setItem('cancelClicked', 'true')">Cancel rent</a>
         </div>
     </section>
 
 </div>
-<!-- Wrapper Ends -->'
+<!-- Wrapper Ends -->
 
 <footer th:replace="fragments/commons::footer">
 </footer>

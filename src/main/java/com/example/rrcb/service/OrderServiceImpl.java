@@ -10,8 +10,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -142,6 +145,66 @@ public class OrderServiceImpl implements OrderService {
 //        orderRepository.deleteById(id);
 //        System.out.println(id);
 //        orderRepository.flush();
+    }
+
+    @Override
+    public void removeOrderWithIdWithinXDaysAway(Long id, int daysAway) {
+        List<OrderDay> allOrderDays = orderDayRepository.findAll();
+
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        // Step 1: Detach the order reference
+        allOrderDays.stream()
+                .filter(orderDay -> orderDay.getOrder() != null && orderDay.getOrder().getId().equals(id))
+                .forEach(orderDay -> {
+                    LocalDate orderDate = LocalDate.parse(orderDay.getDayOrdered(), formatter);
+                    long daysBetween = ChronoUnit.DAYS.between(now, orderDate);
+                    if (daysBetween >= 0 && daysBetween <= daysAway) {
+                        throw new IllegalStateException("Rent cannot be canceled within 7 days of the rental date.");
+                    }
+                });
+
+        allOrderDays.stream()
+                .filter(orderDay -> orderDay.getOrder() != null && orderDay.getOrder().getId().equals(id))
+                .forEach(orderDay -> {
+                    orderDay.setOrder(null);
+                    orderDayRepository.save(orderDay);
+                });
+
+        orderDayRepository.flush(); // Flushing the correct repository
+
+        // Step 2: Delete OrderDay entities with null orders
+        List<OrderDay> orderDaysToDelete = allOrderDays.stream()
+                .filter(orderDay -> orderDay.getOrder() == null)
+                .toList();
+
+        orderDayRepository.deleteAll(orderDaysToDelete);
+        orderDayRepository.flush();
+
+
+        List<Order> allOrders = orderRepository.findAll();
+        allOrders.stream()
+                .filter(order -> order.getUser() != null && order.getCar() != null && order.getId().equals(id))
+                .forEach(order -> {
+                    order.setUser(null);
+                    order.setCar(null);
+                    orderRepository.save(order);
+                });
+
+        List<Order> ordersToDelete = allOrders.stream()
+                .filter(order -> order.getUser() == null && order.getCar() == null)
+                .toList();
+
+        orderRepository.deleteAll(ordersToDelete);
+        orderRepository.flush();
+
+        // Step 3: Delete the Order itself
+//        orderRepository.deleteById(id);
+//        System.out.println(id);
+//        orderRepository.flush();
+
+
     }
 
     @Override
