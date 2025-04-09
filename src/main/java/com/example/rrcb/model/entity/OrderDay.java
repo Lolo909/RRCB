@@ -13,8 +13,8 @@ public class OrderDay extends BaseEntity{
     @Column
     private LocalDate dayOrdered;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "order_id")
+    @ManyToOne(targetEntity = Order.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 
     public OrderDay() {

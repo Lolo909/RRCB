@@ -18,12 +18,8 @@ public class Order extends BaseEntity{
     @Column
     private BigDecimal price;
 
-//    @Column
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    private List<Integer> allOrderedDays;
-
     @Column
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<OrderDay> allOrderedDaysT;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -34,10 +30,6 @@ public class Order extends BaseEntity{
     @JoinColumn(name = "car_id")
     private Car car;
 
-    /*
-    @Column(nullable = false)
-    private time time;
-    */
 
     public Order() {
     }

@@ -23,6 +23,8 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
 
 
+
+
     @Query("SELECT c FROM Car c WHERE " +
             "LOWER(c.name) LIKE %:searchTerm% OR " +
             "LOWER(c.brand) LIKE %:searchTerm% OR " +

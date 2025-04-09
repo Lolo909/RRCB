@@ -62,6 +62,12 @@ public class UserController {
         return "redirect:/users/all";
     }
 
+    @GetMapping("/rents/remove/{id}")
+    public String removeOrder(@PathVariable Long id) {
+        orderService.removeOrderWithId(id);
+        return "redirect:/users/rents";
+    }
+
     @GetMapping("/changeRole/{id}")
     public String changeRole(@PathVariable Long id) {
         //userService.remove(id);

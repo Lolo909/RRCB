@@ -92,13 +92,13 @@ public class UserServiceImpl implements UserService {
         }).collect(Collectors.toList());
     }
 
-    @Transactional
     @Override
     public void remove(Long id) {
         //carService.restoreCarAvailableDaysByUserId(id);
         //orderService.restoreCarAvailableDaysByUserId(id);
         orderService.clearAllOrdersFromUserByUserId(id);
         userRepository.deleteById(id);
+        userRepository.flush();
     }
 
 

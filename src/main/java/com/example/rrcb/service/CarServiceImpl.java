@@ -18,7 +18,6 @@ import org.modelmapper.ModelMapper;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -40,15 +39,17 @@ public class CarServiceImpl implements CarService {
     private final OrderRepository orderRepository;
     private final ModelMapper modelMapper;
     private final UserService userService;
+    private final OrderService orderService;
     private final CategoryService categoryService;
 
     private final static double priceMultiplayer = 100.00;
 
-    public CarServiceImpl(CarRepository carRepository,OrderRepository orderRepository, ModelMapper modelMapper, UserService userService, CategoryService categoryService) {
+    public CarServiceImpl(CarRepository carRepository, OrderRepository orderRepository, ModelMapper modelMapper, UserService userService, OrderService orderService, CategoryService categoryService) {
         this.carRepository = carRepository;
         this.orderRepository = orderRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
+        this.orderService = orderService;
         this.categoryService = categoryService;
     }
     @Override
@@ -216,8 +217,12 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void remove(Long id) {
+        Car car = carRepository.findById(id).orElse(null);
+        orderService.removeAllOrdersWithCarId(car.getId());
+
         carRepository.deleteById(id);
     }
+
 
     //@CachePut("newest car image")
     @Override
