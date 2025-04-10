@@ -16,6 +16,9 @@
 #    sql:
 #      init:
 #        mode: always
+#    messages:
+#      basename: messages
+#      encoding: UTF-8
     jpa:
 
       # For MySQL 8

@@ -3,24 +3,12 @@
 
 <head th:replace="fragments/commons::head">
 </head>
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    let successMessage = /*[[${successMessage}]]*/ null;
-    let errorMessage = /*[[${errorMessage}]]*/ null;
-    let cancelClicked = sessionStorage.getItem('cancelClicked');
-
-    if (cancelClicked) {
-        if (successMessage) {
-            alert(successMessage);
-        } else if (errorMessage) {
-            alert(errorMessage);
-        }
-        sessionStorage.removeItem('cancelClicked'); // clear it so it doesn't show again on next page load
-    }
-    /*]]>*/
-</script>
 
 <body>
+<div class="notification" id="notification">
+    <span id="notification-message"></span>
+</div>
+
 <div class="wrapper lemon-regular">
     <!-- Navigation -->
     <header th:replace="fragments/commons::navigation">
@@ -56,6 +44,37 @@
 
 <footer th:replace="fragments/commons::footer">
 </footer>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let successMessage = /*[[${successMessage}]]*/ null;
+    let errorMessage = /*[[${errorMessage}]]*/ null;
+    let cancelClicked = sessionStorage.getItem('cancelClicked');
+
+    function showNotification(message, type = 'error') {
+        const notificationDiv = document.getElementById('notification');
+        const notificationMessage = document.getElementById('notification-message');
+
+        notificationMessage.textContent = message;
+        notificationDiv.className = 'notification ' + type; // Reset class and add type
+        notificationDiv.style.display = 'block';
+
+        // Hide the notification after 3 seconds
+        setTimeout(function () {
+            notificationDiv.style.display = 'none';
+        }, 3000);
+    }
+
+    if (cancelClicked) {
+        if (successMessage) {
+            showNotification(successMessage, 'success');
+        } else if (errorMessage) {
+            showNotification(errorMessage, 'error');
+        }
+        sessionStorage.removeItem('cancelClicked'); // clear it so it doesn't show again on next page load
+    }
+    /*]]>*/
+</script>
 </body>
 
 </html>
