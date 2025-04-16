@@ -1,9 +1,11 @@
 package com.example.rrcb.web;
 
 import com.example.rrcb.service.CarService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class HomeController {
@@ -14,8 +16,9 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String index(Model model){
-
+    public String index(HttpServletRequest request, Model model){
+        String requestURI = request.getRequestURI();
+        model.addAttribute("requestURI", requestURI);
         model.addAttribute("newestCarImage", carService.findNewestCarImageUrl());
 
         return "index";

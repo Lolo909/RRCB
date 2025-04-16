@@ -18,9 +18,9 @@
     <!-- Top Container -->
     <section class="top-container">
         <div class="showcase lemon-regular" >
-            <h1>Find amazing retro cars</h1>
-            <p>Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
-            <a href="/cars/all" class="btn">To cars</a>
+            <h1  th:text="#{home.title}">Find amazing retro cars</h1>
+            <p th:text="#{home.description}">Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
+            <a href="/cars/all" class="btn" th:text="#{home.toCars}">To cars</a>
         </div>
 
     </section>
@@ -30,52 +30,52 @@
         <a href="/cars/vintage" class="main-btn" >
             <div class="box">
                 <img src="/images/Vintage.png" height="150px" width="100%" alt="">
-                <p>Manufactured between 1919 and 1930 year</p>
+                <p th:text="#{home.vintage}">Manufactured between 1919 and 1930 year</p>
             </div>
         </a>
         <a href="/cars/antique" class="main-btn" >
             <div class="box">
                 <img src="/images/AntiqueImage.png" height="150px" width="100%" alt="" >
-                <p>Manufactured 1975 or earlier (>45 years old)</p>
+                <p th:text="#{home.antique}">Manufactured 1975 or earlier (>45 years old)</p>
             </div>
         </a>
-<!--        <a href="/" class="main-btn" >-->
-<!--            <div class="box">-->
-<!--                <img src="/images/motorcycle.png" height="150px" alt="">-->
-<!--                <h3>Motorcycle</h3>-->
-<!--                <p>When you want the wind to blow on your face!</p>-->
-<!--            </div>-->
-<!--        </a>-->
+        <!--        <a href="/" class="main-btn" >-->
+        <!--            <div class="box">-->
+        <!--                <img src="/images/motorcycle.png" height="150px" alt="">-->
+        <!--                <h3>Motorcycle</h3>-->
+        <!--                <p>When you want the wind to blow on your face!</p>-->
+        <!--            </div>-->
+        <!--        </a>-->
         <a href="/cars/classic" class="main-btn">
             <div class="box">
                 <img src="/images/ClassicImage.png" height="150px" width="100%" alt="">
-                <p>Manufactured 2000 or earlier (>20 years old)</p>
+                <p th:text="#{home.classic}">Manufactured 2000 or earlier (>20 years old)</p>
             </div>
         </a>
     </section>
 
-<!--    TODO uncomment later-->
-<!--     Info Section-->
+    <!--    TODO uncomment later-->
+    <!--     Info Section-->
     <section class="road-spic lemon-regular" style="background: #3f8a8c;">
         <img th:src="${newestCarImage}" alt="" style="height: 100%; margin: auto; border-radius: 15px;">
         <div style="color: white;">
-            <h2>The newest car in our collection</h2>
-            <p>Read more about the car and do not miss the
+            <h2 th:text="#{home.newest}">The newest car in our collection</h2>
+            <p th:text="#{home.readMore}">Read more about the car and do not miss the
                 chance to drive it and give your opinion.</p>
-            <a href="/cars/all" class="btn">Learn More</a>
+            <a href="/cars/all" class="btn" th:text="#{home.learnMore}">Learn More</a>
         </div>
     </section>
 
-<!--     Portfolio-->
-<!--    <section class="gallery">-->
-<!--        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">-->
-<!--    </section>-->
+    <!--     Portfolio-->
+    <!--    <section class="gallery">-->
+    <!--        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">-->
+    <!--    </section>-->
 
-<!--    <section class="gallery carousel">-->
-<!--        <button class="prev">Prev</button>-->
-<!--        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">-->
-<!--        <button class="next">Next</button>-->
-<!--    </section>-->
+    <!--    <section class="gallery carousel">-->
+    <!--        <button class="prev">Prev</button>-->
+    <!--        <img th:each="p : ${pictures}" th:src="${p}" width="200px" height="200px" alt="">-->
+    <!--        <button class="next">Next</button>-->
+    <!--    </section>-->
 
 </div>
 <!-- Wrapper Ends -->

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/commons::head">
-</head>
+<head th:replace="fragments/commons::head"></head>
 
 <body>
 <div class="notification" id="notification">
@@ -17,25 +18,25 @@
     <div class="info" style="background-color: #0C5679; size: auto">
         <div></div>
         <div style="text-align: justify; text-align-last: left">
-            <h4 style="text-align-last: center; font-size: 500%">Rents:</h4>
+            <h4 style="text-align-last: center; font-size: 500%" th:text="#{rents.title}">Rents:</h4>
         </div>
 
         <div></div>
     </div>
     <!-- Info Section -->
-    <section class="road" th:each="r : ${rents}" th:object="${r}">
+    <section class="road" th:each="r : ${rents}">
         <div style="text-align-last: left; padding-left: 10%">
-            <h3 th:text="|car name: *{car.getName()}|">car name</h3>
-            <h3 th:text="|date of order: *{dateTime}|">datetime</h3>
-            <h3 th:text="|price: *{price}lv|">price</h3>
-            <h3>Rented Days:</h3>
+            <h3 th:text="#{rents.carName(${r.car.name})}">car name</h3>
+            <h3 th:text="#{rents.dateOfOrder(${r.dateTime})}">datetime</h3>
+            <h3 th:text="#{rents.price(${r.price})}">price</h3>
+            <h3 th:text="#{rents.rentedDays}">Rented Days:</h3>
             <ul style="padding-left: 12px; display: flex; flex-direction: column; gap: 1px;">
-                <li th:each="day : *{allOrderedDays}" th:text="${day.getDayOrdered()}"></li>
+                <li th:each="day : ${r.allOrderedDays}" th:text="${day.dayOrdered}"></li>
             </ul>
         </div>
         <div>
-            <a th:href="@{/users/rents/cancel/{id} (id = *{id})}" class="btn"
-               onclick="sessionStorage.setItem('cancelClicked', 'true')">Cancel rent</a>
+            <a th:href="@{/users/rents/cancel/{id} (id = ${r.id})}" class="btn"
+               onclick="sessionStorage.setItem('cancelClicked', 'true')" th:text="#{rents.cancel}">Cancel rent</a>
         </div>
     </section>
 

@@ -1,4 +1,5 @@
 /* CSS Variables */
+
 :root {
     --primary: #ddd;
     --dark: #333;
@@ -1989,8 +1990,14 @@ body {
 
 
 /*font text style*/
-.lemon-regular {
-    font-family: "Lemon", serif;
+html[lang="en"] .lemon-regular {
+    font-family: "Lemon", sans-serif; /* Default for English */
+    font-weight: 400;
+    font-style: normal;
+}
+
+html[lang="bg"] .lemon-regular {
+    font-family: "Yanone Kaffeesatz", sans-serif; /* Default for Bulgarian */
     font-weight: 400;
     font-style: normal;
 }

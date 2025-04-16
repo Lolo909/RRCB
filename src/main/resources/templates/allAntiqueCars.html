@@ -67,21 +67,21 @@
 
     <section class="top-container-All-Cars">
         <div class="showcase-All-Cars">
-            <h1>Find amazing retro cars</h1>
-            <p>Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
+            <h1 th:text="#{antiqueCars.title}">Find amazing retro cars</h1>
+            <p th:text="#{antiqueCars.description}">Are you tired of staying at home, tired of the restrictions? Be free! Find a car and enjoy the road!</p>
         </div>
     </section>
     <section class="road-All-Cars-Nav">
         <div class="car-top">
-            <h2>Here you can see all our cars:</h2>
+            <h2 th:text="#{antiqueCars.hereSeeCars}">Here you can see all our cars:</h2>
             <div class="search-container">
-                <input type="text" id="searchBar" placeholder="Search for cars...">
-                <button type="submit" onclick="searchFunction()">Search</button>
+                <input type="text" id="searchBar" th:placeholder="#{antiqueCars.searchPlaceholder}">
+                <button type="submit" onclick="searchFunction()" th:text="#{antiqueCars.search}">Search</button>
             </div>
             <div style="display: inline-block;white-space: normal;">
-                <a href="/cars/vintage" class="btn">Vintage</a>
-                <a href="/cars/all" class="btn">All cars</a>
-                <a href="/cars/classic" class="btn">Classic</a>
+                <a href="/cars/vintage" class="btn" th:text="#{antiqueCars.vintage}">Vintage</a>
+                <a href="/cars/all" class="btn" th:text="#{antiqueCars.allCars}">All cars</a>
+                <a href="/cars/classic" class="btn" th:text="#{antiqueCars.classic}">Classic</a>
             </div>
         </div>
         <div class="car-bottom">
@@ -98,14 +98,14 @@
             <p th:text="*{brand}">Brand car</p>
             <p th:text="*{model}">Model car</p>
             <p th:text="*{created}">Year of the car</p>
-            <a th:href="@{/cars/details/{id} (id = *{id})}" class="btn">Details</a>
+            <a th:href="@{/cars/details/{id} (id = *{id})}" class="btn" th:text="#{antiqueCars.details}">Details</a>
         </div>
     </section>
 
     <!-- Pagination -->
     <div class="pagination" th:if="${totalPages > 1}">
-        <a th:if="${currentPage > 0}"
-           th:href="@{/cars/antique(page=${currentPage - 1}, size=${pageSize}, search=${search})}">Previous</a>
+        <a th:href="@{/cars/antique(page=${currentPage - 1}, size=${pageSize}, search=${search})}"
+           th:if="${currentPage > 0}" th:text="#{antiqueCars.previous}">Previous</a>
 
         <span th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
         <a th:href="@{/cars/antique(page=${i}, size=${pageSize}, search=${search})}"
@@ -113,8 +113,8 @@
            th:class="${currentPage == i ? 'active' : ''}"></a>
     </span>
 
-        <a th:if="${currentPage < totalPages - 1}"
-           th:href="@{/cars/antique(page=${currentPage + 1}, size=${pageSize}, search=${search})}">Next</a>
+        <a th:href="@{/cars/antique(page=${currentPage + 1}, size=${pageSize}, search=${search})}"
+           th:if="${currentPage < totalPages - 1}" th:text="#{antiqueCars.next}">Next</a>
     </div>
 </div>
 <!-- Wrapper Ends -->

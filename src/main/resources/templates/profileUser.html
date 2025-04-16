@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/commons::head"></head>
 
@@ -9,29 +11,28 @@
     <header th:replace="fragments/commons::navigation"> </header>
     <div class="profileUser" th:object="${user}">
 
-        <div class="info py-5 h-100" style="background: var(--primary); box-shadow: var(--shadow); color: #0C5679"
-             th:object="${user}">
-            <h1 style="text-align: center">Your profile:</h1>
+        <div class="info py-5 h-100" style="background: var(--primary); box-shadow: var(--shadow); color: #0C5679">
+            <h1 style="text-align: center" th:text="#{profile.title}">Your profile:</h1>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 gradient-custom text-center text-white">
                         <img src="/images/userProfile.png" alt="Avatar" class="img-fluid my-5 profile-image" />
-                        <a th:href="@{/users/profile/edit/{id} (id = *{id})}" class=" edit-profile-btn btn"><i
+                        <a th:href="@{/users/profile/edit/{id} (id = *{id})}" class=" edit-profile-btn btn" th:text="#{profile.edit}"><i
                                 class="far fa-edit"></i>EDIT PROFILE</a>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body p-4">
-                            <h2>Information</h2>
+                            <h2 th:text="#{profile.information}">Information</h2>
                             <hr class="mt-0 mb-4">
                             <div class="col pt-1">
                                 <div class="mb-3">
-                                    <h3 th:text="|Username: *{username}|">Username</h3>
+                                    <h3 th:text="#{profile.username(${user.username})}">Username</h3>
                                 </div>
                                 <div class="mb-3">
-                                    <h3 th:text="|Fullname: *{fullName}|">Full name</h3>
+                                    <h3 th:text="#{profile.fullname(${user.fullName})}">Full name</h3>
                                 </div>
                                 <div class="mb-3">
-                                    <h3 th:text="|Email: *{email}|">Email</h3>
+                                    <h3 th:text="#{profile.email(${user.email})}">Email</h3>
                                 </div>
                             </div>
                         </div>

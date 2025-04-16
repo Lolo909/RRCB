@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&family=Yanone+Kaffeesatz:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
             crossorigin=""></script>
@@ -24,7 +25,7 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const currentPath = window.location.pathname;
             const navLinks = document.querySelectorAll('.navbar ul li a');
 
@@ -38,7 +39,8 @@
 </head>
 <body>
 <header th:fragment="navigation" style="z-index: 2;">
-    <nav class="shift lemon-regular navbar navbar-expand-sm navbar-dark" style="align-items: center; margin-right: 0; padding-right: 0;">
+    <nav class="shift lemon-regular navbar navbar-expand-sm navbar-dark"
+         style="align-items: center; margin-right: 0; padding-right: 0;">
         <div class="container" style="padding:0; margin:0;">
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#n_bar"
                     aria-controls="navbarNavAltMarkup" aria-label="Toggle navigation">
@@ -46,8 +48,10 @@
             </button>
             <a th:href="@{/}"><img alt="logo picture" src="/images/icon/logoT.ico"
                                    style="max-height: 100px; min-height: 60px; min-width: 100px; border-radius: 10px; margin-right: 10px"></a>
-
-            <div class="collapse navbar-collapse" style="margin: auto; margin-right: 0; padding-right: 0;margin-bottom: 0;" id="n_bar">
+            <a th:href="@{${requestURI}(lang='en')}" style="color: white">EN</a> |
+            <a th:href="@{${requestURI}(lang='bg')}" style="color: white">БГ</a>
+            <div class="collapse navbar-collapse"
+                 style="margin: auto; margin-right: 0; padding-right: 0;margin-bottom: 0;" id="n_bar">
                 <ul>
                     <li>
                         <a href="/">Home</a>
