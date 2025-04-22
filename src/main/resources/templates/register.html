@@ -7,7 +7,7 @@
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div background-register" style="margin-top: -40px">
     <div class="register-wrapper">
-        <h1 class="div-login-register-text lemon-regular">Register</h1>
+        <h1 class="div-login-register-text lemon-regular" th:text="#{register.title}">Register</h1>
         <div class="d-flex justify-content-center lemon-regular">
             <div class="row g-3">
                 <form th:object="${userRegisterBindingModel}"
@@ -17,7 +17,7 @@
                     </header>
                     <div>
                         <div class="col-auto">
-                            <label for="inputUsername" class="col-form-label div-login-register-text">Username</label>
+                            <label for="inputUsername" class="col-form-label div-login-register-text" th:text="#{register.username}">Username</label>
                         </div>
                         <div class="col-auto">
                             <div class="input-group">
@@ -30,23 +30,23 @@
                                        required minlength="2" maxlength="20"
                                        type="text"
                                        id="inputUsername"
-                                       placeholder="Enter username"
+                                       th:placeholder="#{register.enterUsername}"
                                        class="form-control"
                                        aria-describedby="usernameHelpInline">
                                 <small id="usernameHelpInline"
-                                       class="invalid-feedback bg-danger text-light rounded">Username length must be
+                                       class="invalid-feedback bg-danger text-light rounded" th:text="#{register.usernameLength}">Username length must be
                                     more than 3
                                     characters</small>
 
                                 <small th:if="${isNameExist}" id="usernameUniqueError"
-                                       class=" bg-danger rounded">Username is already occupied</small>
+                                       class=" bg-danger rounded" th:text="#{register.usernameOccupied}">Username is already occupied</small>
                             </div>
                         </div>
                     </div>
 
                     <div>
                         <div class="col-auto">
-                            <label for="inputFullName" class="col-form-label div-login-register-text">Full Name</label>
+                            <label for="inputFullName" class="col-form-label div-login-register-text" th:text="#{register.fullName}">Full Name</label>
                         </div>
                         <div class="col-auto">
                             <div class="input-group">
@@ -59,11 +59,11 @@
                                        required minlength="2" maxlength="20"
                                        type="text"
                                        id="inputFullName"
-                                       placeholder="Enter full name"
+                                       th:placeholder="#{register.enterFullName}"
                                        class="form-control"
                                        aria-describedby="fullNameError">
                                 <small id="fullNameError"
-                                       class="invalid-feedback  form-text  rounded">Full name length must be more than 3
+                                       class="invalid-feedback  form-text  rounded" th:text="#{register.fullNameLength}">Full name length must be more than 3
                                     characters</small>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
 
                     <div>
                         <div class="col-auto">
-                            <label for="inputEmail" class="col-form-label div-login-register-text">Email</label>
+                            <label for="inputEmail" class="col-form-label div-login-register-text" th:text="#{register.email}">Email</label>
                         </div>
                         <div class="col-auto">
                             <div class="input-group">
@@ -84,17 +84,17 @@
                                        required
                                        type="email"
                                        id="inputEmail"
-                                       placeholder="Enter email"
+                                       th:placeholder="#{register.enterEmail}"
                                        class="form-control"
                                        aria-describedby="emailError">
                                 <small id="emailError"
-                                       class="invalid-feedback  form-text bg-danger rounded">Must be valid email</small>
+                                       class="invalid-feedback  form-text bg-danger rounded" th:text="#{register.validEmail}">Must be valid email</small>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="col-auto">
-                            <label for="inputPassword" class="col-form-label div-login-register-text">Password</label>
+                            <label for="inputPassword" class="col-form-label div-login-register-text" th:text="#{register.password}">Password</label>
                         </div>
                         <div class="col-auto">
                             <div class="input-group">
@@ -107,7 +107,7 @@
                                        required minlength="2" maxlength="20"
                                        type="password"
                                        id="inputPassword"
-                                       placeholder="Enter password"
+                                       th:placeholder="#{register.enterPassword}"
                                        class="form-control"
                                        aria-describedby="passwordError">
                                 <small id="passwordError"
@@ -120,7 +120,7 @@
 
                     <div>
                         <div class="col-auto">
-                            <label for="inputConfirmPassword" class="col-form-label div-login-register-text">Confirm
+                            <label for="inputConfirmPassword" class="col-form-label div-login-register-text" th:text="#{register.confirmPassword}">Confirm
                                 Password</label>
                         </div>
                         <div class="col-auto">
@@ -133,7 +133,7 @@
                                        required minlength="2" maxlength="20"
                                        type="password"
                                        id="inputConfirmPassword"
-                                       placeholder="Confirm password"
+                                       th:placeholder="#{register.enterConfirmPassword}"
                                        class="form-control"
                                        aria-describedby="confirmPasswordHelpInline">
                                 <small id="confirmPasswordError"
@@ -145,7 +145,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center mt-4">
-                        <button class="btn btn-primary btn-block w-50" type="submit">Register</button>
+                        <button class="btn btn-primary btn-block w-50" type="submit" th:text="#{register.register}">Register</button>
                     </div>
 
                 </form>

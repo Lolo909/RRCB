@@ -50,48 +50,47 @@
                                    style="max-height: 100px; min-height: 60px; min-width: 100px; border-radius: 10px; margin-right: 10px"></a>
             <a th:href="@{${requestURI}(lang='en')}" style="color: white">EN</a> |
             <a th:href="@{${requestURI}(lang='bg')}" style="color: white">БГ</a>
-            <div class="collapse navbar-collapse"
-                 style="margin: auto; margin-right: 0; padding-right: 0;margin-bottom: 0;" id="n_bar">
-                <ul>
+            <div class="collapse navbar-collapse justify-content-start" id="n_bar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex flex-wrap">
                     <li>
-                        <a href="/">Home</a>
+                        <a th:href="@{/}" th:text="#{nav.home}">Home</a>
                     </li>
                     <th:block sec:authorize="!isAuthenticated()">
                         <li>
-                            <a href="/users/login">Login</a>
+                            <a th:href="@{/users/login}" th:text="#{nav.login}">Login</a>
                         </li>
                         <li>
-                            <a href="/users/register">Register</a>
+                            <a th:href="@{/users/register}" th:text="#{nav.register}">Register</a>
                         </li>
                         <li>
-                            <a href="/about">About</a>
+                            <a th:href="@{/about}" th:text="#{nav.about}">About</a>
                         </li>
                     </th:block>
                     <th:block sec:authorize="isAuthenticated() && !hasRole('ADMIN')">
                         <li>
-                            <a href="/users/rents">My rents</a>
+                            <a th:href="@{/users/rents}" th:text="#{nav.myRents}">My rents</a>
                         </li>
                         <li>
-                            <a href="/rentsInfo">Rents info</a>
+                            <a th:href="@{/rentsInfo}" th:text="#{nav.rentsInfo}">Rents info</a>
                         </li>
                         <li>
                             <!--                <a th:href="@{/users/profile/{id}(id=*{id})}">Profile</a>-->
-                            <a th:href="@{/users/profile}">Profile</a>
+                            <a th:href="@{/users/profile}" th:text="#{nav.profile}">Profile</a>
                             <!--                sec:authentication="name"-->
                         </li>
                     </th:block>
                     <th:block sec:authorize="hasRole('ADMIN')">
                         <li>
-                            <a href="/cars/add">Add car</a>
+                            <a th:href="@{/cars/add}" th:text="#{nav.addCar}">Add car</a>
                         </li>
                         <li>
-                            <a href="/cars/allCarsAdmin">All cars</a>
+                            <a th:href="@{/cars/allCarsAdmin}" th:text="#{nav.allCarsAdmin}">All cars</a>
                         </li>
                         <li>
-                            <a href="/users/all">All users</a>
+                            <a th:href="@{/users/all}" th:text="#{nav.allUsers}">All users</a>
                         </li>
                         <li>
-                            <a href="/users/allRents">All rents</a>
+                            <a th:href="@{/users/allRents}" th:text="#{nav.allRents}">All rents</a>
                         </li>
                     </th:block>
                     <th:block sec:authorize="isAuthenticated()">
@@ -99,7 +98,7 @@
                             <a>
                                 <form th:method="POST"
                                       th:action="@{/users/logout}">
-                                    <input type="submit" th:value="LOGOUT">
+                                    <input type="submit" th:value="#{nav.logout}">
                                 </form>
                             </a>
                         </li>
@@ -113,7 +112,7 @@
 <footer th:fragment="footer" class="footer bg-blur">
     <div class="container-fluid text-center">
         <div class="h5 text-white">
-            &copy; R.R.C.B. All rights reserved.
+            &copy; R.R.C.B. <span th:text="#{footer.allRights}">All rights reserved.</span>
         </div>
     </div>
 </footer>

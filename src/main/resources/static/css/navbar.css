@@ -34,14 +34,7 @@ h2 {
     text-align: center;
 }
 
-/*
-section {
-    height: 100vh;
-}
-*/
-
 header{
-    /*background-color: ;*/
     overflow: hidden;
     position: fixed;
     width: 100%;
@@ -54,12 +47,9 @@ nav {
     width: 100%;
     margin: 0 auto;
     background: #3F8A8C;
-    /*position: fixed;*/
     top: 0;
     left: 0;
     right: 0;
-    /*padding: 10px 0 5px 0;*/
-    /*box-shadow: 0px 5px 0px #dedede;*/
 }
 
 nav ul {
@@ -70,23 +60,31 @@ nav ul li {
     display: inline-block;
 }
 nav ul li a {
-    display: block;
     padding: 15px;
     text-decoration: none;
     color: white;
     font-weight: 800;
     text-transform: uppercase;
     margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 nav ul li a,
 nav ul li a:after,
 nav ul li a:before {
     transition: all .5s;
 }
+
 nav ul li a:hover {
     color: #555;
+    text-decoration: none;
 }
 
+.navbar ul li a.active-page {
+    color: #96670c;
+    background: #f1c40f;
+}
 
 /* SHIFT */
 nav.shift ul li a {
@@ -96,6 +94,8 @@ nav.shift ul li a {
     font-weight: 900;
     position:relative;
     z-index: 1;
+    text-wrap: none;
+    white-space:nowrap;
 }
 nav.shift ul li a:hover {
     color: #91640F;

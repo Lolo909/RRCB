@@ -3,8 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/commons::head">
-</head>
+<head th:replace="fragments/commons::head"></head>
 <body>
 <div class="wrapper lemon-regular">
     <!-- Navigation -->
@@ -14,25 +13,25 @@
     <div class="info" style="background-color: #0C5679; size: auto">
         <div></div>
         <div>
-            <h4 style="text-align: center; font-size: 500%">All users' rents:</h4>
+            <h4 style="text-align: center; font-size: 500%" th:text="#{allRents.title}">All users' rents:</h4>
         </div>
 
         <div></div>
     </div>
     <!-- Info Section -->
-    <section class="road" th:each="r : ${allRents}" th:object="${r}">
+    <section class="road sectionCarsAdmin" th:each="r : ${allRents}">
         <div style="text-align-last: left; padding-left: 10%">
-            <h3 th:text="|name of client: *{user.getUsername()}|">car name</h3>
-            <h3 th:text="|car name: *{car.getName()}|">car name</h3>
-            <h3 th:text="|date of order: *{dateTime}|">datetime</h3>
-            <h3 th:text="|price: *{price}lv|">price</h3>
+            <h3 th:text="#{allRents.nameOfClient(${r.user.username})}">car name</h3>
+            <h3 th:text="#{allRents.carName(${r.car.name})}">car name</h3>
+            <h3 th:text="#{allRents.dateOfOrder(${r.dateTime})}">datetime</h3>
+            <h3 th:text="#{allRents.price(${r.price})}">price</h3>
             <!--            <h3 th:text="|rented days: *{allOrderedDays}|">allOrderedDays</h3>-->
             <ul>
-                <li th:each="day : *{allOrderedDays}" th:text="${day.getDayOrdered()}"></li>
+                <li th:each="day : ${r.allOrderedDays}" th:text="${day.dayOrdered}"></li>
             </ul>
         </div>
         <div>
-            <a th:href="@{/users/rents/remove/{id} (id = *{id})}" class="btn">Remove</a>
+            <a th:href="@{/users/rents/remove/{id} (id = ${r.id})}" class="btn" th:text="#{allRents.remove}">Remove</a>
         </div>
     </section>
 
@@ -40,7 +39,6 @@
 <!-- Wrapper Ends -->'
 
 <footer th:replace="fragments/commons::footer">
-</footer>
 </body>
 
 </html>

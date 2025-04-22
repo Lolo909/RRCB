@@ -61,20 +61,20 @@
 <!-- Navigation -->
 <header th:replace="fragments/commons::navigation"> </header>
 <div class="search-container-admin">
-    <input type="text" id="searchBar" placeholder="Search for cars...">
-    <button type="submit" onclick="searchFunction()">Search</button>
+    <input type="text" id="searchBar" th:placeholder="#{allCarsAdmin.searchPlaceholder}">
+    <button type="submit" onclick="searchFunction()" th:text="#{allCarsAdmin.search}">Search</button>
 </div>
 
 <div class="wrapperAdmin lemon-regular">
 
-    <section th:each="c : ${cars}" th:object="${c}" class="sectionCarsAdmin">
+    <section th:each="c : ${cars}" class="sectionCarsAdmin">
         <div>
-        <img th:src="*{file}" alt="Title file" class="car-image" />
+            <img th:src="${c.file}" alt="Title file" class="car-image" />
         </div>
         <div class="car-details">
-            <h2 th:text="*{name}">Your Route</h2>
-            <p th:text="*{brand}">Brand car</p>
-            <p th:text="*{model}">Model car</p>
+            <h2 th:text="${c.name}">Your Route</h2>
+            <p th:text="${c.brand}">Brand car</p>
+            <p th:text="${c.model}">Model car</p>
             <!-- <p th:text="*{created}">Year of the car</p> -->
             <!-- Reduced Text -->
             <!-- <p style="text-align: justify;text-align-last: center; " th:text="*{description}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae alias reiciendis deleniti possimus nemo
@@ -82,15 +82,15 @@
                             Quae atque vero modi quidem! Autem cupiditate fugit doloribus ad amet, asperiores provident commodi.</p> -->
 
             <div style="display: inline-block; white-space: normal">
-                <a th:href="@{/cars/edit/{id} (id = *{id})}" class="btn">Edit</a>
-                <a th:href="@{/cars/remove/{id} (id = *{id})}" class="btn">Remove</a>
+                <a th:href="@{/cars/edit/{id} (id = ${c.id})}" class="btn" th:text="#{allCarsAdmin.edit}">Edit</a>
+                <a th:href="@{/cars/remove/{id} (id = ${c.id})}" class="btn" th:text="#{allCarsAdmin.remove}">Remove</a>
             </div>
         </div>
     </section>
     <!-- Pagination -->
     <div class="pagination" th:if="${totalPages > 1}">
         <a th:if="${currentPage > 0}"
-           th:href="@{/cars/allCarsAdmin(page=${currentPage - 1}, size=${pageSize}, search=${search})}">Previous</a>
+           th:href="@{/cars/allCarsAdmin(page=${currentPage - 1}, size=${pageSize}, search=${search})}" th:text="#{allCarsAdmin.previous}">Previous</a>
 
         <span th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
         <a th:href="@{/cars/allCarsAdmin(page=${i}, size=${pageSize}, search=${search})}"
@@ -99,7 +99,7 @@
         </span>
 
         <a th:if="${currentPage < totalPages - 1}"
-           th:href="@{/cars/allCarsAdmin(page=${currentPage + 1}, size=${pageSize}, search=${search})}">Next</a>
+           th:href="@{/cars/allCarsAdmin(page=${currentPage + 1}, size=${pageSize}, search=${search})}" th:text="#{allCarsAdmin.next}">Next</a>
     </div>
 
 </div>

@@ -20,10 +20,10 @@
               th:action="@{/users/profile/edit/{id}(id=${profileForEdit.id})}"
               enctype="multipart/form-data">
 
-            <h3 class="pl-2" style="text-align: center">Edit profile</h3>
+            <h3 class="pl-2" style="text-align: center" th:text="#{editProfile.title}">Edit profile</h3>
             <div>
                 <div class="form-group">
-                    <label class="col-form-label" th:text="|Username: *{username}|">Username</label>
+                    <label class="col-form-label" th:text="#{editProfile.username(${profileForEdit.username})}">Username</label>
                     <!--                <label for="inputName" class="col-form-label" th:text="|Username: *{username}|">Username</label>-->
                 </div>
                 <!--            <div class="form-group">-->
@@ -42,7 +42,7 @@
             </div>
             <div>
                 <div class="form-group">
-                    <label for="inputFullname" class="col-form-label ">Fullname:</label>
+                    <label for="inputFullname" class="col-form-label " th:text="#{editProfile.fullNameLabel}">Fullname:</label>
                 </div>
                 <div class="form-group">
                     <input th:field="*{fullName}"
@@ -54,13 +54,13 @@
                            th:value="*{fullName}"
                            aria-describedby="inputNameError">
                     <small th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"
-                           class="invalid-feedback rounded">Fullname length must be more than 3 characters</small>
+                           class="invalid-feedback rounded" th:text="#{editProfile.fullNameLength}">Fullname length must be more than 3 characters</small>
 
                 </div>
             </div>
             <div>
                 <div class="form-group">
-                    <label for="inputEmail" class="col-form-label ">Email:</label>
+                    <label for="inputEmail" class="col-form-label " th:text="#{editProfile.emailLabel}">Email:</label>
                 </div>
                 <div class="form-group">
                     <input th:field="*{email}"
@@ -72,14 +72,14 @@
                            th:value="*{email}"
                            aria-describedby="inputNameError">
                     <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                           class="invalid-feedback rounded">Name length must be more than 3 characters</small>
+                           class="invalid-feedback rounded" th:text="#{editProfile.emailLength}">Name length must be more than 3 characters</small>
 
                 </div>
             </div>
 
-            <a th:href="@{/users/profile}" class="btn"> 🠈 GO BACK</a>
+            <a th:href="@{/users/profile}" class="btn" th:text="#{editProfile.goBack}"> 🠈 GO BACK</a>
             <div class="d-flex justify-content-center mt-4">
-                <button class="btn btn-primary btn-block w-50" type="submit">EDIT</button>
+                <button class="btn btn-primary btn-block w-50" type="submit" th:text="#{editProfile.edit}">EDIT</button>
             </div>
         </form>
     </div>
