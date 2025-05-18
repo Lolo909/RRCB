@@ -149,7 +149,7 @@ public class CarController {
         return "allAntiqueCars";
     }
 
-    @GetMapping("/classic")//TODO FIX
+    @GetMapping("/classic")
     public String allClassicCars(@RequestParam(name = "page", defaultValue = "0") int page,
                                  @RequestParam(name = "size", defaultValue = "3") int size,
                                  @RequestParam(name = "search", required = false) String search,
@@ -158,7 +158,7 @@ public class CarController {
 
         if (search != null && !search.isEmpty()) {
             // Perform a search
-            carPage = carService.searchCarsByCategory(search, CategoryNameEnum.CLASSIC, PageRequest.of(page, size));   //Create this function on the carService.java
+            carPage = carService.searchCarsByCategory(search, CategoryNameEnum.CLASSIC, PageRequest.of(page, size));
         } else {
             // No search term, just get all cars with pagination
             carPage = carService.findAllCarsViewByCategory(CategoryNameEnum.CLASSIC, PageRequest.of(page, size));
@@ -202,7 +202,7 @@ public class CarController {
         carServiceModel.setFile("data:image/jpeg;base64," + Base64.getEncoder().encodeToString(carAddBindingModel.getFile().getBytes()));
 
         //carServiceModel.setImageUrl(StringUtils.cleanPath(carAddBindingModel.getFile().getOriginalFilename()));
-        //TODO ADD EXCEPTION ABOUT NULL IMAGE
+
         //carServiceModel.setImageUrl(carAddBindingModel.getFile().toString());
         carService.addNewCar(carServiceModel);
 
@@ -266,10 +266,9 @@ public class CarController {
     public String rent(@PathVariable Long id, Model model){
 
         CarRentViewModel carForRent = carService.findCarForRentById(id);
-        carForRent.setImageUrl(carService.findCarById(id).getFile());//?TODO: optimize not to do two zaqvki
+        carForRent.setImageUrl(carService.findCarById(id).getFile());
 
         carForRent.setOrderedDays(carService.getAllOrderedDays(id));
-        //TODO:FIX getting all orderedDays();
         List<String> test = carForRent.getOrderedDays();
         List<String> test2 = List.of("02/15/2025", "02/20/2025");
         System.out.println("-test-");
@@ -302,20 +301,12 @@ public class CarController {
         return "redirect:/cars/all";
     }
 
-
-
-
-
-
         /*
-
         @Scheduled(cron = "59 59 23 L * ?")
         public void monthlyUpdateOfCars(){
             //System.out.println(LocalDateTime.now());
                 orderService.ClearUp();
                 carService.updateOfCarsAllAvailableDays();
-
         }
-
         */
 }

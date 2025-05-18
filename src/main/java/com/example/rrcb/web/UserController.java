@@ -35,7 +35,6 @@ public class UserController {
     @GetMapping("/all")
     public String allUsers(Model model) {
 
-        //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("users", userService.findAllUsersView());
         return "allUsersAdmin";
     }
@@ -43,7 +42,6 @@ public class UserController {
     @GetMapping("/rents")
     public String rents(Model model, Principal principal) {
 
-        //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("rents", orderService.findAllRentsOfTheUserByName(principal.getName()));
 
         return "rents";
@@ -51,7 +49,6 @@ public class UserController {
     @GetMapping("/allRents")
     public String allRents(Model model) {
 
-        //List<RouteViewModel>  routeViewModelsList = routeService.findAllRoutesView();
         model.addAttribute("allRents", orderService.findAllRents());
         return "allRentsAdmin";
     }
@@ -70,7 +67,7 @@ public class UserController {
         } catch (IllegalStateException e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
-//        orderService.removeOrderWithIdWithinXDaysAway(id, 7);
+
         return "redirect:/users/rents";
     }
 
@@ -112,7 +109,6 @@ public class UserController {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userProfileEditBindingModel", userProfileEditBindingModel);
-            //userProfileEdit !!!!!!!
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userProfileEditBindingModel", bindingResult);
             return "redirect:/profile/edit/{id}";
         }

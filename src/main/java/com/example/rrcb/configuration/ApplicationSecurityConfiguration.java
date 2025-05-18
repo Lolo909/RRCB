@@ -59,9 +59,6 @@ public class ApplicationSecurityConfiguration {
                                         .expiredUrl("/login")// Redirect to login page with an "expired" parameter
                         );
 
-
-        //TODO REMEMBER ME!
-
         return httpSecurity.build();
 
     }

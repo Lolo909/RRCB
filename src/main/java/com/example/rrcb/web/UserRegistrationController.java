@@ -37,7 +37,6 @@ public class UserRegistrationController {
     @PostMapping("/register")
     public String registerConfirm(@Valid UserRegisterBindingModel userRegisterBindingModel,
                                   BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        //!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())
         if(bindingResult.hasErrors() || !userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())){
             redirectAttributes
                     .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
@@ -46,7 +45,6 @@ public class UserRegistrationController {
             return "redirect:register";
         }
 
-        //TODO existing username with custom validator
 
         userService.registerUser(modelMapper
                 .map(userRegisterBindingModel, UserServiceModel.class));
